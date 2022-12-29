@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tictactoe.iti.project;
+package tictactoeclient;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author ramy3
  */
-public class TicTacToeITIProject extends Application {
+public class TicTacToeClient extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
