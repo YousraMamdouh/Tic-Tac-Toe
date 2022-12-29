@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 /**
  *
  * @author ramy3
@@ -19,12 +21,14 @@ public class TicTacToeClient extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GameBoard.fxml")));
         
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
+        //stage.setResizable(false);
+        //stage.initStyle(StageStyle.UNDECORATED);
     }
 
     /**
