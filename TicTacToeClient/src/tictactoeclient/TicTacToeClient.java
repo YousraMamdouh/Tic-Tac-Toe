@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 public class TicTacToeClient extends Application {
 
     @Override
+
     public void start(Stage stage) throws Exception{
 
             Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
@@ -25,13 +26,9 @@ public class TicTacToeClient extends Application {
             stage.setTitle("Tic Tac Toe");
             stage.setScene(homePage);
             stage.show();
-
     }
 
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
