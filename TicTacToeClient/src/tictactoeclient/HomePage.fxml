@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.FXMLController">
    <children>
-      <ImageView fitHeight="732.0" fitWidth="1147.0" layoutX="-10.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="767.0" fitWidth="1178.0" layoutX="-10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/homePage.jpg" />
          </image>
@@ -29,18 +30,26 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="signupButton" mnemonicParsing="false" onAction="#openSignupPage" prefHeight="63.0" prefWidth="136.0" styleClass="myButton" stylesheets="@HomePageStyle.css" text="Sign up" textFill="WHITE">
+                  <Button fx:id="signupButton" mnemonicParsing="false" onAction="#openSignupPage" prefHeight="63.0" prefWidth="136.0" styleClass="myButton" text="Sign up" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
+                     <stylesheets>
+                        <URL value="@HomePageStyle.css" />
+                        <URL value="@../res/HomePageStyle.css" />
+                     </stylesheets>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#openLoginPage" prefHeight="63.0" prefWidth="133.0" styleClass="myButton" stylesheets="@HomePageStyle.css" text="Login" textFill="WHITE" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onAction="#openLoginPage" prefHeight="63.0" prefWidth="133.0" styleClass="myButton" text="Login" textFill="WHITE" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
+                     <stylesheets>
+                        <URL value="@HomePageStyle.css" />
+                        <URL value="@../res/HomePageStyle.css" />
+                     </stylesheets>
                   </Button>
                </children>
             </GridPane>
@@ -57,20 +66,32 @@
                 <RowConstraints maxHeight="82.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#singlePlayer4" prefHeight="77.0" prefWidth="334.0" styleClass="buttonMultiplier" stylesheets="@HomePageStyle.css" text="Online Multiplier " textFill="WHITE" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#singlePlayer4" prefHeight="77.0" prefWidth="334.0" styleClass="buttonMultiplier" text="Online Multiplier " textFill="WHITE" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
+                     <stylesheets>
+                        <URL value="@HomePageStyle.css" />
+                        <URL value="@../res/HomePageStyle.css" />
+                     </stylesheets>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#singlePlayer3" prefHeight="66.0" prefWidth="334.0" styleClass="myButton" stylesheets="@HomePageStyle.css" text="Local Multiplier" textFill="WHITE" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#singlePlayer3" prefHeight="66.0" prefWidth="334.0" styleClass="myButton" text="Local Multiplier" textFill="WHITE" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
+                     <stylesheets>
+                        <URL value="@HomePageStyle.css" />
+                        <URL value="@../res/HomePageStyle.css" />
+                     </stylesheets>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#singlePlayer" prefHeight="62.0" prefWidth="334.0" styleClass="myButton" stylesheets="@HomePageStyle.css" text="Single Player" textFill="WHITE" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#singlePlayer" prefHeight="62.0" prefWidth="334.0" styleClass="myButton" text="Single Player" textFill="WHITE" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
+                     <stylesheets>
+                        <URL value="@HomePageStyle.css" />
+                        <URL value="@../res/HomePageStyle.css" />
+                     </stylesheets>
                   </Button>
                </children>
             </GridPane>
