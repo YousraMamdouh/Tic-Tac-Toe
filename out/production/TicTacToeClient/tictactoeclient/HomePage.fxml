@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="732.0" fitWidth="1147.0" layoutX="-10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@homePage.jpg" />
+            <Image url="@../res/homePage.jpg" />
          </image>
       </ImageView>
       <BorderPane layoutX="426.0" layoutY="99.0" prefHeight="611.0" prefWidth="334.0">
@@ -57,17 +57,17 @@
                 <RowConstraints maxHeight="82.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="77.0" prefWidth="334.0" styleClass="buttonMuliplier" stylesheets="@HomePageStyle.css" text="Online Multiplier " textFill="WHITE" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#singlePlayer4" prefHeight="77.0" prefWidth="334.0" styleClass="buttonMuliplier" stylesheets="@HomePageStyle.css" text="Online Multiplier " textFill="WHITE" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="334.0" stylesheets="@HomePageStyle.css" text="Local Multiplier" textFill="WHITE" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#singlePlayer3" prefHeight="66.0" prefWidth="334.0" stylesheets="@HomePageStyle.css" text="Local Multiplier" textFill="WHITE" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="334.0" stylesheets="@HomePageStyle.css" text="Single Player" textFill="WHITE" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#singlePlayer" prefHeight="62.0" prefWidth="334.0" stylesheets="@HomePageStyle.css" text="Single Player" textFill="WHITE" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>

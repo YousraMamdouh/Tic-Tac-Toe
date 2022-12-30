@@ -22,64 +22,102 @@ import javafx.stage.StageStyle;
  * @author ramy3
  */
 
-public class FXMLController  {
-   @FXML
+public class FXMLController {
+    @FXML
     Button loginButton;
-   @FXML
-   Button signupButton;
-   @FXML
-   Button loginPageButton;
-   @FXML
-   Button signupPageButton;
+    @FXML
+    Button signupButton;
+    @FXML
+    Button loginPageButton;
+    @FXML
+    Button signupPageButton;
 
-private Stage stage1,stage2;
-private Scene scene1,scene2;
-private Parent root1,root2;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
 
     @FXML
     public void openLoginPage(ActionEvent event) throws IOException {
 
-     stage1 = new Stage();
-     root1 = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
-     scene1 = new Scene(root1, 900, 600);
-     stage1.setTitle("Login Page");
-     stage1.setScene(scene1);
-     stage1.initModality(Modality.APPLICATION_MODAL);
-     stage1.initStyle(StageStyle.UNDECORATED);
-     stage1.initStyle(StageStyle.TRANSPARENT);
-     scene1.setFill(Color.TRANSPARENT);
-     stage1.showAndWait();
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+        scene = new Scene(root, 900, 600);
+        stage.setTitle("Login Page");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.showAndWait();
 
     }
 
-    public void openSignupPage(ActionEvent event) throws IOException{
-    stage2 = new Stage();
-     root2= FXMLLoader.load(getClass().getResource("SignupPage.fxml"));
-     scene2=new Scene(root2,900,600);
-     stage2.setTitle("Login Page");
-     stage2.setScene(scene2);
-     stage2.initStyle(StageStyle.UNDECORATED);
-     stage2.initStyle(StageStyle.TRANSPARENT);
-     scene2.setFill(Color.TRANSPARENT);
-     stage2.initModality(Modality.APPLICATION_MODAL);
-     stage2.showAndWait();
+    public void openSignupPage(ActionEvent event) throws IOException {
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("SignupPage.fxml"));
+        scene = new Scene(root, 900, 600);
+        stage.setTitle("Login Page");
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
-@FXML
-    public void loggingIn(ActionEvent event) throws IOException{
 
- stage1=(Stage)loginPageButton.getScene().getWindow();
- stage1.close();
-}
+    @FXML
+    public void loggingIn(ActionEvent event) throws IOException {
 
-@FXML
-public void signingUp(ActionEvent event) throws IOException{
+        stage = (Stage) loginPageButton.getScene().getWindow();
+        stage.close();
+    }
 
- stage2=(Stage)signupPageButton.getScene().getWindow();
- stage2.close();
-}
+    @FXML
+    public void signingUp(ActionEvent event) throws IOException {
+
+        stage = (Stage) signupPageButton.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+
+    public void singlePlayer(ActionEvent event) throws IOException {
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("Difficulty_Window.fxml"));
+        scene = new Scene(root);
+        stage.setTitle("Login Page");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
 
 
+    }
+
+    @FXML
+
+    public void singlePlayer3(ActionEvent event) throws IOException {
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
+        scene = new Scene(root);
+        stage.setTitle("Login Page");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
 
 
+    }
+    @FXML
+
+    public void singlePlayer4(ActionEvent event) throws IOException {
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
+        scene = new Scene(root);
+        stage.setTitle("Login Page");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+
+
+    }
 }

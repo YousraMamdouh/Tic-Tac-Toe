@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="658.0" fitWidth="983.0" layoutX="-9.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@login_signup.png" />
+            <Image url="@../res/login_signup.png" />
          </image>
       </ImageView>
       <Button fx:id="usernameButton" layoutX="137.0" layoutY="242.0" mnemonicParsing="false" stylesheets="@HomePageStyle.css" text="Username:" textFill="WHITE">
