@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="450.0" fitWidth="715.0" layoutX="-3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Pics/Result/Result.png" />
+            <Image url="@res/Result/Result.png" />
          </image>
       </ImageView>
       <Label alignment="CENTER" layoutX="198.0" layoutY="93.0" prefHeight="35.0" prefWidth="317.0" text="Mohamed Essam Wins" textFill="WHITE">

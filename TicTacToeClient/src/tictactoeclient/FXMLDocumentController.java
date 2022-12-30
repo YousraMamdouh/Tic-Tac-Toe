@@ -57,11 +57,12 @@ public class FXMLDocumentController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.showAndWait();
-
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
     
 }

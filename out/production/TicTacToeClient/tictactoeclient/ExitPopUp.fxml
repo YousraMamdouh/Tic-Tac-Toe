@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="450.0" fitWidth="660.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Pics/Exit/popUp.png" />
+            <Image url="@res/Exit/popUp.png" />
          </image>
       </ImageView>
       <Label alignment="CENTER" layoutX="26.0" layoutY="258.0" prefHeight="55.0" prefWidth="609.0" text="Are you sure you want to leave ?" textFill="WHITE">
