@@ -1,0 +1,54 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Dec 29, 2022, 1:36:13 PM
+    Author     : saraeltlt
+*/
+.bodybg{
+    -fx-background-image: url("/profileIScreenCSS/profile.png");
+    -fx-background-size: 100% 100%;
+}
+
+.myButtonPink{
+    -fx-background-color: linear-gradient(to right,#d53772,#8653e0);
+    -fx-background-radius: 10px;
+}
+.myButtonPurple{
+     -fx-background-color: linear-gradient(to right,#380b82,#4818c2);
+      -fx-background-radius: 10px;
+    
+}
+
+.table-view {
+    -fx-background-color: rgba(134, 83, 224, 0.5);
+    -fx-border-color: white;
+    -fx-border-style: dotted;
+    -fx-border-width: 3;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 16pt;
+
+
+}
+
+.table-view .column-header-background .label {
+    -fx-text-fill: #d53772;
+    -fx-effect: dropshadow(gaussian, rgba(45, 44, 44, 0.85), 5, 0.5, -3, 3);
+}
+
+.table-view .column-header-background .label:hover {
+    -fx-text-fill: #ff609b;
+    -fx-effect: dropshadow(gaussian, rgba(45, 44, 44, 0.85), 5, 0.5, -3, 3);
+}
+
+.column-header-background .column-header {
+    -fx-background-color: #380b82;
+}
+.title {
+    -fx-text-fill: white;
+    -fx-font-size: 28;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(45, 44, 44, 0.85), 5, 0.5, -3, 3);
+}
