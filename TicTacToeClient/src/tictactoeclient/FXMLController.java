@@ -9,6 +9,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -83,13 +84,13 @@ public class FXMLController {
     @FXML
 
     public void singlePlayer(ActionEvent event) throws IOException {
-        stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("Difficulty_Window.fxml"));
-        scene = new Scene(root);
-        stage.setTitle("Login Page");
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
         stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
+        stage.setScene(scene);
+        stage.show();
+
 
 
     }
@@ -97,26 +98,25 @@ public class FXMLController {
     @FXML
 
     public void singlePlayer3(ActionEvent event) throws IOException {
-        stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
-        scene = new Scene(root);
-        stage.setTitle("Login Page");
-        stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+      scene=new Scene(root);
+      stage.setScene(scene);
+      stage.setScene(scene);
+      stage.show();
+
 
 
     }
     @FXML
 
     public void singlePlayer4(ActionEvent event) throws IOException {
-        stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
-        scene = new Scene(root);
-        stage.setTitle("Login Page");
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
         stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
+        stage.setScene(scene);
+        stage.show();
 
 
     }
