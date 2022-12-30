@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.FXMLController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: transparent;" stylesheets="@HomePageStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.FXMLController">
    <children>
-      <ImageView fitHeight="727.0" fitWidth="993.0" layoutX="-19.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: copy;">
+      <ImageView fitHeight="727.0" fitWidth="993.0" layoutX="-19.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" style="visibility: none;" styleClass="background">
          <image>
             <Image url="@login_signup.png" />
          </image>

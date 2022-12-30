@@ -11,9 +11,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -34,7 +36,8 @@ private Stage stage1,stage2;
 private Scene scene1,scene2;
 private Parent root1,root2;
 
-   @FXML
+
+    @FXML
     public void openLoginPage(ActionEvent event) throws IOException {
 
      stage1 = new Stage();
@@ -43,6 +46,9 @@ private Parent root1,root2;
      stage1.setTitle("Login Page");
      stage1.setScene(scene1);
      stage1.initModality(Modality.APPLICATION_MODAL);
+     stage1.initStyle(StageStyle.UNDECORATED);
+     stage1.initStyle(StageStyle.TRANSPARENT);
+     scene1.setFill(Color.TRANSPARENT);
      stage1.showAndWait();
 
     }
@@ -53,6 +59,9 @@ private Parent root1,root2;
      scene2=new Scene(root2,900,600);
      stage2.setTitle("Login Page");
      stage2.setScene(scene2);
+     stage2.initStyle(StageStyle.UNDECORATED);
+     stage2.initStyle(StageStyle.TRANSPARENT);
+     scene2.setFill(Color.TRANSPARENT);
      stage2.initModality(Modality.APPLICATION_MODAL);
      stage2.showAndWait();
     }
