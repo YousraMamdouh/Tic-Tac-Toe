@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.FXMLController">
+   <children>
+      <ImageView fitHeight="658.0" fitWidth="983.0" layoutX="-9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@login_signup.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="usernameButton" layoutX="137.0" layoutY="242.0" mnemonicParsing="false" stylesheets="@HomePageStyle.css" text="Username:" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="emailButton" layoutX="137.0" layoutY="296.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" stylesheets="@HomePageStyle.css" text="Email:" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="usernameTextField" layoutX="267.0" layoutY="246.0" prefHeight="31.0" prefWidth="187.0" styleClass="textField" stylesheets="@HomePageStyle.css" />
+      <TextField fx:id="emailTextField" layoutX="267.0" layoutY="300.0" styleClass="textField" stylesheets="@HomePageStyle.css" />
+      <Button fx:id="passButton" layoutX="473.0" layoutY="240.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="167.0" stylesheets="@HomePageStyle.css" text="Password" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="confirmPassButton" layoutX="462.0" layoutY="296.0" mnemonicParsing="false" stylesheets="@HomePageStyle.css" text="Confirm Password" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="passTextField" layoutX="653.0" layoutY="246.0" styleClass="textField" stylesheets="@HomePageStyle.css" />
+      <TextField fx:id="confirmPassTextField" layoutX="653.0" layoutY="300.0" styleClass="textField" stylesheets="@HomePageStyle.css" />
+      <Button fx:id="signupPageButton" layoutX="424.0" layoutY="426.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" stylesheets="@HomePageStyle.css" text="sign up" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="424.0" layoutY="100.0" text="Sign up" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
