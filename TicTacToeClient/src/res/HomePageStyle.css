@@ -9,6 +9,14 @@
 
 
 }
+.Label
+{
+    -fx-background-color: #f15523;
+
+    -fx-background-radius: 20px;
+    -fx-background-color: linear-gradient(to left top,#8653e0,#d53772);
+
+}
 .buttonMultiplier
 {
     -fx-background-color: #f15523;
