@@ -29,7 +29,6 @@ public class TicTacToeClient extends Application {
     }
 
 
-
     /**
      * @param args the command line arguments
      */

@@ -25,40 +25,50 @@ public class FXMLController  {
     Button loginButton;
    @FXML
    Button signupButton;
+   @FXML
+   Button loginPageButton;
+   @FXML
+   Button signupPageButton;
 
-private Stage stage;
-private Parent root;
-private Scene scene;
-
+private Stage stage1,stage2;
+private Scene scene1,scene2;
+private Parent root1,root2;
 
    @FXML
     public void openLoginPage(ActionEvent event) throws IOException {
-    stage = new Stage();
-    root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
-    scene=new Scene(root,900,600);
-    stage.setTitle("Login Page");
-    stage.setScene(scene);
-    stage.initModality(Modality.APPLICATION_MODAL);
-    stage.showAndWait();
 
-
+     stage1 = new Stage();
+     root1 = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+     scene1 = new Scene(root1, 900, 600);
+     stage1.setTitle("Login Page");
+     stage1.setScene(scene1);
+     stage1.initModality(Modality.APPLICATION_MODAL);
+     stage1.showAndWait();
 
     }
-
-
-
 
     public void openSignupPage(ActionEvent event) throws IOException{
-
-
-     stage = new Stage();
-     root = FXMLLoader.load(getClass().getResource("SignupPage.fxml"));
-     scene=new Scene(root,900,600);
-     stage.setTitle("Login Page");
-     stage.setScene(scene);
-     stage.initModality(Modality.APPLICATION_MODAL);
-     stage.showAndWait();
+    stage2 = new Stage();
+     root2= FXMLLoader.load(getClass().getResource("SignupPage.fxml"));
+     scene2=new Scene(root2,900,600);
+     stage2.setTitle("Login Page");
+     stage2.setScene(scene2);
+     stage2.initModality(Modality.APPLICATION_MODAL);
+     stage2.showAndWait();
     }
+@FXML
+    public void loggingIn(ActionEvent event) throws IOException{
+
+ stage1=(Stage)loginPageButton.getScene().getWindow();
+ stage1.close();
+}
+
+@FXML
+public void signingUp(ActionEvent event) throws IOException{
+
+ stage2=(Stage)signupPageButton.getScene().getWindow();
+ stage2.close();
+}
 
 
 

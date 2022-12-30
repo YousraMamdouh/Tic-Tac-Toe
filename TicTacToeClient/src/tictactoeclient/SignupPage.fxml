@@ -39,7 +39,7 @@
       </Button>
       <TextField fx:id="passTextField" layoutX="653.0" layoutY="246.0" styleClass="textField" stylesheets="@HomePageStyle.css" />
       <TextField fx:id="confirmPassTextField" layoutX="653.0" layoutY="300.0" styleClass="textField" stylesheets="@HomePageStyle.css" />
-      <Button fx:id="signupPageButton" layoutX="424.0" layoutY="426.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" stylesheets="@HomePageStyle.css" text="sign up" textFill="WHITE">
+      <Button fx:id="signupPageButton" layoutX="424.0" layoutY="426.0" mnemonicParsing="false" onAction="#signingUp" prefHeight="39.0" prefWidth="142.0" stylesheets="@HomePageStyle.css" text="sign up" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
