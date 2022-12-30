@@ -29,12 +29,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="136.0" stylesheets="@HomePageStyle.css" text="Sign up" textFill="WHITE">
+                  <Button fx:id="signupButton" mnemonicParsing="false" onAction="#openSignupPage" prefHeight="63.0" prefWidth="136.0" stylesheets="@HomePageStyle.css" text="Sign up" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="133.0" stylesheets="@HomePageStyle.css" text="Login" textFill="WHITE" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onAction="#openLoginPage" prefHeight="63.0" prefWidth="133.0" stylesheets="@HomePageStyle.css" text="Login" textFill="WHITE" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>

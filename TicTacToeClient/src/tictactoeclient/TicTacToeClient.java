@@ -6,33 +6,39 @@
 package tictactoeclient;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.util.Objects;
 
-/**
- *
- * @author ramy3
- */
 public class TicTacToeClient extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GameBoard.fxml")));
-        
-        Scene scene = new Scene(root);
 
+        Parent root = FXMLLoader.load(getClass().getResource("Difficulty_Window.fxml"));
+        Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("TicTacToe");
+        stage.getIcons().add(new Image("res/O.png"));
         stage.show();
 
+    public void start(Stage stage) throws Exception{
+
+            Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Scene homePage = new Scene(root, 1135, 725);
+            stage.setTitle("Tic Tac Toe");
+            stage.setScene(homePage);
+            stage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
         launch(args);
     }
