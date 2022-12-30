@@ -10,7 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,25 +28,36 @@ public class FXMLDocumentController implements Initializable {
 
 
     private Stage stage;
-   private Scene scene;
-   private Parent root ;
+
 
     @FXML
-    private void noButtonClicked() throws IOException {
+   private Button noButton;
+   @FXML
+   private Button yesButton;
 
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GameBoard.fxml")));
-        stage = new Stage();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    @FXML
+    private void setNoButton() {
+
+        stage = (Stage) noButton.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void setYesButton(){
+        stage = (Stage) yesButton.getScene().getWindow();
+        System.out.println("you're back to main menu");
+        stage.close();
     }
     @FXML
     private void setBackArrowMethod() throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ExitPopUp.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ExitPopUp.fxml")));
         stage = new Stage();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        //scene = new Scene(root);
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.showAndWait();
+
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

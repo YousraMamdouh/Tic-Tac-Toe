@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="450.0" fitWidth="660.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Pics/Exit/popUp.png" />
+            <Image url="@res/Exit/popUp.png" />
          </image>
       </ImageView>
       <Label alignment="CENTER" layoutX="26.0" layoutY="258.0" prefHeight="55.0" prefWidth="609.0" text="Are you sure you want to leave ?" textFill="WHITE">
@@ -19,12 +19,12 @@
             <Font name="Comic Sans MS Bold" size="31.0" />
          </font>
       </Label>
-      <Button layoutX="97.0" layoutY="346.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(to right,#d53772,#8653e0);        -fx-background-radius: 10px;;" text="Yes" textFill="WHITE">
+      <Button fx:id="yesButton" layoutX="97.0" layoutY="346.0" mnemonicParsing="false" onAction="#setYesButton" prefHeight="48.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(to right,#d53772,#8653e0);        -fx-background-radius: 10px;;" text="Yes" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="noButton" layoutX="383.0" layoutY="346.0" mnemonicParsing="false" onAction="#noButtonClicked" prefHeight="48.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(to right,#d53772,#8653e0);        -fx-background-radius: 10px;;" text="No" textFill="WHITE">
+      <Button fx:id="noButton" layoutX="383.0" layoutY="346.0" mnemonicParsing="false" onAction="#setNoButton" prefHeight="48.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(to right,#d53772,#8653e0);        -fx-background-radius: 10px;;" text="No" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="22.0" />
          </font>
