@@ -66,7 +66,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </ImageView>
-                  <ImageView fitHeight="35.0" fitWidth="29.0" layoutX="14.0" layoutY="22.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="item_button_return" layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#prevView" prefHeight="20.0" prefWidth="29.0" styleClass="invisibleButton" stylesheets="@../res/DiffWindow.css" text="Button">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="35.0" fitWidth="29.0" layoutX="14.0" layoutY="22.0" mouseTransparent="true"  pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../res/back-arrow.png" />
                      </image>

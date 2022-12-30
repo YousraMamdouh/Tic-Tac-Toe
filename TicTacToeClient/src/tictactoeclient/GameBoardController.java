@@ -5,9 +5,11 @@
  */
 package tictactoeclient;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,48 +23,60 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
- *
  * @author ramy3
  */
 public class GameBoardController implements Initializable {
 
 
-    private Stage stage;
+    private static Stage stage;
+    private Stage popUpStage;
+    private Parent root;
+    private Scene scene;
+    @FXML
+    private Button noButton;
+    @FXML
+    private Button yesButton;
 
 
     @FXML
-   private Button noButton;
-   @FXML
-   private Button yesButton;
+    private void setBackArrowMethod(ActionEvent e) throws IOException {
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ExitPopUp.fxml")));
+        popUpStage = new Stage();
+        popUpStage.setScene(new Scene(root));
+        popUpStage.initModality(Modality.APPLICATION_MODAL);
+        popUpStage.initStyle(StageStyle.UNDECORATED);
+        popUpStage.showAndWait();
+
+    }
+
+
+
+    @FXML
+    private void setYesButton() throws IOException {
+
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        popUpStage = (Stage) yesButton.getScene().getWindow();
+        stage.show();
+        popUpStage.close();
+
+
+    }
 
     @FXML
     private void setNoButton() {
 
-        stage = (Stage) noButton.getScene().getWindow();
-        stage.close();
+        popUpStage = (Stage) noButton.getScene().getWindow();
+        popUpStage.close();
     }
 
-    @FXML
-    private void setYesButton(){
-        stage = (Stage) yesButton.getScene().getWindow();
-        System.out.println("you're back to main menu");
-        stage.close();
-    }
-    @FXML
-    private void setBackArrowMethod() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ExitPopUp.fxml")));
-        stage = new Stage();
-        //scene = new Scene(root);
-        stage.setScene(new Scene(root));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.showAndWait();
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
-    
+
 }
