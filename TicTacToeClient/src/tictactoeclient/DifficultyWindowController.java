@@ -1,39 +1,64 @@
 package tictactoeclient;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
+
 
 public class DifficultyWindowController {
+
     private int difficultyLevel;
+    private Parent root;
+    private Scene scene;
+    private Stage stage;
 
     @FXML
-    private void easy() {
-
-        System.out.println("I hEaRd SoMeOnE ClIcK tHe EaSy BuTtOn !");
+    private void easy(ActionEvent e) throws IOException {
         difficultyLevel = 1;
-        System.out.println("Difficulty Level Has Been Set To "+ difficultyLevel);
+        System.out.println("Difficulty Level Has Been Set To " + difficultyLevel);
+        toGameBoard(e);
     }
 
     @FXML
-    private void medium() {
-        System.out.println("I hEaRd SoMeOnE ClIcK tHe MeDiUm BuTtOn !");
+    private void medium(ActionEvent e) throws IOException {
         difficultyLevel = 2;
-        System.out.println("Difficulty Level Has Been Set To "+ difficultyLevel);
+        System.out.println("Difficulty Level Has Been Set To " + difficultyLevel);
+        toGameBoard(e);
     }
 
     @FXML
-    private void hard() {
-        System.out.println("I hEaRd SoMeOnE ClIcK tHe HaRd BuTtOn !");
+    private void hard(ActionEvent e) throws IOException {
         difficultyLevel = 3;
-        System.out.println("Difficulty Level Has Been Set To "+ difficultyLevel);
+        System.out.println("Difficulty Level Has Been Set To " + difficultyLevel);
+        toGameBoard(e);
     }
 
 
     @FXML
-    private void back(){
-        //TODO: 12/30/2022 Link this function with the previous window
+    private void prevView(ActionEvent e) throws IOException {
         System.out.println("return back!");
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
+
+    private void toGameBoard(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GameBoard.FXML")));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 }
