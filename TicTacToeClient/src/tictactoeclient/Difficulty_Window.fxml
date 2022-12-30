@@ -26,11 +26,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                        <Button fx:id="hardButton" layoutX="692.0" layoutY="259.0" mnemonicParsing="false" onAction="#hard" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/DiffWindow.css" text="Button">
+                        <Button fx:id="hardButton" layoutX="690.0" layoutY="259.0" mnemonicParsing="false" onAction="#hard" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/DiffWindow.css" text="Button">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                        <Button fx:id="mediumButton" layoutX="490.0" layoutY="259.0" mnemonicParsing="false" onAction="#medium" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/DiffWindow.css" text="Button">
+                        <Button fx:id="mediumButton" layoutX="490.0" layoutY="260.0" mnemonicParsing="false" onAction="#medium" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/DiffWindow.css" text="Button">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
@@ -42,15 +42,7 @@
                         <DropShadow blurType="GAUSSIAN" height="10.93" offsetX="-5.0" offsetY="5.0" radius="7.1899999999999995" width="19.83" />
                      </effect>
                         </Text>
-                  <Button layoutX="490.0" layoutY="513.0" mnemonicParsing="false" onAction="#play" prefHeight="37.0" prefWidth="144.0" styleClass="myButtonPink" stylesheets="@../res/DiffWindow.css" text="PLAY" textAlignment="CENTER">
-                     <font>
-                        <Font name="Comic Sans MS Bold" size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                        <ImageView id="#easy" fitHeight="199.0" fitWidth="200.0" layoutX="270.0" layoutY="232.0" mouseTransparent="true" onMouseClicked="#easy">
+                        <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="270.0" layoutY="232.0" mouseTransparent="true" onMouseClicked="#easy">
                             <image>
                                 <Image url="@../res/EASY.png" />
                             </image>
@@ -58,7 +50,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </ImageView>
-                        <ImageView id="#easy" fitHeight="199.0" fitWidth="200.0" layoutX="468.0" layoutY="234.0" onMouseClicked="#medium">
+                        <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="468.0" layoutY="234.0" mouseTransparent="true" onMouseClicked="#medium">
                             <image>
                                 <Image url="@../res/MIDUME.png" />
                             </image>
@@ -66,7 +58,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </ImageView>
-                        <ImageView id="#easy" fitHeight="199.0" fitWidth="200.0" layoutX="672.0" layoutY="243.0" onMouseClicked="#hard">
+                        <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="672.0" layoutY="243.0" mouseTransparent="true" onMouseClicked="#hard">
                             <image>
                                 <Image url="@../res/HARD.png" />
                             </image>
@@ -74,14 +66,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </ImageView>
-                  <Text fx:id="levelText" fill="WHITE" layoutX="410.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="317.0">
-                     <font>
-                        <Font name="Comic Sans MS Bold" size="38.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="GAUSSIAN" height="10.93" offsetX="-5.0" offsetY="5.0" radius="7.1899999999999995" width="19.83" />
-                     </effect>
-                  </Text>
                   <ImageView fitHeight="35.0" fitWidth="29.0" layoutX="14.0" layoutY="22.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../res/back-arrow.png" />
