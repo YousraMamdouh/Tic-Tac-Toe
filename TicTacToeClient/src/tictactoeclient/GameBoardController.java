@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  *
  * @author ramy3
  */
-public class FXMLDocumentController implements Initializable {
+public class GameBoardController implements Initializable {
 
 
     private Stage stage;

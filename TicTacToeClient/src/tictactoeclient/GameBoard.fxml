@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.FXMLDocumentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.GameBoardController">
    <children>
       <ImageView fitHeight="725.0" fitWidth="1135.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@res/GameBoard/game.jpg" />
+            <Image url="@../res/GameBoard/game.jpg" />
          </image>
       </ImageView>
       <Label alignment="CENTER" layoutX="189.0" layoutY="301.0" prefHeight="25.0" prefWidth="104.0" text="Mohamed Essam" textFill="#eeeeee">
@@ -38,7 +38,7 @@
       </Label>
       <ImageView fitHeight="48.0" fitWidth="36.0" layoutX="29.0" layoutY="14.0" onMouseClicked="#setBackArrowMethod" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@res/Exit/back-arrow.png" />
+            <Image url="@../res/Exit/back-arrow.png" />
          </image>
       </ImageView>
       <Button fx:id="cell_zero" layoutX="388.0" layoutY="155.0" mnemonicParsing="false" opacity="0.0" prefHeight="116.0" prefWidth="118.0" text="zero" />
