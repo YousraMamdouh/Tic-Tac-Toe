@@ -28,7 +28,7 @@ import javafx.stage.StageStyle;
  *
  * @author saraeltlt
  */
-public class FXMLDocumentController {
+public class profileController {
     private Stage stage;
 
     
@@ -43,16 +43,17 @@ public class FXMLDocumentController {
      public void switchToRequest(ActionEvent event ) throws IOException{
          
       
-       Parent root = FXMLLoader.load(getClass().getResource("/tictactoeclient/Request_popup.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/tictactoeclient/Request_popup.fxml"));
         stage = new Stage();
-        
         scene = new Scene(root);
         stage.setScene(scene);
-         stage.initModality(Modality.APPLICATION_MODAL);
-         stage.initOwner( requestButton.getScene().getWindow());
-         stage.initStyle(StageStyle.UNDECORATED);
-         stage.initStyle(StageStyle.TRANSPARENT);
-         scene.setFill(Color.TRANSPARENT);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner( requestButton.getScene().getWindow());
+        
+        //styling
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
      
         stage.showAndWait(); 
         

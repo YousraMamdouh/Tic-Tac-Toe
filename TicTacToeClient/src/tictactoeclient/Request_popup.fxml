@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1135.0" style="-fx-background-color: transparent;" stylesheets="@../profileIScreenRES/ProfileStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1135.0" style="-fx-background-color: transparent;" stylesheets="@../profileIScreenRES/ProfileStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.profileController">
    <children>
       <ImageView fx:id="requestPopUP" fitHeight="345.0" fitWidth="564.0" layoutX="288.0" layoutY="191.0" AnchorPane.bottomAnchor="189.0" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="283.0" AnchorPane.topAnchor="191.0">
          <image>
