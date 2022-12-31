@@ -5,25 +5,26 @@
  */
 package tictactoeclient;
 
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.control.*;
 import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 /**
  *
  * @author ramy3
  */
 
-public class FXMLController {
+public class HomePageController {
     @FXML
     Button loginButton;
     @FXML
@@ -42,7 +43,7 @@ public class FXMLController {
     public void openLoginPage(ActionEvent event) throws IOException {
 
         stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Login_Popup.fxml"));
         scene = new Scene(root, 900, 600);
         stage.setTitle("Login Page");
         stage.setScene(scene);
@@ -56,7 +57,7 @@ public class FXMLController {
 
     public void openSignupPage(ActionEvent event) throws IOException {
         stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("SignupPage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Signup_Popup.fxml"));
         scene = new Scene(root, 900, 600);
         stage.setTitle("Login Page");
         stage.setScene(scene);
