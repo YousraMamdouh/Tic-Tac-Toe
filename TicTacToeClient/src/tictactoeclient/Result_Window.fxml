@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -11,10 +12,10 @@
    <children>
       <ImageView fitHeight="450.0" fitWidth="715.0" layoutX="-3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../res/Result/Result.png" />
+            <Image url="@../res/Result.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="198.0" layoutY="93.0" prefHeight="35.0" prefWidth="317.0" text="Mohamed Essam Wins" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="194.0" layoutY="74.0" prefHeight="35.0" prefWidth="317.0" style="-fx-font-size: 36;" styleClass="title" stylesheets="@../res/ClientStyles.css" text="#Player Wins!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="24.0" />
          </font>
@@ -24,10 +25,13 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Button layoutX="275.0" layoutY="373.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="140.0" style="-fx-background-color: linear-gradient(to right,#d53772,#8653e0);    -fx-background-radius: 10px;;" text="OK" textFill="WHITE">
+      <Button layoutX="282.0" layoutY="385.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="140.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="OK" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="19.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>

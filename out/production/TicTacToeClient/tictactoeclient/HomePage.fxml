@@ -1,80 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.FXMLController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.HomePageController">
    <children>
-      <ImageView fitHeight="732.0" fitWidth="1147.0" layoutX="-10.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="729.0" fitWidth="1151.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
          <image>
             <Image url="@../res/homePage.jpg" />
          </image>
       </ImageView>
-      <BorderPane layoutX="426.0" layoutY="99.0" prefHeight="611.0" prefWidth="334.0">
-         <bottom>
-            <GridPane prefHeight="167.0" prefWidth="334.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button fx:id="signupButton" mnemonicParsing="false" onAction="#openSignupPage" prefHeight="63.0" prefWidth="136.0" styleClass="myButton" stylesheets="@HomePageStyle.css" text="Sign up" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#openLoginPage" prefHeight="63.0" prefWidth="133.0" styleClass="myButton" stylesheets="@HomePageStyle.css" text="Login" textFill="WHITE" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Button>
-               </children>
-            </GridPane>
-         </bottom>
-         <center>
-            <GridPane prefHeight="487.0" prefWidth="369.0" stylesheets="@HomePageStyle.css" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints maxHeight="237.0" minHeight="10.0" prefHeight="195.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="86.0" minHeight="0.0" prefHeight="72.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="106.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="82.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button mnemonicParsing="false" onAction="#singlePlayer4" prefHeight="77.0" prefWidth="334.0" styleClass="buttonMultiplier" stylesheets="@HomePageStyle.css" text="Online Multiplier " textFill="WHITE" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#singlePlayer3" prefHeight="66.0" prefWidth="334.0" styleClass="myButton" stylesheets="@HomePageStyle.css" text="Local Multiplier" textFill="WHITE" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#singlePlayer" prefHeight="62.0" prefWidth="334.0" styleClass="myButton" stylesheets="@HomePageStyle.css" text="Single Player" textFill="WHITE" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Button>
-               </children>
-            </GridPane>
-         </center>
-      </BorderPane>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1135.0">
+         <children>
+            <Button layoutX="575.0" layoutY="533.0" mnemonicParsing="false" onAction="#openLoginPage" prefHeight="50.0" prefWidth="160.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="signupButton" layoutX="401.0" layoutY="533.0" mnemonicParsing="false" onAction="#openSignupPage" prefHeight="50.0" prefWidth="160.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Sign up" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="401.0" layoutY="312.0" mnemonicParsing="false" onAction="#singlePlayer" prefHeight="50.0" prefWidth="334.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Single Player" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="401.0" layoutY="389.0" mnemonicParsing="false" onAction="#singlePlayer3" prefHeight="50.0" prefWidth="334.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Local Multiplayer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="401.0" layoutY="462.0" mnemonicParsing="false" onAction="#singlePlayer4" prefHeight="50.0" prefWidth="334.0" stylesheets="@../res/ClientStyles.css" text="Online Multiplayer " textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="buttonMultiplier" />
+                  <String fx:value="myButtonPurple" />
+               </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children></AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1135.0" style="-fx-background-color: transparent;" stylesheets="@../profileIScreenRES/ProfileStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.profileController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1135.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.profileController">
    <children>
       <ImageView fx:id="requestPopUP" fitHeight="345.0" fitWidth="564.0" layoutX="288.0" layoutY="191.0" AnchorPane.bottomAnchor="189.0" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="283.0" AnchorPane.topAnchor="191.0">
          <image>
             <Image url="@../profileIScreenRES/popUp.png" />
          </image>
       </ImageView>
-      <Button fx:id="acceptButton" layoutX="381.0" layoutY="479.0" mnemonicParsing="false" onAction="#switchToProfile" prefHeight="29.0" prefWidth="161.0" styleClass="myButtonPink" text="Accept" textFill="WHITE">
+      <Button fx:id="acceptButton" layoutX="370.0" layoutY="479.0" mnemonicParsing="false" onAction="#switchToProfile" prefHeight="29.0" prefWidth="161.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Accept" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Button>
-      <Label alignment="BASELINE_CENTER" layoutX="310.0" layoutY="417.0" prefHeight="47.0" prefWidth="523.0" text="Player want to start a gamed with you" textAlignment="JUSTIFY" textFill="WHITE">
+      <Label alignment="BASELINE_CENTER" layoutX="310.0" layoutY="417.0" prefHeight="47.0" prefWidth="523.0" text="Player wants to start a game with you" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
@@ -29,7 +29,7 @@
             <Font name="Comic Sans MS Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="rejectButton" layoutX="616.0" layoutY="478.0" mnemonicParsing="false" onAction="#switchToProfile" prefHeight="29.0" prefWidth="161.0" styleClass="myButtonPink" text="Reject" textFill="WHITE">
+      <Button fx:id="rejectButton" layoutX="605.0" layoutY="478.0" mnemonicParsing="false" onAction="#switchToProfile" prefHeight="29.0" prefWidth="161.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Reject" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>

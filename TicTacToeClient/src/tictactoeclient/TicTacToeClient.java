@@ -12,14 +12,16 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 
 public class TicTacToeClient extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-        Scene homePage = new Scene(root, 1135, 725);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.fxml")));
+        Scene homePage = new Scene(root);
         stage.setScene(homePage);
         stage.setResizable(false);
         stage.setTitle("Tic Tac Toe");

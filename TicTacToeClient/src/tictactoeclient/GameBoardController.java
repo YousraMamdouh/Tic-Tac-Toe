@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -40,17 +41,17 @@ public class GameBoardController implements Initializable {
 
     @FXML
     private void setBackArrowMethod(ActionEvent e) throws IOException {
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ExitPopUp.fxml")));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Exit_Popup.fxml")));
         popUpStage = new Stage();
-        popUpStage.setScene(new Scene(root));
+        Scene exit = new Scene(root);
+        exit.setFill(Color.TRANSPARENT);
+        popUpStage.setScene(exit);
         popUpStage.initModality(Modality.APPLICATION_MODAL);
-        popUpStage.initStyle(StageStyle.UNDECORATED);
+        popUpStage.initStyle(StageStyle.TRANSPARENT);
         popUpStage.showAndWait();
 
     }
-
-
 
     @FXML
     private void setYesButton() throws IOException {

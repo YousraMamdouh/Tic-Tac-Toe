@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -13,11 +12,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="725.0" prefWidth="1135.0" styleClass="bodybg" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.profileController">
+<AnchorPane id="AnchorPane" prefHeight="725.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.profileController">
    <children>
       <ImageView fitHeight="734.0" fitWidth="1142.0" layoutX="-4.0" layoutY="-5.0">
          <image>
-            <Image url="@../profileIScreenRES/profile.png" />
+            <Image url="@../res/profile.jpg" />
          </image>
       </ImageView>
       <Label fx:id="userNameLabel" alignment="TOP_CENTER" layoutX="905.0" layoutY="132.0" prefHeight="18.0" prefWidth="188.0" text="\@userName" textFill="#380b82">
@@ -35,17 +34,23 @@
             <Font name="Comic Sans MS" size="21.0" />
          </font>
       </Label>
-      <Button fx:id="logoutButton" layoutX="914.0" layoutY="306.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="35.0" prefWidth="172.0" styleClass="myButtonPink" stylesheets="@../profileIScreenCSS/ProfileStyle.css" text="Logout" textFill="WHITE">
+      <Button fx:id="logoutButton" layoutX="914.0" layoutY="306.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="35.0" prefWidth="172.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Logout" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button fx:id="requestButton" layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToRequest" prefHeight="40.0" prefWidth="177.0" styleClass="myButtonPink" stylesheets="@../profileIScreenCSS/ProfileStyle.css" text="Request to play" textFill="WHITE">
+      <Button fx:id="requestButton" layoutX="617.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToRequest" prefHeight="40.0" prefWidth="177.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Request to play" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="19.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <TableView layoutX="133.0" layoutY="66.0" prefHeight="277.0" prefWidth="655.0" stylesheets="@../profileIScreenRES/ProfileStyle.css">
+      <TableView layoutX="140.0" layoutY="66.0" prefHeight="277.0" prefWidth="655.0" stylesheets="@../res/ClientStyles.css">
          <columns>
             <TableColumn fx:id="status_Column" prefWidth="75.0" text="Status" />
             <TableColumn fx:id="user_Column" prefWidth="75.0" text="User Name" />
@@ -55,7 +60,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Text fx:id="dashBoardText" fill="WHITE" layoutX="140.0" layoutY="40.0" stroke="#352d83" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Dash Board">
+      <Text fx:id="dashBoardText" fill="WHITE" layoutX="145.0" layoutY="40.0" stroke="#352d83" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Dash Board">
          <font>
             <Font name="Comic Sans MS Bold" size="28.0" />
          </font>
@@ -63,7 +68,7 @@
             <DropShadow blurType="GAUSSIAN" offsetX="-5.0" offsetY="5.0" />
          </effect>
       </Text>
-      <Text fx:id="dashBoardText1" fill="WHITE" layoutX="146.0" layoutY="395.0" stroke="#352d83" strokeType="OUTSIDE" strokeWidth="0.0" text="Game history" wrappingWidth="263.7767791748047">
+      <Text fx:id="dashBoardText1" fill="WHITE" layoutX="145.0" layoutY="395.0" stroke="#352d83" strokeType="OUTSIDE" strokeWidth="0.0" text="Game history" wrappingWidth="263.7767791748047">
          <font>
             <Font name="Comic Sans MS Bold" size="28.0" />
          </font>
@@ -71,7 +76,7 @@
             <DropShadow blurType="GAUSSIAN" offsetX="-5.0" offsetY="5.0" />
          </effect>
       </Text>
-      <TableView layoutX="140.0" layoutY="416.0" prefHeight="277.0" prefWidth="655.0" stylesheets="@../profileIScreenRES/ProfileStyle.css">
+      <TableView layoutX="140.0" layoutY="416.0" prefHeight="277.0" prefWidth="655.0" stylesheets="@../res/ClientStyles.css">
          <columns>
             <TableColumn fx:id="status_Column1" prefWidth="75.0" text="Opponent" />
             <TableColumn fx:id="user_Column1" prefWidth="75.0" text="Winner" />
@@ -81,19 +86,15 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ImageView fitHeight="42.0" fitWidth="68.0" layoutX="39.0" layoutY="148.0" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../res/back-arrow.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="returnButton" layoutX="39.0" layoutY="152.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="37.0" prefWidth="49.0" styleClass="invisibleButton" stylesheets="@../res/DiffWindow.css" text="Button">
+      <Button fx:id="returnButton" layoutX="15.0" layoutY="27.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="20.0" prefWidth="30.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="Button">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="15.0" layoutY="25.0" mouseTransparent="true" onMouseClicked="#switchToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/back-arrow.png" />
+         </image>
+      </ImageView>
    </children>
-   <stylesheets>
-      <URL value="@../profileIScreenCSS/ProfileStyle.css" />
-      <URL value="@../profileIScreenRES/ProfileStyle.css" />
-   </stylesheets>
 </AnchorPane>
