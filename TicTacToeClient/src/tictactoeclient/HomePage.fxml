@@ -34,7 +34,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="401.0" layoutY="312.0" mnemonicParsing="false" onAction="#singlePlayer" prefHeight="50.0" prefWidth="334.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Single Player" textFill="WHITE">
+            <Button layoutX="401.0" layoutY="312.0" mnemonicParsing="false" onAction="#openDifficultyWindow" prefHeight="50.0" prefWidth="334.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Single Player" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
                </font>
@@ -42,7 +42,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="401.0" layoutY="389.0" mnemonicParsing="false" onAction="#singlePlayer3" prefHeight="50.0" prefWidth="334.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Local Multiplayer" textFill="WHITE">
+            <Button layoutX="401.0" layoutY="389.0" mnemonicParsing="false" onAction="#openGameBoardWindow" prefHeight="50.0" prefWidth="334.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Local Multiplayer" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
                </font>
@@ -50,7 +50,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="401.0" layoutY="462.0" mnemonicParsing="false" onAction="#singlePlayer4" prefHeight="50.0" prefWidth="334.0" stylesheets="@../res/ClientStyles.css" text="Online Multiplayer " textFill="WHITE">
+            <Button layoutX="401.0" layoutY="462.0" mnemonicParsing="false" onAction="#openProfileWindow" prefHeight="50.0" prefWidth="334.0" stylesheets="@../res/ClientStyles.css" text="Online Multiplayer " textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
                </font>

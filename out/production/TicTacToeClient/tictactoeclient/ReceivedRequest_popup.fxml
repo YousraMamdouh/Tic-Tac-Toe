@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1135.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.profileController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1135.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.profileController">
    <children>
       <ImageView fx:id="requestPopUP" fitHeight="345.0" fitWidth="564.0" layoutX="288.0" layoutY="191.0" AnchorPane.bottomAnchor="189.0" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="283.0" AnchorPane.topAnchor="191.0">
          <image>
-            <Image url="@../profileIScreenRES/popUp.png" />
+            <Image url="@../res/popUp.png" />
          </image>
       </ImageView>
       <Button fx:id="acceptButton" layoutX="370.0" layoutY="479.0" mnemonicParsing="false" onAction="#switchToProfile" prefHeight="29.0" prefWidth="161.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Accept" textAlignment="CENTER" textFill="WHITE">

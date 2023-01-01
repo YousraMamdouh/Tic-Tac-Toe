@@ -33,6 +33,9 @@ public class HomePageController {
     Button loginPageButton;
     @FXML
     Button signupPageButton;
+    @FXML
+    Button cancelButton;
+
 
     private Stage stage;
     private Scene scene;
@@ -47,7 +50,6 @@ public class HomePageController {
         scene = new Scene(root, 900, 600);
         stage.setTitle("Login Page");
         stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
@@ -59,12 +61,11 @@ public class HomePageController {
         stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("Signup_Popup.fxml"));
         scene = new Scene(root, 900, 600);
-        stage.setTitle("Login Page");
+        stage.setTitle("sign up Page");
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
-        stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
     }
 
@@ -81,10 +82,15 @@ public class HomePageController {
         stage = (Stage) signupPageButton.getScene().getWindow();
         stage.close();
     }
-
+    @FXML
+    public void cancelAction(ActionEvent event) throws IOException
+    {
+        stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
     @FXML
 
-    public void singlePlayer(ActionEvent event) throws IOException {
+    public void openDifficultyWindow(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Difficulty_Window.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
@@ -98,7 +104,7 @@ public class HomePageController {
 
     @FXML
 
-    public void singlePlayer3(ActionEvent event) throws IOException {
+    public void openGameBoardWindow(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
       scene=new Scene(root);
@@ -111,7 +117,7 @@ public class HomePageController {
     }
     @FXML
 
-    public void singlePlayer4(ActionEvent event) throws IOException {
+    public void openProfileWindow(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
@@ -121,4 +127,6 @@ public class HomePageController {
 
 
     }
+
+
 }
