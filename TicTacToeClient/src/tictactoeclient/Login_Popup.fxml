@@ -29,18 +29,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="passButton" layoutX="147.0" layoutY="288.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="157.0" style="-fx-font-size: 18;" styleClass="mylabel" stylesheets="@../res/ClientStyles.css" text="Password:" textFill="WHITE">
+      <Button fx:id="passButton" layoutX="147.0" layoutY="288.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="157.0" style="-fx-font-size: 18;" styleClass="myLabel" stylesheets="@../res/ClientStyles.css" text="Password:" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Button>
       <TextField fx:id="emailTextField" layoutX="360.0" layoutY="234.0" prefHeight="43.0" prefWidth="424.0" styleClass="roundedTextField" stylesheets="@../res/ClientStyles.css" />
-      <Label layoutX="426.0" layoutY="91.0" prefHeight="53.0" prefWidth="104.0" text="Login" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="426.0" layoutY="91.0" prefHeight="53.0" prefWidth="104.0" styleClass="title" stylesheets="@../res/ClientStyles.css" text="Login" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="emailButton" layoutX="147.0" layoutY="234.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="157.0" style="-fx-font-size: 18;" styleClass="mylabel" stylesheets="@../res/ClientStyles.css" text="Email:" textFill="WHITE">
+      <Button fx:id="emailButton" layoutX="147.0" layoutY="234.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="157.0" style="-fx-font-size: 18;" styleClass="myLabel" stylesheets="@../res/ClientStyles.css" text="Email:" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
