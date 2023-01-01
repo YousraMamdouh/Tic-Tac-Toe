@@ -13,7 +13,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 24;
 }
-.label {
+.mylabel {
     -fx-background-color: linear-gradient(to right, #d53772, #8653e0);
     -fx-background-radius: 20px;
     -fx-text-fill: #ffffff;
