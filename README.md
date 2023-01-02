@@ -30,7 +30,7 @@
 ![LOGO](https://i.imgur.com/gCKDHjS.jpeg)
 ## Authors
 
-- [@Sara eltlt](https://www.github.com/saraeltlt)
+- [@Sara Rady](https://www.github.com/saraeltlt)
 - [@Yousra Mamdouh](https://www.github.com/YousraMamdouh)
 - [@Mohammed Essam](https://www.github.com/MohamedEssamAbdu-allah)
 - [@Ramy Ashrf](https://www.github.com/exRomeo)
