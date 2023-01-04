@@ -4,20 +4,16 @@ import java.util.Random;
 
 public class EasyAIHandler {
 
-    private String[] board;
-    private String turn = "X";
-    private boolean isPlayerXTurn = true;
+    private final String[] board;
+
     private boolean isEndOfGame = false;
     private int rounds;
 
 
-    private String player1, player2;
-
     public EasyAIHandler() {
         rounds = 0;
         board = new String[]{"N", "N", "N", "N", "N", "N", "N", "N", "N"};
-        player1 = "Player 1";
-        player2 = "Player 2";
+
     }
 
 
@@ -26,20 +22,14 @@ public class EasyAIHandler {
     }
 
     public String getTurn() {
-        return turn;
+        return "X";
     }
 
     public boolean isEndOfGame() {
-        return isEndOfGame;
+        return !isEndOfGame;
     }
 
-    public String getPlayer1() {
-        return player1;
-    }
 
-    public String getPlayer2() {
-        return player2;
-    }
 
     public void setBoard(String turn, int loc) {
 
@@ -148,11 +138,11 @@ public class EasyAIHandler {
     }
     public boolean isPlayable(String[] arr){
         boolean playable = true;
-        for (int i =0; i< arr.length; i++){
-            if(arr[i].equals("N")){
+        for (String s : arr) {
+            if (s.equals("N")) {
                 playable = true;
                 break;
-            }else {
+            } else {
                 playable = false;
             }
         }
