@@ -20,15 +20,7 @@
             <Font name="Comic Sans MS Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="okButton" layoutX="415.0" layoutY="380.0" mnemonicParsing="false" onAction="#setOkButton" prefHeight="41.0" prefWidth="140.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Home" textFill="WHITE">
-         <font>
-            <Font name="Comic Sans MS Bold" size="19.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="replayButton" layoutX="169.0" layoutY="380.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="140.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Replay" textFill="WHITE">
+      <Button fx:id="okButton" layoutX="282.0" layoutY="380.0" mnemonicParsing="false" onAction="#setOkButton" prefHeight="41.0" prefWidth="140.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="ok" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="19.0" />
          </font>

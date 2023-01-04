@@ -7,7 +7,6 @@ package tictactoeclient;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -111,40 +110,30 @@ public class GameBoardControllerHard implements Initializable {
 
     private int whoWins=0;
     Boolean recordFlag = false;
-     int steps=0;
-    int count;
-    List<ImageView> imageArrayList = new ArrayList<>();
-
-
+    int steps=0;
 
 
 
     public void setTextToLabel (String text) {
-      playerWins.setText(text);
+        playerWins.setText(text);
     }
 
     LevelHardMinMax hardAI = new LevelHardMinMax();
-    Integer [] moves = new Integer[9];
+    Double [] moves = new Double [9];
     ArrayList<Button> buttons;
     Random random = new Random();
-    Image imageX;
-    Image imageO;
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                            startHardAi();
-                        imageX = new Image("/res/X.png");
-                        imageO = new Image("/res/O.png");
-                        ImageView[] anotherList = new ImageView[]{img_zero,img_1,img_2,img_3,img_4,img_5,img_6,img_7,img_8};
-                        imageArrayList.addAll(Arrays.asList(anotherList));
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                startHardAi();
 
-                    }
-                });
+            }
+        });
     }
 
     public  void startHardAi()  {
@@ -195,23 +184,24 @@ public class GameBoardControllerHard implements Initializable {
     }
 
 
-   public void drawImage(String btnId, char turn){
+    public void drawImage(String btnId, char turn){
 
         Image image;
+        steps++;
         double player;
-       char cell = btnId.charAt(5);
-       if (cell=='z') cell='0'; //becuase zero not 0
+        char cell = btnId.charAt(5);
+        if (cell=='z') cell='0'; //becuase zero not 0
 
         if (turn=='X') {
             image = new Image("/res/X.png");
+            player=1+(steps/10.0);
         }
         else {
             image = new Image("/res/O.png");
+            player=2+(steps/10.0);
         }
-        moves[steps]= Integer.parseInt(String.valueOf(cell))+1 ;
-       System.out.println(steps+"->"+moves[steps]);
-        steps++;
-
+        moves[Integer.parseInt(String.valueOf(cell))] = player;
+        //System.out.println(cell + "->" + player);
         switch (cell) {
             case '0' : img_zero.setImage(image); break;
             case '1' : img_1.setImage(image); break;
@@ -268,11 +258,11 @@ public class GameBoardControllerHard implements Initializable {
                 case 3:
                     line = cell_zero.getText() + cell_4.getText() + cell_8.getText();
                     if (line.equals("XXX") ||line.equals("OOO") ){
-                    drawLine.setStartX(-130);
-                    drawLine.setStartY(-50);
-                    drawLine.setEndX(220);
-                    drawLine.setEndY(290);
-                }
+                        drawLine.setStartX(-130);
+                        drawLine.setStartY(-50);
+                        drawLine.setEndX(220);
+                        drawLine.setEndY(290);
+                    }
                     break;
                 case 4:
                     line = cell_2.getText() + cell_4.getText() + cell_6.getText();
@@ -333,13 +323,9 @@ public class GameBoardControllerHard implements Initializable {
 
     }
     private void gameEnd(String text)  throws IOException {
-        /*if (recordFlag==true) {
-            restartGame();
-            slideShow();
-        }*/
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Result_WindowHard.fxml"));
         Parent root = loader.load();
-        GameBoardControllerHard controller = (GameBoardControllerHard)loader.getController();
+        tictactoeclient.GameBoardControllerHard controller = (tictactoeclient.GameBoardControllerHard)loader.getController();
         controller.setTextToLabel(text);
         stage = (Stage) cell_1.getScene().getWindow();
         popUpStage = new Stage();
@@ -351,47 +337,19 @@ public class GameBoardControllerHard implements Initializable {
         PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(e ->popUpStage.show());
         delay.play();
-       // restartGame();
-
+        // restartGame();
 
     }
+    public class th extends Thread{
+        public void run()
+        {
 
-    public void slideShow() {
-        Task task = new Task<Void>() {
-            boolean turn =true;
-            @Override
-            public Void call() throws Exception {
-                for (int i = 0; i < moves.length; i++) {
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (turn && moves[count]!=0) {
-                                imageArrayList.get(moves[count]-1).setImage(imageX);
-                                count++;
-                                turn=false;
-                            }
-                            else if (turn==false && moves[count]!=0){
-                                imageArrayList.get(moves[count]-1).setImage(imageO);
-                                count++;
-                                turn=true;
-                            }
-                        }
-                    });
-
-                    Thread.sleep(1500);
-                }
-                return null;
-            }
-        };
-        Thread th = new Thread(task);
-        th.setDaemon(true);
-        th.start();
-
+        }
     }
     void restartGame()  {
         buttons.forEach(button -> {
-                button.setDisable(false);
-                button.setText("");
+            button.setDisable(false);
+            button.setText("");
         });
 
         int index =random.nextInt(9);
@@ -400,6 +358,8 @@ public class GameBoardControllerHard implements Initializable {
         clearImages();
         drawLine.setVisible(false);
     }
+
+
     void clearImages(){
         img_zero.setImage(null);
         img_1.setImage(null);
@@ -411,10 +371,11 @@ public class GameBoardControllerHard implements Initializable {
         img_7.setImage(null);
         img_8.setImage(null);
     }
+
     @FXML
     private void setBackArrowMethod(ActionEvent e) throws IOException{
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Exit_Popup.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Exit_PopupHard.fxml")));
         popUpStage = new Stage();
         Scene exit = new Scene(root);
         exit.setFill(Color.TRANSPARENT);
@@ -448,6 +409,7 @@ public class GameBoardControllerHard implements Initializable {
 
 
     }
+
     @FXML
     private void setNoButton() {
         popUpStage = (Stage) noButton.getScene().getWindow();
