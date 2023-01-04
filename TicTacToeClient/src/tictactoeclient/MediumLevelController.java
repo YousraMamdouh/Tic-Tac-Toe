@@ -442,7 +442,7 @@ public class MediumLevelController implements Initializable {
 
             stage = (Stage) player1Label.getScene().getWindow();
             try {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelExit.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelResult.fxml")));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

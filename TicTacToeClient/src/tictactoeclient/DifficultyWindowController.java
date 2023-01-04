@@ -29,7 +29,7 @@ public class DifficultyWindowController {
     private void medium(ActionEvent e) throws IOException {
         difficultyLevel = 2;
         System.out.println("Difficulty Level Has Been Set To " + difficultyLevel);
-        toGameBoard(e);
+        toMediumAiBoard(e);
     }
 
     @FXML
@@ -61,6 +61,13 @@ public class DifficultyWindowController {
 
     private void toEasyAiBoard(ActionEvent e) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EasyAiGameBoard.FXML")));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+private void toMediumAiBoard(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelGameBoard.FXML")));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
