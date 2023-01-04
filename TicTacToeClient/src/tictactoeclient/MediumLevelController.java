@@ -103,10 +103,8 @@ public class MediumLevelController implements Initializable {
         cell_zero.setText("X");
         cell_zero.setDisable(true);
         turn++;
-
         isWinner();
-
-        showResultPopup();
+        //showResultPopup();
 
 
         if(turn<8&&gameOver==0) {
@@ -121,7 +119,7 @@ public class MediumLevelController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+          //  showResultPopup();
 
 
         }
@@ -138,7 +136,7 @@ public class MediumLevelController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+       // showResultPopup();
 
         if(turn<8&&gameOver==0) {
             yourTurn_y.setText("your turn");
@@ -148,7 +146,7 @@ public class MediumLevelController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+            //showResultPopup();
 
         }
 
@@ -164,7 +162,7 @@ public class MediumLevelController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+     //   showResultPopup();
 
 
 
@@ -176,7 +174,7 @@ public class MediumLevelController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+         //   showResultPopup();
 
         }
 
@@ -195,7 +193,7 @@ public class MediumLevelController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+       // showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -206,7 +204,7 @@ public class MediumLevelController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+            //showResultPopup();
 
         }
 
@@ -224,7 +222,7 @@ public class MediumLevelController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+      //  showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -235,7 +233,7 @@ public class MediumLevelController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+         //   showResultPopup();
 
         }
 
@@ -251,7 +249,7 @@ public class MediumLevelController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+      //  showResultPopup();
 
         if(turn<8&&gameOver==0){
             yourTurn_x.setText("");
@@ -261,7 +259,7 @@ public class MediumLevelController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+           // showResultPopup();
 
         }
 
@@ -279,7 +277,7 @@ public class MediumLevelController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+       // showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -290,7 +288,7 @@ public class MediumLevelController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+           // showResultPopup();
 
         }
 
@@ -307,7 +305,7 @@ public class MediumLevelController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+     //   showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -318,7 +316,7 @@ public class MediumLevelController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+            //showResultPopup();
 
         }
 
@@ -333,7 +331,7 @@ public class MediumLevelController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+      //  showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -344,7 +342,7 @@ public class MediumLevelController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+          //  showResultPopup();
 
         }
 
@@ -470,14 +468,15 @@ public class MediumLevelController implements Initializable {
             scene.setFill(Color.TRANSPARENT);
             ResultStage .showAndWait();
         }
+        stage=(Stage)cell_4.getScene().getWindow();
     }
     @FXML
-    public void returnToHomePage() throws IOException {
+    public void returnToHomePage(ActionEvent e) throws IOException {
 
 
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
         scene = new Scene(root);
-        ResultStage = (Stage) resetGameButton.getScene().getWindow();
+        ResultStage = (Stage) ((Node)e.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
         ResultStage.close();

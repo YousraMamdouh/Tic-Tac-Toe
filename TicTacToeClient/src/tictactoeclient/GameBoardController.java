@@ -111,7 +111,7 @@ public class GameBoardController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+      //  showResultPopup();
 
 
         if(turn<8&&gameOver==0) {
@@ -126,7 +126,7 @@ public class GameBoardController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+          //  showResultPopup();
 
 
         }
@@ -143,7 +143,7 @@ public class GameBoardController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+        //showResultPopup();
 
         if(turn<8&&gameOver==0) {
             yourTurn_y.setText("your turn");
@@ -153,7 +153,7 @@ public class GameBoardController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+           // showResultPopup();
 
         }
 
@@ -169,7 +169,7 @@ public class GameBoardController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+      //  showResultPopup();
 
 
 
@@ -181,7 +181,7 @@ public class GameBoardController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+         //   showResultPopup();
 
         }
 
@@ -200,7 +200,7 @@ public class GameBoardController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+       // showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -211,7 +211,7 @@ public class GameBoardController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+           // showResultPopup();
 
         }
 
@@ -229,7 +229,7 @@ public class GameBoardController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+       // showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -240,7 +240,7 @@ public class GameBoardController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+         //   showResultPopup();
 
         }
 
@@ -256,7 +256,7 @@ public class GameBoardController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+      //  showResultPopup();
 
         if(turn<8&&gameOver==0){
             yourTurn_x.setText("");
@@ -266,7 +266,7 @@ public class GameBoardController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+          //  showResultPopup();
 
         }
 
@@ -284,7 +284,7 @@ public class GameBoardController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+       // showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -295,7 +295,7 @@ public class GameBoardController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+           // showResultPopup();
 
         }
 
@@ -312,7 +312,7 @@ public class GameBoardController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+      //  showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -323,7 +323,7 @@ public class GameBoardController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+          //  showResultPopup();
 
         }
 
@@ -338,7 +338,7 @@ public class GameBoardController implements Initializable {
 
         isWinner();
 
-        showResultPopup();
+       // showResultPopup();
 
 
         if(turn<8&&gameOver==0){
@@ -349,7 +349,7 @@ public class GameBoardController implements Initializable {
 
             isWinner();
 
-            showResultPopup();
+          //  showResultPopup();
 
         }
 
