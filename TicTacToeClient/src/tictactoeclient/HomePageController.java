@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -105,7 +104,7 @@ public class HomePageController {
     @FXML
 
     public void openGameBoardWindow(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Multiplayer_Board.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
       scene=new Scene(root);
       stage.setScene(scene);

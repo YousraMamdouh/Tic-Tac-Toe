@@ -73,7 +73,7 @@ public class MultiPlayerModeController implements Initializable {
     @FXML
     private void exitPopup() throws IOException {
         stage = (Stage) player2Label.getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Exit_Popup.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MP_exit.fxml")));
         createPopup(root);
     }
 
@@ -89,7 +89,7 @@ public class MultiPlayerModeController implements Initializable {
 
     private void resultPopup(String winner) throws IOException {
         stage = (Stage) player2Label.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Result_Window.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MP_result.fxml"));
         Parent root = loader.load();
         MultiPlayerModeController controller = loader.getController();
         controller.winnerLabel.setText(winner);
