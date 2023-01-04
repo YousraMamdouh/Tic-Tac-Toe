@@ -22,15 +22,15 @@
             <center>
                 <AnchorPane prefHeight="817.0" prefWidth="1279.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="easyButton" layoutX="289.0" layoutY="259.0" mnemonicParsing="false" onAction="#easy" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="Button">
+                        <Button fx:id="easyButton" layoutX="289.0" layoutY="259.0" mnemonicParsing="false" onAction="#levelSwitch" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="1">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                        <Button fx:id="hardButton" layoutX="690.0" layoutY="259.0" mnemonicParsing="false" onAction="#hard" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="Button">
+                        <Button fx:id="hardButton" layoutX="690.0" layoutY="259.0" mnemonicParsing="false" onAction="#levelSwitch" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="3">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                        <Button fx:id="mediumButton" layoutX="490.0" layoutY="260.0" mnemonicParsing="false" onAction="#medium" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="Button">
+                        <Button fx:id="mediumButton" layoutX="490.0" layoutY="260.0" mnemonicParsing="false" onAction="#levelSwitch" prefHeight="145.0" prefWidth="145.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="2">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
@@ -42,7 +42,7 @@
                         <DropShadow blurType="GAUSSIAN" height="10.93" offsetX="-5.0" offsetY="5.0" radius="7.1899999999999995" width="19.83" />
                      </effect>
                         </Text>
-                        <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="270.0" layoutY="232.0" mouseTransparent="true" onMouseClicked="#easy">
+                        <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="270.0" layoutY="232.0" mouseTransparent="true">
                             <image>
                                 <Image url="@../res/EASY.png" />
                             </image>
@@ -50,7 +50,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </ImageView>
-                        <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="468.0" layoutY="234.0" mouseTransparent="true" onMouseClicked="#medium">
+                        <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="468.0" layoutY="234.0" mouseTransparent="true" onMouseClicked="#levelSwitch">
                             <image>
                                 <Image url="@../res/MIDUME.png" />
                             </image>
@@ -58,7 +58,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </ImageView>
-                        <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="672.0" layoutY="243.0" mouseTransparent="true" onMouseClicked="#hard">
+                        <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="672.0" layoutY="243.0" mouseTransparent="true" onMouseClicked="#levelSwitch">
                             <image>
                                 <Image url="@../res/HARD.png" />
                             </image>
@@ -66,7 +66,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </ImageView>
-                  <Button fx:id="item_button_return" layoutX="15.0" layoutY="27.0" mnemonicParsing="false" onAction="#prevView" prefHeight="20.0" prefWidth="30.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="Button">
+                  <Button fx:id="item_button_return" layoutX="15.0" layoutY="27.0" mnemonicParsing="false" onAction="#levelSwitch" prefHeight="20.0" prefWidth="30.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

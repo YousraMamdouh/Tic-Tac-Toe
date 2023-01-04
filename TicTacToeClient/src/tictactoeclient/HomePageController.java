@@ -96,15 +96,12 @@ public class HomePageController {
         stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
-
-
-
     }
 
     @FXML
 
     public void openGameBoardWindow(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("EasyAiGameBoard.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Multiplayer_Board.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
       scene=new Scene(root);
       stage.setScene(scene);
