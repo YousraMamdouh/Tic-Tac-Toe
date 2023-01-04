@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class MultiPlayerModeController implements Initializable {
+public class MultiplayerModeController implements Initializable {
     private final MultiplayerGame currentGame;
     private boolean isX;
     @FXML
@@ -64,7 +64,7 @@ public class MultiPlayerModeController implements Initializable {
     private static Stage stage;
     private Stage popUpStage;
 
-    public MultiPlayerModeController() {
+    public MultiplayerModeController() {
         imageViews = new ArrayList<>();
         currentGame = new MultiplayerGame();
         isX = true;
@@ -91,7 +91,7 @@ public class MultiPlayerModeController implements Initializable {
         stage = (Stage) player2Label.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MP_result.fxml"));
         Parent root = loader.load();
-        MultiPlayerModeController controller = loader.getController();
+        MultiplayerModeController controller = loader.getController();
         controller.winnerLabel.setText(winner);
         createPopup(root);
     }
