@@ -103,7 +103,7 @@ public class EasyAIController {
 
     @FXML
     private void cell_zero(ActionEvent ev) throws IOException {
-        if (!gameHandler.isEndOfGame()) {
+        if (gameHandler.isEndOfGame()) {
             if (gameHandler.getBoard(0).equals("N")) {
                 drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
                 gameHandler.setBoard(gameHandler.getTurn(), 0);
@@ -119,10 +119,9 @@ public class EasyAIController {
 
     @FXML
     private void cell_1(ActionEvent ev) throws IOException {
-        if (!gameHandler.isEndOfGame()) {
+        if (gameHandler.isEndOfGame()) {
             if (gameHandler.getBoard(1).equals("N")) {
                 drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                System.out.println(((Button) ev.getSource()).getText());
                 gameHandler.setBoard(gameHandler.getTurn(), 1);
                 drawPcMove(gameHandler.setPCMove());
 
@@ -134,10 +133,9 @@ public class EasyAIController {
 
     @FXML
     private void cell_2(ActionEvent ev) throws IOException {
-        if (!gameHandler.isEndOfGame()) {
+        if (gameHandler.isEndOfGame()) {
             if (gameHandler.getBoard(2).equals("N")) {
                 drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                System.out.println(((Button) ev.getSource()).getText());
                 gameHandler.setBoard(gameHandler.getTurn(), 2);
                 drawPcMove(gameHandler.setPCMove());
 
@@ -150,10 +148,9 @@ public class EasyAIController {
 
     @FXML
     private void cell_3(ActionEvent ev) throws IOException {
-        if (!gameHandler.isEndOfGame()) {
+        if (gameHandler.isEndOfGame()) {
             if (gameHandler.getBoard(3).equals("N")) {
                 drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                System.out.println(((Button) ev.getSource()).getText());
                 gameHandler.setBoard(gameHandler.getTurn(), 3);
                 drawPcMove(gameHandler.setPCMove());
 
@@ -166,10 +163,9 @@ public class EasyAIController {
 
     @FXML
     private void cell_4(ActionEvent ev) throws IOException {
-        if (!gameHandler.isEndOfGame()) {
+        if (gameHandler.isEndOfGame()) {
             if (gameHandler.getBoard(4).equals("N")) {
                 drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                System.out.println(((Button) ev.getSource()).getText());
                 gameHandler.setBoard(gameHandler.getTurn(), 4);
                 drawPcMove(gameHandler.setPCMove());
 
@@ -182,10 +178,9 @@ public class EasyAIController {
 
     @FXML
     private void cell_5(ActionEvent ev) throws IOException {
-        if (!gameHandler.isEndOfGame()) {
+        if (gameHandler.isEndOfGame()) {
             if (gameHandler.getBoard(5).equals("N")) {
                 drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                System.out.println(((Button) ev.getSource()).getText());
                 gameHandler.setBoard(gameHandler.getTurn(), 5);
                 drawPcMove(gameHandler.setPCMove());
             }
@@ -198,10 +193,9 @@ public class EasyAIController {
 
     @FXML
     private void cell_6(ActionEvent ev) throws IOException {
-        if (!gameHandler.isEndOfGame()) {
+        if (gameHandler.isEndOfGame()) {
             if (gameHandler.getBoard(6).equals("N")) {
                 drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                System.out.println(((Button) ev.getSource()).getText());
                 gameHandler.setBoard(gameHandler.getTurn(), 6);
                 drawPcMove(gameHandler.setPCMove());
             }
@@ -214,10 +208,9 @@ public class EasyAIController {
 
     @FXML
     private void cell_7(ActionEvent ev) throws IOException {
-        if (!gameHandler.isEndOfGame()) {
+        if (gameHandler.isEndOfGame()) {
             if (gameHandler.getBoard(7).equals("N")) {
                 drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                System.out.println(((Button) ev.getSource()).getText());
                 gameHandler.setBoard(gameHandler.getTurn(), 7);
                 drawPcMove(gameHandler.setPCMove());
             }
@@ -231,10 +224,9 @@ public class EasyAIController {
 
     @FXML
     private void cell_8(ActionEvent ev) throws IOException {
-        if (!gameHandler.isEndOfGame()) {
+        if (gameHandler.isEndOfGame()) {
             if (gameHandler.getBoard(8).equals("N")) {
                 drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                System.out.println(((Button) ev.getSource()).getText());
                 gameHandler.setBoard(gameHandler.getTurn(), 8);
                 drawPcMove(gameHandler.setPCMove());
             }
