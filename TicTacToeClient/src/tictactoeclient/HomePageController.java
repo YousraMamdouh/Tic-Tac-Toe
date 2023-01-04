@@ -94,6 +94,7 @@ public class HomePageController {
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
+        stage.setScene(scene);
         stage.show();
 
 
@@ -103,9 +104,10 @@ public class HomePageController {
     @FXML
 
     public void openGameBoardWindow(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("MediumLevelGameBoard.fxml"));
+        root = FXMLLoader.load(getClass().getResource("EasyAiGameBoard.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
       scene=new Scene(root);
+      stage.setScene(scene);
       stage.setScene(scene);
       stage.show();
 
@@ -118,6 +120,7 @@ public class HomePageController {
         root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
+        stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
 

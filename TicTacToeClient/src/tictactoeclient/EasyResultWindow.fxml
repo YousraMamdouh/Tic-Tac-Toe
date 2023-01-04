@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.GameBoardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.EasyAIController">
    <children>
       <ImageView fitHeight="450.0" fitWidth="715.0" layoutX="-3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/Result.png" />
          </image>
       </ImageView>
-      <Label fx:id="winnerLabel" alignment="CENTER" layoutX="194.0" layoutY="74.0" prefHeight="35.0" prefWidth="317.0" style="-fx-font-size: 36;" styleClass="title" stylesheets="@../res/ClientStyles.css" text="#Player Wins!" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="result_label" alignment="CENTER" layoutX="194.0" layoutY="74.0" prefHeight="35.0" prefWidth="317.0" style="-fx-font-size: 36;" styleClass="title" stylesheets="@../res/ClientStyles.css" text="#Player Wins!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="24.0" />
          </font>
@@ -25,7 +25,7 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Button fx:id="resetGameButton" layoutX="282.0" layoutY="385.0" mnemonicParsing="false" onAction="#returnToHomePage" prefHeight="41.0" prefWidth="140.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="OK" textFill="WHITE">
+      <Button fx:id="ok_result" layoutX="282.0" layoutY="385.0" mnemonicParsing="false" onAction="#resultPopUp" prefHeight="41.0" prefWidth="140.0" style="-fx-font-size: 18;" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="OK" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="19.0" />
          </font>
