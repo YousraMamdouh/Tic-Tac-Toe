@@ -30,9 +30,10 @@ public class MediumLevelController implements Initializable {
 
     private static Stage stage;
     private Stage popUpStage;
-    private Stage ResultStage;
+
     private Parent root;
     private Scene scene;
+
     @FXML
     private Button noButton;
     @FXML
@@ -43,7 +44,8 @@ public class MediumLevelController implements Initializable {
     ImageView img_zero,img_1,img_2,img_3,img_4,img_5,img_6,img_7,img_8;
     int turn=0;
     int gameOver=0;
-
+@FXML
+        private Label player1Label;
     Image img_X=new Image("/res/X.png");
     Image img_O=new Image("/res/O.png");
     ImageView randomView=new ImageView();
@@ -54,9 +56,9 @@ public class MediumLevelController implements Initializable {
     Button resetGameButton;
 
     @FXML
-    private void setBackArrowMethod(ActionEvent e) throws IOException {
+    public void setBackArrowMethod(ActionEvent e) throws IOException {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Exit_Popup.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelExit.fxml")));
         popUpStage = new Stage();
         Scene exit = new Scene(root);
         exit.setFill(Color.TRANSPARENT);
@@ -64,10 +66,6 @@ public class MediumLevelController implements Initializable {
         popUpStage.initModality(Modality.APPLICATION_MODAL);
         popUpStage.initStyle(StageStyle.TRANSPARENT);
         popUpStage.showAndWait();
-
-
-
-
     }
 
     @FXML
@@ -79,10 +77,17 @@ public class MediumLevelController implements Initializable {
         popUpStage = (Stage) yesButton.getScene().getWindow();
         stage.show();
         popUpStage.close();
-
-
     }
+    @FXML
+    public void returnToHomePage(ActionEvent e) throws IOException {
 
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        popUpStage = (Stage) ((Node)e.getSource()).getScene().getWindow();
+        stage.show();
+        popUpStage.close();
+    }
     @FXML
     private void setNoButton() {
 
@@ -90,15 +95,12 @@ public class MediumLevelController implements Initializable {
         popUpStage.close();
     }
 
-
-
-
     @FXML
     public void drawOnCell_zero()
     {
 
-        yourTurn_x.setText("your turn");
-        yourTurn_y.setText("");
+        yourTurn_y.setText("Your Turn");
+        yourTurn_x.setText("");
         img_zero.setImage(img_X);
         cell_zero.setText("X");
         cell_zero.setDisable(true);
@@ -106,22 +108,13 @@ public class MediumLevelController implements Initializable {
         isWinner();
         //showResultPopup();
 
-
         if(turn<8&&gameOver==0) {
             yourTurn_y.setText("your turn");
             yourTurn_x.setText("");
-           /* img_zero.setImage(img_O);
-            cell_zero.setText("O");
-
-            */
             draw_O();
             turn++;
-
             isWinner();
-
           //  showResultPopup();
-
-
         }
 
     }@FXML
@@ -159,13 +152,8 @@ public class MediumLevelController implements Initializable {
         cell_2.setText("X");
         cell_2.setDisable(true);
         turn++;
-
         isWinner();
-
      //   showResultPopup();
-
-
-
         if(turn<8&&gameOver==0) {
             yourTurn_y.setText("your turn");
             yourTurn_x.setText("");
@@ -175,11 +163,7 @@ public class MediumLevelController implements Initializable {
             isWinner();
 
          //   showResultPopup();
-
         }
-
-
-
     }@FXML
     public void drawOnCell_3()
     {
@@ -455,37 +439,25 @@ public class MediumLevelController implements Initializable {
 
     public void showResultPopup()  {
         if(gameOver==1) {
-            ResultStage = new Stage();
+
+            stage = (Stage) player1Label.getScene().getWindow();
             try {
-                root = FXMLLoader.load(getClass().getResource("MediumLevelResult.fxml"));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelExit.fxml")));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            scene = new Scene(root);
-            ResultStage.setScene(scene);
-            ResultStage .initStyle(StageStyle.UNDECORATED);
-            ResultStage .initStyle(StageStyle.TRANSPARENT);
-            scene.setFill(Color.TRANSPARENT);
-            ResultStage .showAndWait();
+            popUpStage = new Stage();
+            Scene exit = new Scene(root);
+            exit.setFill(Color.TRANSPARENT);
+            popUpStage.setScene(exit);
+            popUpStage.initModality(Modality.APPLICATION_MODAL);
+            popUpStage.initStyle(StageStyle.TRANSPARENT);
+            popUpStage.showAndWait();
+
+
         }
-        stage=(Stage)cell_4.getScene().getWindow();
-    }
-    @FXML
-    public void returnToHomePage(ActionEvent e) throws IOException {
 
-
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
-        scene = new Scene(root);
-        ResultStage = (Stage) ((Node)e.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-        ResultStage.close();
-
-
-
-
-
-    }
+        }
 
 
     @Override

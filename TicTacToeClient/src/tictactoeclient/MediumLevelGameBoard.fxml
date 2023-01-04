@@ -106,7 +106,7 @@
             <Cursor fx:constant="CROSSHAIR" />
          </cursor></Button>
       <ImageView fx:id="img_8" fitHeight="115.0" fitWidth="115.0" layoutX="636.0" layoutY="404.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="15.0" layoutY="27.0" mnemonicParsing="false" onAction="#setBackArrowMethod" prefHeight="20.0" prefWidth="30.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="Button">
+      <Button fx:id="backArrowButton" layoutX="15.0" layoutY="27.0" mnemonicParsing="false" onAction="#setBackArrowMethod" prefHeight="20.0" prefWidth="30.0" styleClass="invisibleButton" stylesheets="@../res/ClientStyles.css" text="Button">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
