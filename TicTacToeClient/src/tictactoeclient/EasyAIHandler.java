@@ -2,7 +2,7 @@ package tictactoeclient;
 
 import java.util.Random;
 
-public class GameplayHandler {
+public class EasyAIHandler {
 
     private String[] board;
     private String turn = "X";
@@ -13,7 +13,7 @@ public class GameplayHandler {
 
     private String player1, player2;
 
-    public GameplayHandler() {
+    public EasyAIHandler() {
         rounds = 0;
         board = new String[]{"N", "N", "N", "N", "N", "N", "N", "N", "N"};
         player1 = "Player 1";

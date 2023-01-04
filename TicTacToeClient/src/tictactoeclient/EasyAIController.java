@@ -27,7 +27,7 @@ import java.util.Objects;
  * @author ramy3
  */
 public class EasyAIController {
-    GameplayHandler gameHandler = new GameplayHandler();
+    EasyAIHandler gameHandler = new EasyAIHandler();
 
     public EasyAIController() {
     }
@@ -248,7 +248,7 @@ public class EasyAIController {
 
     private void showresultPopUp(String winner) throws IOException {
         stage = (Stage) player1Label.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Result_Window.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EasyResultWindow.fxml"));
         Parent root = loader.load();
         EasyAIController controller = loader.getController();
         controller.result_label.setText(winner);
