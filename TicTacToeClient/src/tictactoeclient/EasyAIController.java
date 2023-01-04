@@ -113,7 +113,7 @@ public class EasyAIController {
 
         }
 
-        if (gameHandler.winnerName() != "N") showresultPopUp(gameHandler.winnerName());
+        showWinner();
 
     }
 
@@ -128,8 +128,8 @@ public class EasyAIController {
 
             }
         }
-        if (gameHandler.winnerName() != "N") showresultPopUp(gameHandler.winnerName());
 
+            showWinner();
     }
 
     @FXML
@@ -144,7 +144,7 @@ public class EasyAIController {
             }
 
         }
-        if (gameHandler.winnerName() != "N") showresultPopUp(gameHandler.winnerName());
+        showWinner();
 
     }
 
@@ -159,7 +159,7 @@ public class EasyAIController {
 
             }
         }
-        if (gameHandler.winnerName() != "N") showresultPopUp(gameHandler.winnerName());
+        showWinner();
 
     }
 
@@ -176,7 +176,7 @@ public class EasyAIController {
             }
 
         }
-        if (gameHandler.winnerName() != "N") showresultPopUp(gameHandler.winnerName());
+        showWinner();
 
     }
 
@@ -191,7 +191,7 @@ public class EasyAIController {
             }
 
         }
-        if (gameHandler.winnerName() != "N") showresultPopUp(gameHandler.winnerName());
+        showWinner();
 
 
     }
@@ -207,7 +207,7 @@ public class EasyAIController {
             }
 
         }
-        if (gameHandler.winnerName() != "N") showresultPopUp(gameHandler.winnerName());
+        showWinner();
 
 
     }
@@ -223,7 +223,7 @@ public class EasyAIController {
             }
 
         }
-        if (gameHandler.winnerName() != "N") showresultPopUp(gameHandler.winnerName());
+        showWinner();
 
 
     }
@@ -240,7 +240,7 @@ public class EasyAIController {
             }
 
         }
-        if (gameHandler.winnerName() != "N") showresultPopUp(gameHandler.winnerName());
+        showWinner();
 
 
     }
@@ -316,10 +316,9 @@ public class EasyAIController {
     }
 
     public void drawPcMove(int loc) {
-        if(loc == -1){
+        if (loc == -1) {
             System.out.println("GAME OVER!");
-        }
-        else if (gameHandler.getBoard(loc).equals("N")) {
+        } else if (gameHandler.getBoard(loc).equals("N")) {
             gameHandler.setBoard("O", loc);
 
 
@@ -327,9 +326,7 @@ public class EasyAIController {
 
             image = new Image("/res/O.png");
 
-            int cell = loc;
-
-            switch (cell) {
+            switch (loc) {
                 case 0:
                     img_zero.setImage(image);
                     break;
@@ -359,5 +356,11 @@ public class EasyAIController {
                     break;
             }
         }
+
+    }
+
+
+    private void showWinner() throws IOException {
+        if (!gameHandler.winnerName().equals("N")) showresultPopUp(gameHandler.winnerName());
     }
 }

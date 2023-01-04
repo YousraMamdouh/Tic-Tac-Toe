@@ -22,12 +22,12 @@
       </Label>
       <Label alignment="CENTER" layoutX="870.0" layoutY="349.0" prefHeight="21.0" prefWidth="34.0" text="1000" textFill="WHITE" />
       <Label alignment="CENTER" layoutX="221.0" layoutY="349.0" prefHeight="21.0" prefWidth="36.0" text="1000" textFill="WHITE" />
-      <Label fx:id="yourTurn_x" layoutX="802.0" layoutY="193.0" opacity="0.0" text="&gt; Your Turn" textFill="WHITE">
+      <Label fx:id="yourTurn_x" layoutX="802.0" layoutY="193.0" text="&gt; Your Turn" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="yourTurn_y" layoutX="144.0" layoutY="193.0" text="&gt; Your Turn" textFill="WHITE">
+      <Label fx:id="yourTurn_y" layoutX="144.0" layoutY="193.0" text="&gt; Your Turn" textFill="WHITE" visible="false">
          <font>
             <Font name="Comic Sans MS Bold" size="29.0" />
          </font>
