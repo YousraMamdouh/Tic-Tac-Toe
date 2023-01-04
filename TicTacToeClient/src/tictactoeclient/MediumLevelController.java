@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tictactoeclient;
 
 import javafx.event.ActionEvent;
@@ -30,7 +25,7 @@ import java.util.ResourceBundle;
 /**
  * @author ramy3
  */
-public class GameBoardController implements Initializable {
+public class MediumLevelController implements Initializable {
 
 
     private static Stage stage;
@@ -464,7 +459,7 @@ public class GameBoardController implements Initializable {
         if(gameOver==1) {
             ResultStage = new Stage();
             try {
-                root = FXMLLoader.load(getClass().getResource("Result_Window.fxml"));
+                root = FXMLLoader.load(getClass().getResource("MediumLevelResult.fxml"));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -475,17 +470,21 @@ public class GameBoardController implements Initializable {
             scene.setFill(Color.TRANSPARENT);
             ResultStage .showAndWait();
         }
-        stage=(Stage)cell_4.getScene().getWindow();
     }
     @FXML
-    public void returnToHomePage(ActionEvent e) throws IOException {
+    public void returnToHomePage() throws IOException {
+
 
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
         scene = new Scene(root);
-        ResultStage = (Stage) ((Node)e.getSource()).getScene().getWindow();
+        ResultStage = (Stage) resetGameButton.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
         ResultStage.close();
+
+
+
+
 
     }
 

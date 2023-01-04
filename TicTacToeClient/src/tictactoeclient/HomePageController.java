@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -95,7 +94,6 @@ public class HomePageController {
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
-        stage.setScene(scene);
         stage.show();
 
 
@@ -109,7 +107,6 @@ public class HomePageController {
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
       scene=new Scene(root);
       stage.setScene(scene);
-      stage.setScene(scene);
       stage.show();
 
 
@@ -121,7 +118,6 @@ public class HomePageController {
         root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
-        stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
 
