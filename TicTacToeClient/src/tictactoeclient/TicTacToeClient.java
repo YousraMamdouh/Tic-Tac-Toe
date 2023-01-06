@@ -27,11 +27,13 @@ public class TicTacToeClient extends Application {
         stage.setTitle("Tic Tac Toe");
         stage.getIcons().add(new Image("res/O.png"));
         stage.show();
+
     }
 
 
     public static void main(String[] args) {
         launch(args);
     }
+
 
 }
