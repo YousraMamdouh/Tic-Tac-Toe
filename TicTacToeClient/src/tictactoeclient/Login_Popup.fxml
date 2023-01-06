@@ -47,5 +47,6 @@
       </Button>
       <Button fx:id="cancelButton" focusTraversable="false" layoutX="468.0" layoutY="423.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="44.0" prefWidth="143.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Cancel" />
       <PasswordField fx:id="passField" layoutX="361.0" layoutY="293.0" prefHeight="43.0" prefWidth="424.0" styleClass="roundedTextField" stylesheets="@../res/ClientStyles.css" />
+      <Label fx:id="warningLabel" layoutX="200.0" layoutY="364.0" prefHeight="21.0" prefWidth="575.0" styleClass="warning" stylesheets="@../res/ClientStyles.css" />
    </children>
 </AnchorPane>

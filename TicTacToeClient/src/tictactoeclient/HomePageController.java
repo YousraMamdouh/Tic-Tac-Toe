@@ -8,23 +8,28 @@ package tictactoeclient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  *
  * @author ramy3
  */
 
-public class HomePageController {
+public class HomePageController implements Initializable {
     @FXML
     Button loginButton;
     @FXML
@@ -35,6 +40,18 @@ public class HomePageController {
     Button signupPageButton;
     @FXML
     Button cancelButton;
+    @FXML
+    TextField emailTextField,usernameTextField;
+    @FXML
+    PasswordField passField,confirmPassField;
+    @FXML
+    Label warningLabel;
+    @FXML
+     Button onlineMultiplayerButton;
+    private static Button multip;
+
+
+
 
 
     private Stage stage;
@@ -43,7 +60,7 @@ public class HomePageController {
 
 
     @FXML
-    public void openLoginPage(ActionEvent event) throws IOException {
+    public void openLoginPage() throws IOException {
 
         stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("Login_Popup.fxml"));
@@ -69,19 +86,8 @@ public class HomePageController {
         stage.showAndWait();
     }
 
-    @FXML
-    public void loggingIn(ActionEvent event) throws IOException {
 
-        stage = (Stage) loginPageButton.getScene().getWindow();
-        stage.close();
-    }
 
-    @FXML
-    public void signingUp(ActionEvent event) throws IOException {
-
-        stage = (Stage) signupPageButton.getScene().getWindow();
-        stage.close();
-    }
     @FXML
     public void cancelAction(ActionEvent event) throws IOException
     {
@@ -97,15 +103,12 @@ public class HomePageController {
         stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
-
-
-
     }
 
     @FXML
 
     public void openGameBoardWindow(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Multiplayer_Board.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
       scene=new Scene(root);
       stage.setScene(scene);
@@ -127,6 +130,63 @@ public class HomePageController {
 
 
     }
+    @FXML
+    public void loggingIn(ActionEvent event) throws IOException {
+        if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false)
+        {
+            warningLabel.setText("Your are trying to login");
+            validateLogin();
+            stage = (Stage) loginButton.getScene().getWindow();
+            stage.close();
+        }
+        else {
+            warningLabel.setText("email or password is missing ");
+        }
+    }
+private void validateLogin()
+{
+}
+private void validateSignup()
+{
+
+}
+
+    @FXML
+    public void signingUp(ActionEvent event) throws IOException {
+        if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false&&confirmPassField.getText().isEmpty()==false&&usernameTextField.getText().isEmpty()==false)
+        {
+            if(passField.getText().equals(confirmPassField.getText())) {
+                warningLabel.setText("singing up");
+              //  stage = (Stage) signupButton.getScene().getWindow();
+               // stage.close();
+                //validateLogin();
 
 
+                if(onlineMultiplayerButton!=null)
+                {
+                   onlineMultiplayerButton.setDisable(false);
+
+
+                }
+
+
+            }
+            else {
+                warningLabel.setText("Passwords are not matching");
+            }
+        }
+        else {
+            warningLabel.setText("Enter your full data!");
+        }
+
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+
+       //onlineMultiplayerButton.setDisable(true);
+
+    }
 }

@@ -61,5 +61,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Label fx:id="warningLabel" layoutX="274.0" layoutY="364.0" prefHeight="39.0" prefWidth="372.0" styleClass="warning" stylesheets="@../res/ClientStyles.css" />
    </children>
 </AnchorPane>
