@@ -25,6 +25,7 @@ public class TicTacToeServer extends Application {
         stage.setTitle("TicTacToe Server");
         stage.getIcons().add(new Image("res/X.png"));
         stage.show();
+
     }
 
     public static void main(String[] args) {
