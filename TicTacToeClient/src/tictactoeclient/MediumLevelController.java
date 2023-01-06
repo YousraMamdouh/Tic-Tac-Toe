@@ -42,16 +42,17 @@ public class MediumLevelController implements Initializable {
     Button cell_zero, cell_1, cell_2, cell_3, cell_4, cell_5, cell_6, cell_7, cell_8;
     @FXML
     ImageView img_zero, img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8;
-    int turn = 0;
-    int gameOver = 0;
     @FXML
     private Label player1Label;
+    @FXML
+    Button resetGameButton;
     Image img_X = new Image("/res/X.png");
     Image img_O = new Image("/res/O.png");
     ImageView randomView = new ImageView();
+    int turn = 0;
+    int gameOver = 0;
 
-    @FXML
-    Button resetGameButton;
+
 
     @FXML
     public void setBackArrowMethod(ActionEvent e) throws IOException {
@@ -101,13 +102,10 @@ public class MediumLevelController implements Initializable {
         cell_zero.setText("X");
         cell_zero.setDisable(true);
         play();
-
-
     }
 
     @FXML
     public void drawOnCell_1() {
-
         img_1.setImage(img_X);
         cell_1.setText("X");
         cell_1.setDisable(true);
@@ -115,7 +113,8 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_2() {
+    public void drawOnCell_2()
+    {
         img_2.setImage(img_X);
         cell_2.setText("X");
         cell_2.setDisable(true);
@@ -123,70 +122,56 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_3() {
-
-
+    public void drawOnCell_3()
+    {
         img_3.setImage(img_X);
         cell_3.setText("X");
         cell_3.setDisable(true);
         play();
-
     }
 
     @FXML
-    public void drawOnCell_4() {
-
-
+    public void drawOnCell_4()
+    {
         img_4.setImage(img_X);
         cell_4.setText("X");
         cell_4.setDisable(true);
         play();
-
     }
 
     @FXML
-    public void drawOnCell_5() {
-
-        img_5.setImage(img_X);
+    public void drawOnCell_5()
+    {img_5.setImage(img_X);
         cell_5.setText("X");
         cell_5.setDisable(true);
-
         play();
-
     }
 
     @FXML
     public void drawOnCell_6() {
-
-
         img_6.setImage(img_X);
         cell_6.setText("X");
         cell_6.setDisable(true);
         play();
-
     }
 
     @FXML
-    public void drawOnCell_7() {
-
-
+    public void drawOnCell_7()
+    {
         img_7.setImage(img_X);
         cell_7.setText("X");
         cell_7.setDisable(true);
         play();
-
-
     }
 
     @FXML
-    public void drawOnCell_8() {
-
+    public void drawOnCell_8()
+    {
         img_8.setImage(img_X);
         cell_8.setText("X");
         cell_8.setDisable(true);
         play();
     }
-
 
     public void isWinner() {
         int tieFlag = 0;
@@ -251,7 +236,6 @@ public class MediumLevelController implements Initializable {
     public ImageView generateRandomView() {
         Random rand = new Random();
         int cpuPosition = rand.nextInt(9) + 1;
-
         switch (cpuPosition) {
             case 1:
                 return img_zero;
@@ -271,8 +255,6 @@ public class MediumLevelController implements Initializable {
                 return img_7;
             case 9:
                 return img_8;
-
-
         }
         return null;
     }
@@ -327,7 +309,9 @@ public class MediumLevelController implements Initializable {
 
             stage = (Stage) player1Label.getScene().getWindow();
             try {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelResult.fxml")));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("MediumLevelResult.fxml"));
+                Parent root = loader.load();
+              //  root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelResult.fxml")));
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -342,7 +326,7 @@ public class MediumLevelController implements Initializable {
             popUpStage.showAndWait();
 
            /* stage = (Stage) player2Label.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("MP_result.fxml"));
+
             Parent root = loader.load();
             MultiplayerModeController controller = loader.getController();
             controller.winnerLabel.setText(winner);
@@ -358,17 +342,16 @@ public class MediumLevelController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
     public boolean isCloseToWin() {
-        System.out.println("Enter the function");
+        System.out.println("close to win");
         if ((cell_zero.getText() + cell_1.getText()).equals("XX") && cell_2.getText().equals("2")) {
             cell_2.setDisable(true);
             cell_2.setText("O");
             img_2.setImage(img_O);
-
             return true;
+
         } else if ((cell_2.getText() + cell_1.getText()).equals("XX") && cell_3.getText().equals("3")) {
             cell_3.setDisable(true);
             cell_3.setText("O");
