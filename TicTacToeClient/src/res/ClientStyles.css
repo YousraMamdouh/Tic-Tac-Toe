@@ -85,3 +85,9 @@
     -fx-font-weight: bold;
 
 }
+.warning{
+    -fx-text-fill: #e60000;
+    -fx-font-size: 20;
+    -fx-font-family: "Comic Sans MS";
+
+}
