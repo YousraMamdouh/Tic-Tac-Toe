@@ -30,6 +30,13 @@ public class MainWindowController {
             currentStatusText.setFill(Color.GREEN);
             serverToggleButton.setText("Stop Server");
             isStarted = true;
+
+            new Thread(() ->
+            {
+                GameServer.connect(1234);
+            }).start();
+
+
         } else {
             System.out.println("Server is Stopped!");
             currentStatusText.setText("Off");

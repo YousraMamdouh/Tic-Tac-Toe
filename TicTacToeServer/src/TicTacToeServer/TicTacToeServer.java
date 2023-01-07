@@ -30,6 +30,8 @@ public class TicTacToeServer extends Application {
     }
 
     public static void main(String[] args) {
+
+
         /*Testing database operations insert and select statements using DTOs*/
 //        try {
 //            DatabaseConnection.registerPlayer(new Player("TestSubject1", "TestSubject1@Domain.com", "TestSubject1'sPassword"));

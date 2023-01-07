@@ -83,6 +83,12 @@ public class HomePageController implements Initializable {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
+
+        //Server Connection Testing
+        GameClient.connect("127.0.0.1",1234);
+        GameClient.sendMsg("Hello server");
+
+
         stage.showAndWait();
     }
 
