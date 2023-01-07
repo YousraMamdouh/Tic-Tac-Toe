@@ -8,48 +8,40 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GameServer implements Runnable {
-
-    private static Thread serverThread;
-    private static ServerSocket serverSocket;
+public class GameServer {
+    private static ServerSocket server;
     private static int port;
     private static Boolean isRunning = true;
-    public static Thread getServer() {
-        return serverThread;
-    }
-    private GameServer(int port) {
-        this.port =port;
-        isRunning = true;
-        serverThread = new Thread(new GameServer(port));
-        serverThread.start();
-    }
 
-    @Override
-    public void run() {
+    static void connect(int portNumber){
+        port = portNumber;
         try {
-            serverSocket = new ServerSocket(port);
+            server = new ServerSocket(port);
+            //server.setReuseAddress(true);
             while (true) {
-                if (isRunning) {
-                    Socket s = serverSocket.accept();
-                    new ClientHandler(s);
 
+                if (isRunning) {
+                    Socket client = server.accept();
+                    System.out.println("New client connected"+ client.getInetAddress().getHostAddress());
+                    ClientHandler clientSock= new ClientHandler(client);
+                    new Thread(clientSock).start();
                 }
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static void stop() {
         isRunning = false;
-        if(serverSocket == null) return;
+        if(server == null) return;
         try {
-            serverSocket.close();
+            server.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
 
