@@ -20,6 +20,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -131,44 +133,39 @@ public class HomePageController implements Initializable {
 
     }
     @FXML
-    public void loggingIn(ActionEvent event) throws IOException {
+    public void loggingIn(ActionEvent event) throws IOException, ParserConfigurationException, TransformerException {
         if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false)
         {
-            warningLabel.setText("Your are trying to login");
-            validateLogin();
-            stage = (Stage) loginButton.getScene().getWindow();
-            stage.close();
+           Player player= new Player(0, "", 0,emailTextField.getText(), passField.getText());
+            warningLabel.setText("logging in");
+            LoggingIn_XML.validate(player);
+
+           // stage = (Stage) loginButton.getScene().getWindow();
+           // stage.close();
         }
         else {
             warningLabel.setText("email or password is missing ");
         }
     }
-private void validateLogin()
-{
-}
-private void validateSignup()
-{
-
-}
 
     @FXML
-    public void signingUp(ActionEvent event) throws IOException {
-        if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false&&confirmPassField.getText().isEmpty()==false&&usernameTextField.getText().isEmpty()==false)
+    public void signingUp(ActionEvent event) throws IOException , ParserConfigurationException, TransformerException
+     {
+       if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false&&confirmPassField.getText().isEmpty()==false&&usernameTextField.getText().isEmpty()==false)
         {
             if(passField.getText().equals(confirmPassField.getText())) {
+
+                Player player=new Player(0, usernameTextField.getText(), 0, emailTextField.getText(), passField.getText());
                 warningLabel.setText("singing up");
-              //  stage = (Stage) signupButton.getScene().getWindow();
-               // stage.close();
-                //validateLogin();
+                signingup_XML.validate(player);
 
+                usernameTextField.clear();
+                passField.clear();
+                emailTextField.clear();
+                confirmPassField.clear();
 
-                if(onlineMultiplayerButton!=null)
-                {
-                   onlineMultiplayerButton.setDisable(false);
-
-
-                }
-
+                // stage = (Stage) signupButton.getScene().getWindow();
+                 //stage.close();
 
             }
             else {
@@ -176,15 +173,16 @@ private void validateSignup()
             }
         }
         else {
-            warningLabel.setText("Enter your full data!");
+            warningLabel.setText("Please Enter your full data!");
         }
 
 
     }
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
 
        //onlineMultiplayerButton.setDisable(true);
 

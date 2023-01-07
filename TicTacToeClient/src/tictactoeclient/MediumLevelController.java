@@ -39,23 +39,19 @@ public class MediumLevelController implements Initializable {
     @FXML
     private Button yesButton;
     @FXML
-    Button cell_zero, cell_1, cell_2, cell_3, cell_4, cell_5, cell_6, cell_7, cell_8;
+    private Button cell_zero, cell_1, cell_2, cell_3, cell_4, cell_5, cell_6, cell_7, cell_8;
     @FXML
-    ImageView img_zero, img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8;
+    private ImageView img_zero, img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8;
     @FXML
     private Label player1Label;
     @FXML
-    Button resetGameButton;
-    Image img_X = new Image("/res/X.png");
-    Image img_O = new Image("/res/O.png");
-    ImageView randomView = new ImageView();
-    int turn = 0;
-    int gameOver = 0;
-
-
-
+  Image img_X = new Image("/res/X.png");
+  Image img_O = new Image("/res/O.png");
+  ImageView randomView = new ImageView();
+  int turn = 0;
+  int gameOver = 0;
     @FXML
-    public void setBackArrowMethod(ActionEvent e) throws IOException {
+    private void setBackArrowMethod(ActionEvent e) throws IOException {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelExit.fxml")));
         popUpStage = new Stage();
@@ -66,7 +62,6 @@ public class MediumLevelController implements Initializable {
         popUpStage.initStyle(StageStyle.TRANSPARENT);
         popUpStage.showAndWait();
     }
-
     @FXML
     private void setYesButton() throws IOException {
 
@@ -79,7 +74,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void returnToHomePage(ActionEvent e) throws IOException {
+    private void returnToHomePage(ActionEvent e) throws IOException {
 
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
         scene = new Scene(root);
@@ -97,7 +92,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_zero() {
+    private void drawOnCell_zero() {
         img_zero.setImage(img_X);
         cell_zero.setText("X");
         cell_zero.setDisable(true);
@@ -105,7 +100,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_1() {
+    private void drawOnCell_1() {
         img_1.setImage(img_X);
         cell_1.setText("X");
         cell_1.setDisable(true);
@@ -113,7 +108,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_2()
+    private void drawOnCell_2()
     {
         img_2.setImage(img_X);
         cell_2.setText("X");
@@ -122,7 +117,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_3()
+    private void drawOnCell_3()
     {
         img_3.setImage(img_X);
         cell_3.setText("X");
@@ -131,7 +126,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_4()
+    private void drawOnCell_4()
     {
         img_4.setImage(img_X);
         cell_4.setText("X");
@@ -140,7 +135,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_5()
+    private void drawOnCell_5()
     {img_5.setImage(img_X);
         cell_5.setText("X");
         cell_5.setDisable(true);
@@ -148,7 +143,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_6() {
+    private void drawOnCell_6() {
         img_6.setImage(img_X);
         cell_6.setText("X");
         cell_6.setDisable(true);
@@ -156,7 +151,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_7()
+    private void drawOnCell_7()
     {
         img_7.setImage(img_X);
         cell_7.setText("X");
@@ -165,7 +160,7 @@ public class MediumLevelController implements Initializable {
     }
 
     @FXML
-    public void drawOnCell_8()
+    private void drawOnCell_8()
     {
         img_8.setImage(img_X);
         cell_8.setText("X");
@@ -173,8 +168,8 @@ public class MediumLevelController implements Initializable {
         play();
     }
 
-    public void isWinner() {
-        int tieFlag = 0;
+    private void isWinner() {
+
         for (int i = 0; i < 8; i++) {
             String line;
             switch (i) {
@@ -207,7 +202,6 @@ public class MediumLevelController implements Initializable {
             }
 
             if (line.equals("XXX")) {
-                tieFlag = 1;
                 gameOver = 1;
                 System.out.println("You won!");
                 showResultPopup();
@@ -215,20 +209,17 @@ public class MediumLevelController implements Initializable {
 
 
             } else if (line.equals("OOO")) {
-                tieFlag = 1;
                 gameOver = 1;
                 System.out.println("Cpu won");
                 showResultPopup();
-
             }
 
 
         }
-        if (tieFlag == 0 && turn == 9) {
-            gameOver = 1;
+
+        if (gameOver == 0 && turn == 9) {
             System.out.println("tie");
             showResultPopup();
-
         }
 
     }
@@ -304,48 +295,32 @@ public class MediumLevelController implements Initializable {
         }
     }
 
-    public void showResultPopup() {
-        if (gameOver == 1) {
-
-            stage = (Stage) player1Label.getScene().getWindow();
+    private void showResultPopup() {
+        stage = (Stage) player1Label.getScene().getWindow();
             try {
-                //FXMLLoader loader = new FXMLLoader(getClass().getResource("MediumLevelResult.fxml"));
-               // Parent root = loader.load();
-               root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelResult.fxml")));
+             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelResult.fxml")));
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            popUpStage = new Stage();
 
+            popUpStage = new Stage();
             Scene exit = new Scene(root);
             exit.setFill(Color.TRANSPARENT);
             popUpStage.setScene(exit);
-            popUpStage.initModality(Modality.APPLICATION_MODAL);
+            popUpStage.initStyle(StageStyle.UNDECORATED);
             popUpStage.initStyle(StageStyle.TRANSPARENT);
+            exit.setFill(Color.TRANSPARENT);
             popUpStage.showAndWait();
 
-           /* stage = (Stage) player2Label.getScene().getWindow();
-
-            Parent root = loader.load();
-            MultiplayerModeController controller = loader.getController();
-            controller.winnerLabel.setText(winner);
-            createPopup(root);
-
-            */
-
-
         }
-
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public boolean isCloseToWin() {
-        System.out.println("close to win");
+    private boolean isCloseToWin() {
+
         if ((cell_zero.getText() + cell_1.getText()).equals("XX") && cell_2.getText().equals("2")) {
             cell_2.setDisable(true);
             cell_2.setText("O");
@@ -496,7 +471,7 @@ public class MediumLevelController implements Initializable {
         return false;
     }
 
-    public void play() {
+   private void play() {
         turn++;
         isWinner();
         if (turn < 8 && gameOver == 0) {
@@ -508,4 +483,6 @@ public class MediumLevelController implements Initializable {
 
         }
     }
+
+
 }
