@@ -9,7 +9,7 @@ public class Player {
     private String email;
     private String password;
 
-    public Player(int player_id, String user_name, String full_name, int score, String email, String password) {
+    public Player(int player_id, String user_name, int score, String email, String password) {
         this.player_id = player_id;
         this.user_name = user_name;
         this.full_name = full_name;
@@ -34,13 +34,6 @@ public class Player {
         this.user_name = user_name;
     }
 
-    public String getFull_name() {
-        return full_name;
-    }
-
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
-    }
 
     public int getScore() {
         return score;

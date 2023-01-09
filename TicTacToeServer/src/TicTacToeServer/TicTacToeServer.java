@@ -13,9 +13,11 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
+import java.io.IOException;
 import java.util.Objects;
 
-public class TicTacToeServer extends Application {
+public class TicTacToeServer extends Application  {
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -27,9 +29,11 @@ public class TicTacToeServer extends Application {
         stage.getIcons().add(new Image("res/X.png"));
         stage.show();
 
+
+
     }
 
-    public static void main(String[] args) {
+    public static void main() throws IOException, ClassNotFoundException {
 
 
         /*Testing database operations insert and select statements using DTOs*/
@@ -55,7 +59,6 @@ public class TicTacToeServer extends Application {
 //                    game.getWinnerName() + " Time : " + game.getDate());
 //        }
 
-        launch(args);
-    }
 
+    }
 }
