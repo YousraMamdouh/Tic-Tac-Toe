@@ -11,6 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -32,7 +35,18 @@ public class MediumLevelController implements Initializable {
     private Stage popUpStage;
 
     private Parent root;
+    MediumLevelController controller;
     private Scene scene;
+    @FXML
+    Button resetGameButton;
+    @FXML
+
+    public  MediaView media;
+    private MediaPlayer mediaPlayer=new MediaPlayer(new Media(this.getClass().getResource(MEDIA_URL).toExternalForm()));
+
+    private static final String MEDIA_URL="Loser.mp4";
+    @FXML
+    Label winnerLabel;
 
     @FXML
     private Button noButton;
@@ -204,14 +218,21 @@ public class MediumLevelController implements Initializable {
             if (line.equals("XXX")) {
                 gameOver = 1;
                 System.out.println("You won!");
-                showResultPopup();
-
+                try {
+                    showResultPopup("You Won!");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
 
             } else if (line.equals("OOO")) {
                 gameOver = 1;
                 System.out.println("Cpu won");
-                showResultPopup();
+                try {
+                    showResultPopup("Loser!");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
 
@@ -219,7 +240,11 @@ public class MediumLevelController implements Initializable {
 
         if (gameOver == 0 && turn == 9) {
             System.out.println("tie");
-            showResultPopup();
+            try {
+                showResultPopup("It's a tie!");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
@@ -295,28 +320,55 @@ public class MediumLevelController implements Initializable {
         }
     }
 
-    private void showResultPopup() {
+//    private void showResultPopup() {
+//        stage = (Stage) player1Label.getScene().getWindow();
+//            try {
+//             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelResult.fxml")));
+//
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//
+//            popUpStage = new Stage();
+//            Scene exit = new Scene(root);
+//            exit.setFill(Color.TRANSPARENT);
+//            popUpStage.setScene(exit);
+//            popUpStage.initStyle(StageStyle.UNDECORATED);
+//            popUpStage.initStyle(StageStyle.TRANSPARENT);
+//            exit.setFill(Color.TRANSPARENT);
+//            popUpStage.showAndWait();
+//
+//
+//        }
+    private void createPopup(Parent root) {
+        Scene popup = new Scene(root);
+        popup.setFill(Color.TRANSPARENT);
+        popUpStage = new Stage();
+        popUpStage.setScene(popup);
+        popUpStage.initModality(Modality.APPLICATION_MODAL);
+        popUpStage.initStyle(StageStyle.TRANSPARENT);
+        popUpStage.showAndWait();
+
+    }
+
+    private void showResultPopup(String winner) throws IOException {
+
         stage = (Stage) player1Label.getScene().getWindow();
-            try {
-             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MediumLevelResult.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MediumLevelResult.fxml"));
+        Parent root = loader.load();
+        controller = loader.getController();
+        controller.winnerLabel.setText(winner);
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        controller.mediaPlayer.setAutoPlay(true);
+        controller.media.setMediaPlayer(mediaPlayer);
+        createPopup(root);
 
-            popUpStage = new Stage();
-            Scene exit = new Scene(root);
-            exit.setFill(Color.TRANSPARENT);
-            popUpStage.setScene(exit);
-            popUpStage.initStyle(StageStyle.UNDECORATED);
-            popUpStage.initStyle(StageStyle.TRANSPARENT);
-            exit.setFill(Color.TRANSPARENT);
-            popUpStage.showAndWait();
-
-        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+      //  media = new MediaPlayer(mediaPlayer);
+
     }
 
     private boolean isCloseToWin() {

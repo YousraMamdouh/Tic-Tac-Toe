@@ -6,12 +6,7 @@ import org.w3c.dom.Element;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 public class signingup_XML {
 
@@ -40,13 +35,13 @@ public class signingup_XML {
         pass.setTextContent(p.getPassword());
 
       //  StreamResult res=new StreamResult(new File("signing-upInformation.xml"));
-        DOMSource source =new DOMSource(doc);
-        TransformerFactory tfactory=TransformerFactory.newInstance();
-        Transformer trans=tfactory.newTransformer();
-        StreamResult st=new StreamResult(System.out);
-        trans.transform(source,st);
-       // trans.transform(source,res);
-        trans.setOutputProperty(OutputKeys.INDENT,"yes");
+//        DOMSource source =new DOMSource(doc);
+//        TransformerFactory tfactory=TransformerFactory.newInstance();
+//        Transformer trans=tfactory.newTransformer();
+//        StreamResult st=new StreamResult(System.out);
+//        trans.transform(source,st);
+//        trans.transform(source,res);
+//        trans.setOutputProperty(OutputKeys.INDENT,"yes");
 
     }
 }
