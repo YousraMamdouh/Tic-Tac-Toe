@@ -1,7 +1,10 @@
 package tictactoeclient;
 
 import javafx.scene.control.Alert;
+import org.w3c.dom.Document;
 
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,39 +13,49 @@ import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+class Game extends Thread {
 
-public class GameClient extends Thread {
-    private static BufferedReader inputStream;
-    private static PrintWriter outputStream;
+    private static ObjectInputStream objectInputStream;
+    private static ObjectOutputStream objectOutputStream;
     private static Socket socket;
+    private static final int count = 0;
 
-    static void connect(String ipAddress, int portNumber){
-        try{
-            socket = new Socket(ipAddress, portNumber);
-            outputStream = new PrintWriter(socket.getOutputStream(), true);
-            inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        }
-        catch (IOException e) {
+    static void connect(String ipAddress) {
+        try {
+            socket = new Socket(ipAddress, 1234);
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+        } catch (IOException e) {
             ErrorHandling.showDialog(Alert.AlertType.ERROR, "Error", "Failed to connect to server", true);
         }
-        GameClient.startListeining();
-    }
-    public static void sendMsg(String line){
-        outputStream.println(line);
-
+        Game.startListeining();
     }
 
-    public static void startListeining (){
-        new Thread(() ->
-        {
-            try {
-                while (socket != null && !(socket.isClosed())) {
-                    String str = inputStream.readLine();
-                    System.out.println("Server replied "+ str );
-                    //ha3mel eh yatar
+    public static void sendMsg(Document doc) throws IOException, TransformerException {
+
+
+        objectOutputStream.writeObject(doc);
+    }
+
+    public static void startListeining() {
+
+        new Thread(() -> {
+            while (true) {
+                try {
+
+                    Document doc = (Document) objectInputStream.readObject();
+                    String to = ModifyXMLFile.getTo(doc);
+                    int me = Integer.parseInt(to);
+
+
+                    String msgFrom = ModifyXMLFile.getMsg(doc);
+                    //  if(doc !=null)
+                    System.out.println(msgFrom);
+
+
+                } catch (IOException | TransformerFactoryConfigurationError | ClassNotFoundException ex) {
+                    Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } catch (IOException ex) {
-                Logger.getLogger(GameClient.class.getName()).log(Level.SEVERE, null, ex);
             }
 
 
@@ -50,6 +63,5 @@ public class GameClient extends Thread {
     }
 
 
-
-
 }
+

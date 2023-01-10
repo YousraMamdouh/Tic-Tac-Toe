@@ -13,7 +13,12 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TicTacToeServer extends Application {
 
@@ -21,6 +26,7 @@ public class TicTacToeServer extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main_Window.fxml")));
         Scene scene = new Scene(root);
+        GameServer.connect(1234);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("TicTacToe Server");

@@ -9,36 +9,38 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GameServer {
-    private static ServerSocket server;
-    private static int port;
+
+    private static ServerSocket serverSocket;
     private static Boolean isRunning = true;
 
-    static void connect(int portNumber){
-        port = portNumber;
-        try {
-            server = new ServerSocket(port);
-            //server.setReuseAddress(true);
-            while (true) {
+    public GameServer() {
+        isRunning = true;
+    }
 
-                if (isRunning) {
-                    Socket client = server.accept();
-                    System.out.println("New client connected"+ client.getInetAddress().getHostAddress());
-                    ClientHandler clientSock= new ClientHandler(client);
-                    new Thread(clientSock).start();
+    static void connect(int portNumber) {
+        new Thread(() -> {
+            try {
+                serverSocket = new ServerSocket(portNumber);
+                while (true) {
+                    Socket client = serverSocket.accept();
+                    System.out.println("New client connected :" + client.getRemoteSocketAddress());
+                    new ClientHandler(client);
                 }
+            } catch (IOException ex) {
+                Logger.getLogger(GameServer.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        }).start();
+
 
     }
 
+
     public static void stop() {
         isRunning = false;
-        if(server == null) return;
+        if (serverSocket == null) return;
         try {
-            server.close();
+            serverSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

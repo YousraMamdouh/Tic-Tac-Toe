@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><root>
+    
+    <sendRequest value="10">
+        <From>"sara" </From>
+        <to>"ramy" </to>
+        <msg>"hi" </msg>    
+    </sendRequest>
+    
+</root>
