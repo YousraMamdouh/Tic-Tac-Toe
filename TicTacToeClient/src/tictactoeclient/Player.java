@@ -1,22 +1,38 @@
 package tictactoeclient;
 
+import java.net.Socket;
+
 public class Player {
 
     private int player_id;
     private String user_name;
-    private String full_name;
+    private int status;
     private int score;
     private String email;
     private String password;
+    private Socket mySocket;
 
-    public Player(int player_id, String user_name, String full_name, int score, String email, String password) {
+    public Player(int player_id, String user_name, int status, int score, String email, String password) {
         this.player_id = player_id;
         this.user_name = user_name;
-        this.full_name = full_name;
+        this.status = status;
         this.score = score;
         this.email = email;
         this.password = password;
     }
+
+    public Player(String user_name, int status, int score) {
+        this.user_name = user_name;
+        this.status = status;
+        this.score = score;
+    }
+
+    public Player(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+
 
     public int getPlayer_id() {
         return player_id;
@@ -34,12 +50,12 @@ public class Player {
         this.user_name = user_name;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public int getStatus() {
+        return status;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public int getScore() {
@@ -64,5 +80,13 @@ public class Player {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Socket getMySocket() {
+        return mySocket;
+    }
+
+    public void setMySocket(Socket mySocket) {
+        this.mySocket = mySocket;
     }
 }
