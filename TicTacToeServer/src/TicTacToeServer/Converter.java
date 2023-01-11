@@ -53,7 +53,7 @@ public class Converter {
     }
 
     public static List<Player> convertDomToPlayers(Document dom) {
-        List<Player> playersList = new ArrayList();
+        List<Player> playersList = new ArrayList<>();
         NodeList list = dom.getElementsByTagName("player");
         for (int i = 0; i < list.getLength(); i++) {
             Node node = list.item(i);
