@@ -1,4 +1,4 @@
-package TicTacToeServer;
+package tictactoeclient;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Converter {
+public class ClientConverter {
 
 
     public static Document convertPlayerToDom(Player p) {

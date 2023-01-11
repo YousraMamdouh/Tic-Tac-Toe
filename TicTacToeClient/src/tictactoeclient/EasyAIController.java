@@ -155,10 +155,7 @@ public class EasyAIController {
     private void cell_8(ActionEvent ev) throws IOException {
         play(8,ev);
         showWinner();
-
-
     }
-
 
     private void showresultPopUp(String winner) throws IOException {
         stage = (Stage) player1Label.getScene().getWindow();
@@ -174,7 +171,6 @@ public class EasyAIController {
         popUpStage.initStyle(StageStyle.TRANSPARENT);
         popUpStage.showAndWait();
     }
-
 
 
     @FXML
