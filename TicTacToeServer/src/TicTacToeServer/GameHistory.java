@@ -6,14 +6,14 @@ import java.util.Date;
 
 public class GameHistory {
     private int game_id;
-    private int playerOne;
-    private int playerTwo;
+    private String playerOne;
+    private String playerTwo;
     private int[] order;
-    private int winnerName;
+    private String winnerName;
     private String date;
     private SimpleDateFormat dateFormat;
 
-    public GameHistory(int game_id, int playerOne, int playerTwo, int[] order, int winnerName, Timestamp date) {
+    public GameHistory(int game_id, String playerOne, String playerTwo, int[] order, String winnerName, Timestamp date) {
         dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         this.game_id = game_id;
         this.playerOne = playerOne;
@@ -22,7 +22,7 @@ public class GameHistory {
         this.winnerName = winnerName;
         this.date = dateFormat.format(date);
     }
-    public GameHistory(int playerOne, int playerTwo, int[] order, int winnerName){
+    public GameHistory(String playerOne, String playerTwo, int[] order, String winnerName){
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
         this.order = order;
@@ -38,19 +38,19 @@ public class GameHistory {
         this.game_id = game_id;
     }
 
-    public int getPlayerOne() {
+    public String getPlayerOne() {
         return playerOne;
     }
 
-    public void setPlayerOne(int playerOne) {
+    public void setPlayerOne(String playerOne) {
         this.playerOne = playerOne;
     }
 
-    public int getPlayerTwo() {
+    public String getPlayerTwo() {
         return playerTwo;
     }
 
-    public void setPlayerTwo(int playerTwo) {
+    public void setPlayerTwo(String playerTwo) {
         this.playerTwo = playerTwo;
     }
 
@@ -62,11 +62,11 @@ public class GameHistory {
         this.order = order;
     }
 
-    public int getWinnerName() {
+    public String getWinnerName() {
         return winnerName;
     }
 
-    public void setWinnerName(int winnerName) {
+    public void setWinnerName(String winnerName) {
         this.winnerName = winnerName;
     }
 

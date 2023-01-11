@@ -10,7 +10,7 @@ public class DatabaseConnection {
 
     private static void startConnection() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "SaRa22_11_1998");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "41352");
         } catch (SQLException e) {
             System.out.println("Database Connection Failed!");
         }
@@ -33,9 +33,9 @@ public class DatabaseConnection {
     static void registerPlayer(Player player) throws SQLException {
         startConnection();
         PreparedStatement registerPlayer = connection.prepareStatement("insert into tictactoe.player values(?, ?, ?, ?, ? ,?)");
-        registerPlayer.setInt(1, player.getPlayer_id());
-        registerPlayer.setString(2, player.getUser_name());
-        registerPlayer.setString(3, "Not Used In Game");
+        registerPlayer.setString(1, player.getName());
+        registerPlayer.setInt(2, player.getId());
+        registerPlayer.setInt(3, player.getStatus());
         registerPlayer.setInt(4, player.getScore());
         registerPlayer.setString(5, player.getEmail());
         registerPlayer.setString(6, player.getPassword());
@@ -47,8 +47,8 @@ public class DatabaseConnection {
         startConnection();
         PreparedStatement insertGame = connection.prepareStatement("insert into tictactoe.game values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())");
         insertGame.setInt(1, 0);
-        insertGame.setInt(2, game.getPlayerOne());
-        insertGame.setInt(3, game.getPlayerTwo());
+        insertGame.setString(2, game.getPlayerOne());
+        insertGame.setString(3, game.getPlayerTwo());
         insertGame.setInt(4, game.getOrder()[0]);
         insertGame.setInt(5, game.getOrder()[1]);
         insertGame.setInt(6, game.getOrder()[2]);
@@ -58,7 +58,7 @@ public class DatabaseConnection {
         insertGame.setInt(10, game.getOrder()[6]);
         insertGame.setInt(11, game.getOrder()[7]);
         insertGame.setInt(12, game.getOrder()[8]);
-        insertGame.setInt(13, game.getWinnerName());
+        insertGame.setString(13, game.getWinnerName());
 
         insertGame.executeUpdate();
         endConnection();
@@ -78,12 +78,11 @@ public class DatabaseConnection {
             preparedStatement.setString(1, username);
             rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                player = new Player(rs.getInt("player_id"),
-                        rs.getString("user_name"),
+                player = new Player(rs.getString("user_name"),
+                        rs.getInt("player_id"),
                         rs.getInt("status"),
                         rs.getInt("score"),
-                        rs.getString("email"),
-                        rs.getString("password"));
+                        rs.getString("email"));
             }
             endConnection();
         } catch (SQLException e) {
@@ -99,9 +98,9 @@ public class DatabaseConnection {
         try {
             updateResultSet("select * from tictactoe.player");
             while (resultSet.next()) {
-                playerList.add(new Player(resultSet.getInt("player_id"),
-                        resultSet.getString("user_name"),
-                        1,
+                playerList.add(new Player(resultSet.getString("user_name"),
+                        resultSet.getInt("player_id"),
+                        resultSet.getInt("status"),
                         resultSet.getInt("score"),
                         resultSet.getString("email")));
             }
@@ -118,20 +117,15 @@ public class DatabaseConnection {
         try {
             updateResultSet("select * from tictactoe.game");
             while (resultSet.next()) {
+                int[] cells = new int[9];
+                for (int i = 0; i < 9; i++){
+                    cells[i] = resultSet.getInt("cell_" + i);
+                }
                 gameHistoryList.add(new GameHistory(resultSet.getInt("game_id"),
-                        resultSet.getInt("player1_id"),
-                        resultSet.getInt("player2_id"),
-                        new int[]{
-                                resultSet.getInt("cell_zero"),
-                                resultSet.getInt("cell_1"),
-                                resultSet.getInt("cell_2"),
-                                resultSet.getInt("cell_3"),
-                                resultSet.getInt("cell_4"),
-                                resultSet.getInt("cell_5"),
-                                resultSet.getInt("cell_6"),
-                                resultSet.getInt("cell_7"),
-                                resultSet.getInt("cell_8")},
-                        resultSet.getInt("winner"),
+                        resultSet.getString("player1_username"),
+                        resultSet.getString("player2_username"),
+                        cells,
+                        resultSet.getString("winner"),
                         resultSet.getTimestamp("game_date")));
             }
             endConnection();

@@ -60,7 +60,7 @@ clientSocket=socket;
                    System.out.println("The player's username is: " + username);
                    System.out.println("The player's email is: " + email);
                    System.out.println("The player's password is: " + password);
-                  Player p = new Player(0,username,0,0,email,password);
+                  Player p = new Player(username,email,password);
                    try {
                        DatabaseConnection.registerPlayer(p);
                    } catch (SQLException e) {
