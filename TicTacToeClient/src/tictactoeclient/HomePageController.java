@@ -20,6 +20,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,7 +49,7 @@ public class HomePageController implements Initializable {
     @FXML
     Label warningLabel;
     @FXML
-     Button onlineMultiplayerButton;
+    Button onlineMultiplayerButton;
     private static Button multip;
 
 
@@ -110,10 +112,10 @@ public class HomePageController implements Initializable {
     public void openGameBoardWindow(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Multiplayer_Board.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-      scene=new Scene(root);
-      stage.setScene(scene);
-      stage.setScene(scene);
-      stage.show();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
+        stage.show();
 
 
 
@@ -131,44 +133,63 @@ public class HomePageController implements Initializable {
 
     }
     @FXML
-    public void loggingIn(ActionEvent event) throws IOException {
+    public void loggingIn(ActionEvent event) throws IOException, ParserConfigurationException, TransformerException {
         if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false)
         {
-            warningLabel.setText("Your are trying to login");
-            validateLogin();
-            stage = (Stage) loginButton.getScene().getWindow();
-            stage.close();
+            Player player= new Player(0, "","",0,emailTextField.getText(), passField.getText());
+            warningLabel.setText("logging in");
+            LoggingIn_XML.validate(player);
+//            new Thread(() ->
+//            {
+//                try {
+//                    System.out.println("Trying to connect");
+//                    MyClient.main();
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                } catch (ClassNotFoundException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                // GameServer.connect(1234);
+//            }).start();
+            // stage = (Stage) loginButton.getScene().getWindow();
+            // stage.close();
         }
         else {
             warningLabel.setText("email or password is missing ");
         }
     }
-private void validateLogin()
-{
-}
-private void validateSignup()
-{
 
-}
 
     @FXML
-    public void signingUp(ActionEvent event) throws IOException {
+    public void signingUp(ActionEvent event) throws IOException, ParserConfigurationException, TransformerException, ClassNotFoundException {
         if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false&&confirmPassField.getText().isEmpty()==false&&usernameTextField.getText().isEmpty()==false)
         {
             if(passField.getText().equals(confirmPassField.getText())) {
+
+                Player player=new Player(0, usernameTextField.getText(), "0",0, emailTextField.getText(), passField.getText());
                 warningLabel.setText("singing up");
-              //  stage = (Stage) signupButton.getScene().getWindow();
-               // stage.close();
-                //validateLogin();
+                signingup_XML.validate(player);
 
+                usernameTextField.clear();
+                passField.clear();
+                emailTextField.clear();
+                confirmPassField.clear();
 
-                if(onlineMultiplayerButton!=null)
-                {
-                   onlineMultiplayerButton.setDisable(false);
+//                new Thread(() ->
+//                {
+//                    try {
+//                        System.out.println("Trying to connect");
+//                        MyClient.main();
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    } catch (ClassNotFoundException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    // GameServer.connect(1234);
+//                }).start();
 
-
-                }
-
+                // stage = (Stage) signupButton.getScene().getWindow();
+                //stage.close();
 
             }
             else {
@@ -176,17 +197,19 @@ private void validateSignup()
             }
         }
         else {
-            warningLabel.setText("Enter your full data!");
+            warningLabel.setText("Please Enter your full data!");
         }
 
 
     }
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-       //onlineMultiplayerButton.setDisable(true);
+        //onlineMultiplayerButton.setDisable(true);
 
     }
 }
+
