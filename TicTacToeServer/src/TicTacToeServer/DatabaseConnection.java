@@ -19,7 +19,7 @@ public class DatabaseConnection {
     static String playerAuth(Player player) throws SQLException {
         startConnection();
         String result = "Failed";
-        PreparedStatement checkUser = connection.prepareStatement("select * from tic_tac_toe.player where email = ? and password = ?");
+        PreparedStatement checkUser = connection.prepareStatement("select * from tictactoe.player where email = ? and password = ?");
         checkUser.setString(1, player.getEmail());
         checkUser.setString(2, player.getPassword());
         resultSet = checkUser.executeQuery();
@@ -32,7 +32,7 @@ public class DatabaseConnection {
 
     static void registerPlayer(Player player) throws SQLException {
         startConnection();
-        PreparedStatement registerPlayer = connection.prepareStatement("insert into tic_tac_toe.player values(?, ?, ?, ?, ? ,?)");
+        PreparedStatement registerPlayer = connection.prepareStatement("insert into tictactoe.player values(?, ?, ?, ?, ? ,?)");
         registerPlayer.setInt(1, player.getPlayer_id());
         registerPlayer.setString(2, player.getName());
         registerPlayer.setString(3, "Not Used In Game");
@@ -45,7 +45,7 @@ public class DatabaseConnection {
 
     static void insertGame(GameHistory game) throws SQLException {
         startConnection();
-        PreparedStatement insertGame = connection.prepareStatement("insert into tic_tac_toe.game values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())");
+        PreparedStatement insertGame = connection.prepareStatement("insert into tictactoe.game values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())");
         insertGame.setInt(1, 0);
         insertGame.setInt(2, game.getPlayerOne());
         insertGame.setInt(3, game.getPlayerTwo());
@@ -74,14 +74,16 @@ public class DatabaseConnection {
         Player player = null;
         ResultSet rs;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from tic_tac_toe.player where user_name = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from tictactoe.player where user_name = ?");
             preparedStatement.setString(1, username);
             rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 player = new Player(rs.getInt("player_id"),
                         rs.getString("user_name"),
+                        rs.getInt("status"),
                         rs.getInt("score"),
-                        rs.getString("email"));
+                        rs.getString("email"),
+                        rs.getString("password"));
             }
             endConnection();
         } catch (SQLException e) {

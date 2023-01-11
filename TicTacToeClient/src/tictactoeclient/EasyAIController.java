@@ -103,135 +103,57 @@ public class EasyAIController {
 
     @FXML
     private void cell_zero(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(0).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 0);
-                drawPcMove(gameHandler.setPCMove());
 
-            }
-
-        }
-
+        play(0, ev);
         showWinner();
-
     }
 
     @FXML
     private void cell_1(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(1).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 1);
-                drawPcMove(gameHandler.setPCMove());
 
-            }
-        }
-
-            showWinner();
+        play(1,ev);
+        showWinner();
     }
 
     @FXML
     private void cell_2(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(2).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 2);
-                drawPcMove(gameHandler.setPCMove());
-
-            }
-
-        }
+        play(2,ev);
         showWinner();
-
     }
 
     @FXML
     private void cell_3(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(3).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 3);
-                drawPcMove(gameHandler.setPCMove());
-
-            }
-        }
+        play(3,ev);
         showWinner();
-
     }
-
 
     @FXML
     private void cell_4(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(4).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 4);
-                drawPcMove(gameHandler.setPCMove());
-
-            }
-
-        }
+        play(4,ev);
         showWinner();
-
     }
 
     @FXML
     private void cell_5(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(5).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 5);
-                drawPcMove(gameHandler.setPCMove());
-            }
-
-        }
+        play(5,ev);
         showWinner();
-
-
     }
 
     @FXML
     private void cell_6(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(6).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 6);
-                drawPcMove(gameHandler.setPCMove());
-            }
-
-        }
+        play(6,ev);
         showWinner();
-
-
     }
 
     @FXML
     private void cell_7(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(7).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 7);
-                drawPcMove(gameHandler.setPCMove());
-            }
-
-        }
+        play(7,ev);
         showWinner();
-
-
     }
-
 
     @FXML
     private void cell_8(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(8).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 8);
-                drawPcMove(gameHandler.setPCMove());
-            }
-
-        }
+        play(8,ev);
         showWinner();
 
 
@@ -252,6 +174,8 @@ public class EasyAIController {
         popUpStage.initStyle(StageStyle.TRANSPARENT);
         popUpStage.showAndWait();
     }
+
+
 
     @FXML
     private void resultPopUp() throws IOException {
@@ -354,5 +278,17 @@ public class EasyAIController {
 
     private void showWinner() throws IOException {
         if (!gameHandler.winnerName().equals("N")) showresultPopUp(gameHandler.winnerName());
+    }
+
+    private void play(int loc, ActionEvent ev) {
+        if (gameHandler.isEndOfGame()) {
+            if (gameHandler.getBoard(loc).equals("N")) {
+                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
+                gameHandler.setBoard(gameHandler.getTurn(), loc);
+                drawPcMove(gameHandler.setPCMove());
+
+            }
+
+        }
     }
 }
