@@ -1,4 +1,6 @@
-package TicTacToeServer;
+package tictactoeclient;
+
+import java.net.Socket;
 
 public class Player {
 
@@ -8,6 +10,7 @@ public class Player {
     private int score;
     private String email;
     private String password;
+    private Socket mySocket;
 
     public Player(int player_id, String user_name, int status, int score, String email, String password) {
         this.player_id = player_id;
@@ -28,6 +31,8 @@ public class Player {
         this.email = email;
         this.password = password;
     }
+
+
 
     public int getPlayer_id() {
         return player_id;
@@ -75,5 +80,13 @@ public class Player {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Socket getMySocket() {
+        return mySocket;
+    }
+
+    public void setMySocket(Socket mySocket) {
+        this.mySocket = mySocket;
     }
 }
