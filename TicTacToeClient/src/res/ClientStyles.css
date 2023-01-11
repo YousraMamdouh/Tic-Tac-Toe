@@ -53,24 +53,6 @@
     -fx-font-size: 24;
 }
 
-.table-view {
-    -fx-background-color: rgba(134, 83, 224, 0.5);
-    -fx-border-color: white;
-    -fx-border-style: dotted;
-    -fx-border-width: 3;
-    -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 16pt;
-}
-
-.table-view .column-header-background .label {
-    -fx-text-fill: #d53772;
-    -fx-effect: dropshadow(gaussian, rgba(45, 44, 44, 0.85), 5, 0.5, -3, 3);
-}
-
-.table-view .column-header-background .label:hover {
-    -fx-text-fill: #ff609b;
-    -fx-effect: dropshadow(gaussian, rgba(45, 44, 44, 0.85), 5, 0.5, -3, 3);
-}
 
 
 
@@ -90,4 +72,33 @@
     -fx-font-size: 20;
     -fx-font-family: "Comic Sans MS";
 
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(rgb(140, 0, 254) 0%, rgba(140, 0, 254, 0.5) 25%, rgba(140, 0, 254, 0.25) 75%, rgb(140, 0, 254) 100%);
+    -fx-text-fill: white;
+
+}
+
+.list-cell .label{
+    -fx-text-fill: #ffffff;
+}
+.list-cell:even {
+    -fx-background-color: rgba(134, 83, 224, 0.5);
+}
+.list-cell:odd {
+    -fx-background-color: rgba(77, 48, 126, 0.5);
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: rgba(50, 0, 130, 0.5);
+}
+
+.list-view {
+    -fx-background-color: rgba(134, 83, 224, 0.5);
+    -fx-border-color: white;
+    -fx-border-style: dotted;
+    -fx-border-width: 3;
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 16pt;
 }
