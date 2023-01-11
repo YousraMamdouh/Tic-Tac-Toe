@@ -102,3 +102,17 @@
     -fx-font-family: "Comic Sans MS";
     -fx-font-size: 16pt;
 }
+
+.list-view .scroll-bar:vertical {
+    -fx-max-width: 1em;
+    -fx-background-color: transparent;
+    -fx-border-style: dotted;
+    -fx-border-width: 2;
+    -fx-border-color: white;
+    -fx-background-radius: 0em;
+    -fx-border-radius: 2em;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: rgb(47, 117, 203);
+}
