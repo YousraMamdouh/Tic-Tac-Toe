@@ -17,7 +17,7 @@ public class LoggingIn_XML {
 
 
     static Document doc;
-    public static void validate(Player p) throws ParserConfigurationException, TransformerException {
+    public static Document validate(Player p) throws ParserConfigurationException, TransformerException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder =factory.newDocumentBuilder();
         doc=builder.newDocument();
@@ -41,6 +41,7 @@ public class LoggingIn_XML {
         trans.transform(source,st);
         // trans.transform(source,res);
         trans.setOutputProperty(OutputKeys.INDENT,"yes");
+        return doc;
 
     }
 }

@@ -40,7 +40,7 @@
             <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="emailButton" layoutX="147.0" layoutY="234.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="157.0" style="-fx-font-size: 18;" styleClass="myLabel" stylesheets="@../res/ClientStyles.css" text="Email:" textFill="WHITE">
+      <Button fx:id="emailButton" layoutX="147.0" layoutY="234.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="157.0" style="-fx-font-size: 18;" styleClass="myLabel" stylesheets="@../res/ClientStyles.css" text="Username:" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>

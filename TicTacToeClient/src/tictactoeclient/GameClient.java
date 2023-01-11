@@ -5,11 +5,10 @@ import org.w3c.dom.Document;
 
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.*;
-import java.net.*;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,13 +43,10 @@ class Game extends Thread {
                 try {
 
                     Document doc = (Document) objectInputStream.readObject();
-                    String to = ModifyXMLFile.getTo(doc);
-                    int me = Integer.parseInt(to);
 
 
-                    String msgFrom = ModifyXMLFile.getMsg(doc);
                     //  if(doc !=null)
-                    System.out.println(msgFrom);
+                    System.out.println("Sara");
 
 
                 } catch (IOException | TransformerFactoryConfigurationError | ClassNotFoundException ex) {

@@ -11,7 +11,6 @@ package TicTacToeServer;
 
 import org.w3c.dom.Document;
 
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,10 +24,11 @@ import java.util.logging.Logger;
 public class ClientHandler extends Thread {
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
+    Socket clientSocket;
     static Vector<ClientHandler> clientsVector = new Vector<>();
 
     public ClientHandler(Socket socket) {
-
+clientSocket=socket;
         try {
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             objectInputStream = new ObjectInputStream(socket.getInputStream());
@@ -43,11 +43,30 @@ public class ClientHandler extends Thread {
         while (true) {
             try {
                Document doc = (Document) objectInputStream.readObject();
-               // String msg = ModifyXMLFile.getMsg(doc);
+               if(doc.getDocumentElement().getTagName().equals("login")) {
+                   String email = doc.getElementsByTagName("email").item(0).getTextContent();
+                   String password = doc.getElementsByTagName("password").item(0).getTextContent();
+                   System.out.println("The player's email is: " + email);
+                   System.out.println("The player's password is: " + password);
+                   this.objectOutputStream.writeObject(doc);
+               }
+               else if (doc.getDocumentElement().getTagName().equals("sign-up")) {
+
+                   String email = doc.getElementsByTagName("email").item(0).getTextContent();
+                   String password = doc.getElementsByTagName("password").item(0).getTextContent();
+                   String username = doc.getElementsByTagName("username").item(0).getTextContent();
+                   System.out.println("The player's username is: " + username);
+                   System.out.println("The player's email is: " + email);
+                   System.out.println("The player's password is: " + password);
+                   this.objectOutputStream.writeObject(doc);
+
+               }
+
+                // String msg = ModifyXMLFile.getMsg(doc);
                 //String from = ModifyXMLFile.getFrom(doc);
 
 
-              sendMessageToOtherPlayer(doc);
+           //   sendMessageToOtherPlayer(doc);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException | TransformerFactoryConfigurationError  ex) {
@@ -64,7 +83,7 @@ public class ClientHandler extends Thread {
 
             try {
                 clientHandler.objectOutputStream.writeObject(doc);
-                System.out.println(clientHandler);
+                //System.out.println();
 
             } catch (IOException | TransformerFactoryConfigurationError ex) {
                 Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);

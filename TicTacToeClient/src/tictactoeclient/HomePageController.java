@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.w3c.dom.Document;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -136,23 +137,12 @@ public class HomePageController implements Initializable {
     public void loggingIn(ActionEvent event) throws IOException, ParserConfigurationException, TransformerException {
         if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false)
         {
-            Player player= new Player(0, "","",0,emailTextField.getText(), passField.getText());
+            Player player= new Player(emailTextField.getText(), passField.getText());
             warningLabel.setText("logging in");
-            LoggingIn_XML.validate(player);
-//            new Thread(() ->
-//            {
-//                try {
-//                    System.out.println("Trying to connect");
-//                    MyClient.main();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                } catch (ClassNotFoundException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                // GameServer.connect(1234);
-//            }).start();
-            // stage = (Stage) loginButton.getScene().getWindow();
-            // stage.close();
+           Document document= LoggingIn_XML.validate(player);
+           Game.connect("localhost");
+           Game.sendMsg(document);
+
         }
         else {
             warningLabel.setText("email or password is missing ");
@@ -166,30 +156,16 @@ public class HomePageController implements Initializable {
         {
             if(passField.getText().equals(confirmPassField.getText())) {
 
-                Player player=new Player(0, usernameTextField.getText(), "0",0, emailTextField.getText(), passField.getText());
+                Player player=new Player(0, usernameTextField.getText(), 0,0, emailTextField.getText(), passField.getText());
                 warningLabel.setText("singing up");
-                signingup_XML.validate(player);
+                Document document= signingup_XML.validate(player);
+                Game.connect("localhost");
+                Game.sendMsg(document);
 
                 usernameTextField.clear();
                 passField.clear();
                 emailTextField.clear();
                 confirmPassField.clear();
-
-//                new Thread(() ->
-//                {
-//                    try {
-//                        System.out.println("Trying to connect");
-//                        MyClient.main();
-//                    } catch (IOException e) {
-//                        throw new RuntimeException(e);
-//                    } catch (ClassNotFoundException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                    // GameServer.connect(1234);
-//                }).start();
-
-                // stage = (Stage) signupButton.getScene().getWindow();
-                //stage.close();
 
             }
             else {

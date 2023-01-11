@@ -26,7 +26,7 @@ public class signingup_XML  {
     }
 
     static Document doc=builder.newDocument();
-    public static void validate(Player p) throws ParserConfigurationException, TransformerException {
+    public static Document validate(Player p) throws ParserConfigurationException, TransformerException {
 
 
 
@@ -58,6 +58,7 @@ public class signingup_XML  {
         // trans.transform(source,res);
         trans.setOutputProperty(OutputKeys.INDENT,"yes");
 
+        return doc;
     }
 }
 

@@ -1,5 +1,5 @@
 package TicTacToeServer;
-
+/*
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class DatabaseConnection {
         startConnection();
         PreparedStatement registerPlayer = connection.prepareStatement("insert into tic_tac_toe.player values(?, ?, ?, ?, ? ,?)");
         registerPlayer.setInt(1, player.getPlayer_id());
-        registerPlayer.setString(2, player.getName());
+        registerPlayer.setString(2, player.getUser_name());
         registerPlayer.setString(3, "Not Used In Game");
         registerPlayer.setInt(4, player.getScore());
         registerPlayer.setString(5, player.getEmail());
@@ -142,3 +142,4 @@ public class DatabaseConnection {
         connection.close();
     }
 }
+*/

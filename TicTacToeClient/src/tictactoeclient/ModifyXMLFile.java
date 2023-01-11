@@ -18,8 +18,7 @@ import java.io.File;
 
 public  class ModifyXMLFile {
 
-    public  static void writeXMLFile(Document doc)
-            throws TransformerFactoryConfigurationError, TransformerConfigurationException, TransformerException {
+    public  static void writeXMLFile(Document doc) throws TransformerFactoryConfigurationError, TransformerConfigurationException, TransformerException {
         doc.getDocumentElement().normalize();
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
