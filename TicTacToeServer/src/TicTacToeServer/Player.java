@@ -17,6 +17,16 @@ public class Player {
         this.email = email;
         this.password = password;
     }
+    public Player(int player_id, String user_name, int status, int score, String email) {
+        this.player_id = player_id;
+        this.user_name = user_name;
+        this.status = status;
+        this.score = score;
+        this.email = email;
+        this.password = "n/a";
+    }
+
+
 
     public Player(String user_name, int status, int score) {
         this.user_name = user_name;

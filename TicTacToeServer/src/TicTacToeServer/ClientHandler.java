@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +49,8 @@ clientSocket=socket;
                    String password = doc.getElementsByTagName("password").item(0).getTextContent();
                    System.out.println("The player's email is: " + email);
                    System.out.println("The player's password is: " + password);
-                   this.objectOutputStream.writeObject(doc);
+
+                   //this.objectOutputStream.writeObject(doc);
                }
                else if (doc.getDocumentElement().getTagName().equals("sign-up")) {
 
@@ -58,7 +60,13 @@ clientSocket=socket;
                    System.out.println("The player's username is: " + username);
                    System.out.println("The player's email is: " + email);
                    System.out.println("The player's password is: " + password);
-                   this.objectOutputStream.writeObject(doc);
+                  Player p = new Player(0,username,0,0,email,password);
+                   try {
+                       DatabaseConnection.registerPlayer(p);
+                   } catch (SQLException e) {
+                       throw new RuntimeException(e);
+                   }
+                   //this.objectOutputStream.writeObject(doc);
 
                }
 

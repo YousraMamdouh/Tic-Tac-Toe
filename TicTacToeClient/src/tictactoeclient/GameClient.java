@@ -21,7 +21,7 @@ class Game extends Thread {
 
     static void connect(String ipAddress) {
         try {
-            socket = new Socket(ipAddress, 1234);
+            socket = new Socket(ipAddress, 5005);
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             objectInputStream = new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {

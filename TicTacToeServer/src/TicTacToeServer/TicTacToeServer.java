@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +27,7 @@ public class TicTacToeServer extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main_Window.fxml")));
         Scene scene = new Scene(root);
-        GameServer.connect(1234);
+        GameServer.connect(5005);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("TicTacToe Server");
@@ -37,12 +38,12 @@ public class TicTacToeServer extends Application {
 
     public static void main(String[] args) {
         /*Testing database operations insert and select statements using DTOs*/
-//        try {
-//            DatabaseConnection.registerPlayer(new Player("TestSubject1", "TestSubject1@Domain.com", "TestSubject1'sPassword"));
+        try {
+            DatabaseConnection.registerPlayer(new Player("TestSubject1", 0, 990));
 //            DatabaseConnection.registerPlayer(new Player("TestSubject2", "TestSubject2@Domain.com", "TestSubject2'sPassword"));
-//        } catch (SQLException e) {
-//            System.out.println("User Name Already In Database");
-//        }
+        } catch (SQLException e) {
+            System.out.println("User Name Already In Database");
+        }
 //        try {
 //            DatabaseConnection.insertGame(new GameHistory(22, 23, new int[]{8, 7, 6, 5, 4, 3, 2, 1, 0}, 22));
 //        } catch (SQLException e) {
