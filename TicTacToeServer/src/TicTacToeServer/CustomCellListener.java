@@ -9,4 +9,5 @@ public class CustomCellListener implements ChangeListener<PlayerCell> {
         if (newValue != null)
             System.out.println("Clicked On : " + newValue.getPlayerName().getText());
     }
+
 }

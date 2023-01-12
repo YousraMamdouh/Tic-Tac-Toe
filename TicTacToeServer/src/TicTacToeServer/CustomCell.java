@@ -20,6 +20,7 @@ public class CustomCell extends ListCell<PlayerCell> {
                     player.getPlayerScore());
             setGraphic(hBox);
         }
+
     }
 
 }

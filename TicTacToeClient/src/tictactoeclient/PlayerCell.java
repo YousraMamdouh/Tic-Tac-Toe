@@ -4,14 +4,15 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.util.ArrayList;
-import java.util.List;
+
+public class
 
 
-public class PlayerCell {
+PlayerCell {
     private final ImageView playerStatus;
     private final Label playerName;
     private final Label playerScore;
+
     public PlayerCell(int status, String userName, String score) {
         String path = "res/" + status + ".png";
         playerStatus = new ImageView(new Image(path));
