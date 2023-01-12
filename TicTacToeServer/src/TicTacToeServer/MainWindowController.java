@@ -38,6 +38,7 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void serverSwitch() {
+        GameServer gameServer=new GameServer();
         listView.setItems(data);
         if (!isStarted) {
             System.out.println("Server is Started!");
@@ -47,10 +48,11 @@ public class MainWindowController implements Initializable {
             isStarted = true;
             data.addAll(PlayerCell.getReadyList());
             listView.setItems(data);
-            new Thread(() -> GameServer.connect(1234)).start();
+
+            new Thread(() -> gameServer.connect(1234)).start();
         } else {
             data.clear();
-            GameServer.stop();
+            gameServer.stop();
             System.out.println("Server is Stopped!");
             currentStatusText.setText("Off");
             currentStatusText.setFill(Color.RED);

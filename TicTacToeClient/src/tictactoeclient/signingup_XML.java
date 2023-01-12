@@ -26,7 +26,7 @@ public class signingup_XML  {
     }
 
     static Document doc=builder.newDocument();
-    public static Document validate(Player p) throws ParserConfigurationException, TransformerException {
+    public static Document validate(Player p) throws  TransformerException {
 
 
 

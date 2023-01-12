@@ -1,7 +1,5 @@
 package TicTacToeServer;
 
-import com.sun.corba.se.spi.activation.Server;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,15 +8,16 @@ import java.util.logging.Logger;
 
 public class GameServer {
 
-    private static ServerSocket serverSocket;
-    private static Boolean isRunning = true;
+    private ServerSocket serverSocket;
+    private  Boolean isRunning = true;
 
     public GameServer() {
         isRunning = true;
     }
 
-    static void connect(int portNumber) {
+     void connect(int portNumber) {
         new Thread(() -> {
+
             try {
                 serverSocket = new ServerSocket(portNumber);
                 while (true) {
@@ -36,7 +35,7 @@ public class GameServer {
     }
 
 
-    public static void stop() {
+    public  void stop() {
         isRunning = false;
         if (serverSocket == null) return;
         try {

@@ -31,7 +31,7 @@ import java.util.ResourceBundle;
  * @author ramy3
  */
 
-public class HomePageController implements Initializable {
+public class HomePageController implements Initializable/* , MessageSetterListener */{
     @FXML
     Button loginButton;
     @FXML
@@ -47,17 +47,23 @@ public class HomePageController implements Initializable {
     @FXML
     PasswordField passField, confirmPassField;
     @FXML
+
     Label warningLabel;
     @FXML
     Button onlineMultiplayerButton;
     private static Button multip;
+    String n;
 
 
     private Stage stage;
     private Scene scene;
     private Parent root;
 
-
+//public static void updateWarningLabel()
+//{
+//    System.out.println(Game.getMsg()+"home page");
+//    warningLabel.setText(Game.getMsg());
+//}
     @FXML
     public void openLoginPage() throws IOException {
 
@@ -135,8 +141,19 @@ public class HomePageController implements Initializable {
             Player player = new Player(emailTextField.getText(), passField.getText());
             warningLabel.setText("logging in");
             Document document = LoggingIn_XML.validate(player);
-            Game.connect("localhost");
-            Game.sendMsg(document);
+            Game game=new Game();
+            game.connect("localhost");
+            game.sendMsg(document);
+            System.out.println(game.getMsg()+"home page");
+
+            while(game.getMsg()==null)
+            {
+                n=game.getMsg();
+            }
+
+            warningLabel.setText(n);
+       stage = (Stage) cancelButton.getScene().getWindow();
+         stage.close();
 
         } else {
             warningLabel.setText("email or password is missing ");
@@ -150,15 +167,25 @@ public class HomePageController implements Initializable {
             if (passField.getText().equals(confirmPassField.getText())) {
 
                 Player player = new Player(usernameTextField.getText(), emailTextField.getText(), passField.getText());
-                warningLabel.setText("singing up");
                 Document document = signingup_XML.validate(player);
-                Game.connect("localhost");
-                Game.sendMsg(document);
+                Game game2=new Game();
+                game2.connect("localhost");
+                game2.sendMsg(document); //,this);
 
-                usernameTextField.clear();
+//                while(game2.getMsg()==null)
+//                {
+//                    System.out.println(game2.getMsg()+"home page");
+//                    n=game2.getMsg();
+//                }
+//
+//                warningLabel.setText(n);
+                stage = (Stage) cancelButton.getScene().getWindow();
+              //  stage.close();
+              //  usernameTextField.clear();
                 passField.clear();
                 emailTextField.clear();
                 confirmPassField.clear();
+
 
             } else {
                 warningLabel.setText("Passwords are not matching");
@@ -177,5 +204,10 @@ public class HomePageController implements Initializable {
         //onlineMultiplayerButton.setDisable(true);
 
     }
+
+//    @Override
+//    public void setMessage(String msg) {
+//
+//    }
 }
 

@@ -14,12 +14,20 @@ import java.util.logging.Logger;
 
 class Game extends Thread {
 
-    private static ObjectInputStream objectInputStream;
-    private static ObjectOutputStream objectOutputStream;
-    private static Socket socket;
-    private static final int count = 0;
+    private  ObjectInputStream objectInputStream;
+    private  ObjectOutputStream objectOutputStream;
+    private  Socket socket;
+    private String msg;
+    private  final int count = 0;
 
-    static void connect(String ipAddress) {
+   public  void setMsg(String message){
+        msg=message;
+    }
+public  String getMsg()
+{
+ return  msg;
+}
+    void connect(String ipAddress) {
         try {
             socket = new Socket(ipAddress, 5005);
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -27,22 +35,41 @@ class Game extends Thread {
         } catch (IOException e) {
             ErrorHandling.showDialog(Alert.AlertType.ERROR, "Error", "Failed to connect to server", true);
         }
-        Game.startListeining();
+        startListeining();
     }
 
-    public static void sendMsg(Document doc) throws IOException, TransformerException {
+    public void sendMsg(Document doc/*, MessageSetterListener listener*/) throws IOException, TransformerException {
 
 
         objectOutputStream.writeObject(doc);
+       // listener.setMessage("");
     }
 
-    public static void startListeining() {
+    public void startListeining() {
 
         new Thread(() -> {
             while (true) {
                 try {
 
                     Document doc = (Document) objectInputStream.readObject();
+                    if(doc.getDocumentElement().getTagName().equals("Success-Sign-Up"))
+                    {
+                        setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
+
+                        System.out.println(getMsg());
+                       // Platform.runLater(() -> HomePageController.updateWarningLabel());
+
+
+                    } else if (doc.getDocumentElement().getTagName().equals("Failed-Sign-Up"))
+
+                    {
+                        setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
+
+                        System.out.println(getMsg());
+                     //   Platform.runLater(() -> HomePageController.updateWarningLabel());
+
+
+                    }
 
 
                     //  if(doc !=null)
@@ -57,6 +84,8 @@ class Game extends Thread {
 
         }).start();
     }
+
+
 
 
 }

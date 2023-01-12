@@ -63,11 +63,13 @@ clientSocket=socket;
                   Player p = new Player(username,email,password);
                    try {
                        DatabaseConnection.registerPlayer(p);
+                           this.objectOutputStream.writeObject(ReplyToSignUp.returnSuccessSignup());
+                           System.out.println("signed up successfully");
+
                    } catch (SQLException e) {
+                       this.objectOutputStream.writeObject(ReplyToSignUp.returnFailedSignup());
                        System.out.println("you already have account ");
                    }
-                   //this.objectOutputStream.writeObject(doc);
-
                }
 
                 // String msg = ModifyXMLFile.getMsg(doc);
@@ -101,6 +103,11 @@ clientSocket=socket;
 
 
     }
+
+//   void sendMessageToClient()
+//    {
+//
+//    }
 }
 
 
