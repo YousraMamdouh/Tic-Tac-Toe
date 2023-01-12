@@ -28,7 +28,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- *
  * @author ramy3
  */
 
@@ -44,17 +43,14 @@ public class HomePageController implements Initializable {
     @FXML
     Button cancelButton;
     @FXML
-    TextField emailTextField,usernameTextField;
+    TextField emailTextField, usernameTextField;
     @FXML
-    PasswordField passField,confirmPassField;
+    PasswordField passField, confirmPassField;
     @FXML
     Label warningLabel;
     @FXML
     Button onlineMultiplayerButton;
     private static Button multip;
-
-
-
 
 
     private Stage stage;
@@ -90,19 +86,18 @@ public class HomePageController implements Initializable {
     }
 
 
-
     @FXML
-    public void cancelAction(ActionEvent event) throws IOException
-    {
+    public void cancelAction(ActionEvent event) throws IOException {
         stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
+
     @FXML
 
     public void openDifficultyWindow(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Difficulty_Window.fxml"));
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene=new Scene(root);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
@@ -112,39 +107,38 @@ public class HomePageController implements Initializable {
 
     public void openGameBoardWindow(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Multiplayer_Board.fxml"));
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene=new Scene(root);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
 
 
-
     }
+
     @FXML
 
     public void openProfileWindow(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene=new Scene(root);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
 
 
     }
+
     @FXML
     public void loggingIn(ActionEvent event) throws IOException, ParserConfigurationException, TransformerException {
-        if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false)
-        {
-            Player player= new Player(emailTextField.getText(), passField.getText());
+        if (emailTextField.getText().isEmpty() == false && passField.getText().isEmpty() == false) {
+            Player player = new Player(emailTextField.getText(), passField.getText());
             warningLabel.setText("logging in");
-           Document document= LoggingIn_XML.validate(player);
-           Game.connect("localhost");
-           Game.sendMsg(document);
+            Document document = LoggingIn_XML.validate(player);
+            Game.connect("localhost");
+            Game.sendMsg(document);
 
-        }
-        else {
+        } else {
             warningLabel.setText("email or password is missing ");
         }
     }
@@ -152,13 +146,12 @@ public class HomePageController implements Initializable {
 
     @FXML
     public void signingUp(ActionEvent event) throws IOException, ParserConfigurationException, TransformerException, ClassNotFoundException {
-        if(emailTextField.getText().isEmpty()==false&&passField.getText().isEmpty()==false&&confirmPassField.getText().isEmpty()==false&&usernameTextField.getText().isEmpty()==false)
-        {
-            if(passField.getText().equals(confirmPassField.getText())) {
+        if (emailTextField.getText().isEmpty() == false && passField.getText().isEmpty() == false && confirmPassField.getText().isEmpty() == false && usernameTextField.getText().isEmpty() == false) {
+            if (passField.getText().equals(confirmPassField.getText())) {
 
-                Player player=new Player(0, usernameTextField.getText(), 0,0, emailTextField.getText(), passField.getText());
+                Player player = new Player(usernameTextField.getText(), emailTextField.getText(), passField.getText());
                 warningLabel.setText("singing up");
-                Document document= signingup_XML.validate(player);
+                Document document = signingup_XML.validate(player);
                 Game.connect("localhost");
                 Game.sendMsg(document);
 
@@ -167,18 +160,15 @@ public class HomePageController implements Initializable {
                 emailTextField.clear();
                 confirmPassField.clear();
 
-            }
-            else {
+            } else {
                 warningLabel.setText("Passwords are not matching");
             }
-        }
-        else {
+        } else {
             warningLabel.setText("Please Enter your full data!");
         }
 
 
     }
-
 
 
     @Override

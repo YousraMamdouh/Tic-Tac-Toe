@@ -1,4 +1,4 @@
-package TicTacToeServer;
+package tictactoeclient;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;

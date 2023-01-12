@@ -64,7 +64,7 @@ clientSocket=socket;
                    try {
                        DatabaseConnection.registerPlayer(p);
                    } catch (SQLException e) {
-                       throw new RuntimeException(e);
+                        e.printStackTrace();
                    }
                    //this.objectOutputStream.writeObject(doc);
 
