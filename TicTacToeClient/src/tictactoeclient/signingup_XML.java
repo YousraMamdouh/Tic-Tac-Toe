@@ -38,7 +38,7 @@ public class signingup_XML  {
         //first name element
         Element username=player.getOwnerDocument().createElement("username");
         player.appendChild(username);
-        username.setTextContent(p.getUser_name());
+        username.setTextContent(p.getName());
 
         //email element
         Element email=player.getOwnerDocument().createElement("email");

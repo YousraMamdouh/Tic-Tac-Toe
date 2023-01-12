@@ -64,7 +64,7 @@ clientSocket=socket;
                    try {
                        DatabaseConnection.registerPlayer(p);
                    } catch (SQLException e) {
-                        e.printStackTrace();
+                       System.out.println("you already have account ");
                    }
                    //this.objectOutputStream.writeObject(doc);
 
