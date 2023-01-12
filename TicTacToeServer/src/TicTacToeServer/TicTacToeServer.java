@@ -31,12 +31,12 @@ public class TicTacToeServer extends Application {
 
     public static void main(String[] args) {
         /*Testing database operations insert and select statements using DTOs*/
-        try {
-            DatabaseConnection.registerPlayer(new Player("TestSubject17", "Email", "990"));
-//            DatabaseConnection.registerPlayer(new Player("TestSubject2", "TestSubject2@Domain.com", "TestSubject2'sPassword"));
-        } catch (SQLException e) {
-            System.out.println("User Name Already In Database");
-        }
+//        try {
+//            DatabaseConnection.registerPlayer(new Player("TestSubject17", "Email", "990"));
+////            DatabaseConnection.registerPlayer(new Player("TestSubject2", "TestSubject2@Domain.com", "TestSubject2'sPassword"));
+//        } catch (SQLException e) {
+//            System.out.println("User Name Already In Database");
+//        }
 //        try {
 //            DatabaseConnection.insertGame(new GameHistory(22, 23, new int[]{8, 7, 6, 5, 4, 3, 2, 1, 0}, 22));
 //        } catch (SQLException e) {
@@ -52,6 +52,30 @@ public class TicTacToeServer extends Application {
 //            System.out.println(game.getPlayerOne() + " vs " + game.getPlayerTwo() + " " + game.getGame_id() + " winner ->> " +
 //                    game.getWinnerName() + " Time : " + game.getDate());
 //        }
+        //3os testing
+//Player p1 = new Player("Mohamed",0,1,200,"myEmail");
+        //Player p2 = new Player("Khaled",0,1,100,"hello");
+//        Player p1 = new Player("noob",0,1,200,"noob@DB.com");
+//        Player p2 = new Player("Pro",0,1,200,"pro@EA.com");
+//        Player p3 = new Player("Ramy",0,1,200,"Ramy@er.com");
+
+//        try {DatabaseConnection.updateScore(50,"noob");
+//            DatabaseConnection.updateScore(99999,"Pro");
+//            DatabaseConnection.updateScore(250,"Ramy");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            DatabaseConnection.setStatus(0,"Mohamed");
+//            DatabaseConnection.setStatus(0,"Ramy");
+//            DatabaseConnection.setStatus(1,"Pro");
+//            DatabaseConnection.setStatus(-1,"Khaled");
+//            DatabaseConnection.setStatus(-1,"noob");
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+
+
 
         launch(args);
     }

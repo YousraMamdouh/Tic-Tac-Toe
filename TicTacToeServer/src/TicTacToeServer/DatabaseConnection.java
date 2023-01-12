@@ -10,7 +10,7 @@ public class DatabaseConnection {
 
     private static void startConnection() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "147258369");
         } catch (SQLException e) {
             System.out.println("Database Connection Failed!");
         }
@@ -46,6 +46,26 @@ public class DatabaseConnection {
         endConnection();
     }
 
+    static void updateScore(int score, String user_name) throws SQLException {
+        startConnection();
+        PreparedStatement updateScore = connection.prepareStatement("UPDATE tictactoe.player SET score = ? WHERE user_name = ?");
+        updateScore.setInt(1,score);
+        updateScore.setString(2,user_name);
+        updateScore.executeUpdate();
+        updateResultSet("select * from tictactoe.player");
+        endConnection();
+    }
+
+    static void setStatus(int status, String user_name) throws SQLException {
+        startConnection();
+        PreparedStatement setStatus = connection.prepareStatement("UPDATE tictactoe.player SET status = ? WHERE user_name = ?");
+        setStatus.setInt(1,status);
+        setStatus.setString(2,user_name);
+        setStatus.executeUpdate();
+        updateResultSet("select * from tictactoe.player");
+        endConnection();
+    }
+
     static void insertGame(GameHistory game) throws SQLException {
         startConnection();
         PreparedStatement insertGame = connection.prepareStatement("insert into tictactoe.game values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())");
@@ -66,6 +86,8 @@ public class DatabaseConnection {
         insertGame.executeUpdate();
         endConnection();
     }
+
+
 
     private static void updateResultSet(String statement) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(statement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
