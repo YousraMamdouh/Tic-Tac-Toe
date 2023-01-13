@@ -17,9 +17,17 @@ class Game extends Thread {
     private  ObjectInputStream objectInputStream;
     private  ObjectOutputStream objectOutputStream;
     private  Socket socket;
+    private String msg;
+    private  final int count = 0;
 
-
-    public void connect(String ipAddress) {
+    public  void setMsg(String message){
+        msg=message;
+    }
+    public  String getMsg()
+    {
+        return  msg;
+    }
+    void connect(String ipAddress) {
         try {
             socket = new Socket(ipAddress, 5005);
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -27,25 +35,45 @@ class Game extends Thread {
         } catch (IOException e) {
             ErrorHandling.showDialog(Alert.AlertType.ERROR, "Error", "Failed to connect to server", true);
         }
-        this.startListeining();
+        startListeining();
     }
 
-    public  void sendMsg(Document doc) throws IOException, TransformerException {
+    public void sendMsg(Document doc/*, MessageSetterListener listener*/) throws IOException, TransformerException {
 
 
         objectOutputStream.writeObject(doc);
+        // listener.setMessage("");
     }
 
-    public  void startListeining() {
+    public void startListeining() {
 
         new Thread(() -> {
             while (true) {
                 try {
 
-
                     Document doc = (Document) objectInputStream.readObject();
-                    String username = doc.getElementsByTagName("username").item(0).getTextContent();
-                    System.out.println(username);
+                    if(doc.getDocumentElement().getTagName().equals("Success-Sign-Up"))
+                    {
+                        setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
+
+                        System.out.println(getMsg());
+                        // Platform.runLater(() -> HomePageController.updateWarningLabel());
+
+
+                    } else if (doc.getDocumentElement().getTagName().equals("Failed-Sign-Up"))
+
+                    {
+                        setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
+
+                        System.out.println(getMsg());
+                        //   Platform.runLater(() -> HomePageController.updateWarningLabel());
+
+
+                    }
+
+
+                    //  if(doc !=null)
+                    System.out.println("Sara");
 
 
                 } catch (IOException | TransformerFactoryConfigurationError | ClassNotFoundException ex) {
@@ -56,6 +84,8 @@ class Game extends Thread {
 
         }).start();
     }
+
+
 
 
 }
