@@ -105,21 +105,22 @@ public class profileController implements Initializable {
      private AnchorPane anchorPane;
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        dataPlayers.addAll(PlayerCell.getReadyList());
+      //  dataPlayers.addAll(PlayerCell.getReadyList());
         if ( listViewPlayers!=null) {
-            listViewPlayers.setItems(dataPlayers);
+        //    listViewPlayers.setItems(dataPlayers);
             listViewPlayers.setCellFactory(listView -> new CustomCell());
-            listViewPlayers.getSelectionModel().selectedItemProperty().addListener(new CustomCellListener());
+          // listViewPlayers.getSelectionModel().selectedItemProperty().addListener(new CustomCellListener());
+
         }
 
-        dataHistory.addAll(PlayerCell.getReadyList());
+       // dataHistory.addAll(PlayerCell.getReadyList());
         if ( listViewHistory!=null) {
-            listViewHistory.setItems(dataHistory);
+          //  listViewHistory.setItems(dataHistory);
             listViewHistory.setCellFactory(listView -> new CustomCell());
-            listViewHistory.getSelectionModel().selectedItemProperty().addListener(new CustomCellListener());
+           // listViewHistory.getSelectionModel().selectedItemProperty().addListener(new CustomCellListener());
         }
     }
 }

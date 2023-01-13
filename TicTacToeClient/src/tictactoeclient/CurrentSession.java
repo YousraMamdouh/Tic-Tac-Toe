@@ -2,12 +2,17 @@ package tictactoeclient;
 
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CurrentSession {
     private static CurrentSession currentSession;
     private Player player;
     private int[] recordedGame;
     private Stage currentStage;
     private Game game;
+
+    private List<Player> playerList;
 
     private CurrentSession() {
     }
@@ -59,5 +64,13 @@ public class CurrentSession {
         currentSession.game = game;
     }
 
+
+    public static List<Player> getPlayersList() {
+        return currentSession.playerList;
+    }
+
+    public static void setPlayersList(List<Player> list) {
+        currentSession.playerList = list;
+    }
 
 }

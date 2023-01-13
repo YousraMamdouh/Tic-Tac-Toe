@@ -11,6 +11,7 @@ package TicTacToeServer;
 
 import org.w3c.dom.Document;
 
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -63,7 +64,8 @@ public class ClientHandler extends Thread {
 
                         if(resultLogin.equals("Success"))
                         {
-                            this.objectOutputStream.writeObject(ReplyToLogin.returnSuccessLogin());
+                            Document listDoc = PlayerDoc.playerListToDoc(DatabaseConnection.getPlayerList());
+                            this.objectOutputStream.writeObject(listDoc);
                             System.out.println("Logged in successfully");
                         }
                         else {
@@ -71,6 +73,8 @@ public class ClientHandler extends Thread {
                             System.out.println("you don't have account , please sign up first");
                         }
                     } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    } catch (ParserConfigurationException e) {
                         throw new RuntimeException(e);
                     }
 
@@ -110,7 +114,9 @@ public class ClientHandler extends Thread {
                 }
 
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Client disconnected!");
+                ClientHandler.clientsVector.remove(this);
+                this.stop();
             } catch (ClassNotFoundException | TransformerFactoryConfigurationError  ex) {
                 Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
             }

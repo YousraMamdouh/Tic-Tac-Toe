@@ -36,13 +36,12 @@ public class PlayerCell {
 //needs to get the players list from a reference
   public static List<PlayerCell> getReadyList() {
         List<PlayerCell> statsList = new ArrayList<>();
-//        statsList.add(new PlayerCell(2, "User Name", "Score"));
-//        for (Player p : DatabaseConnection.getPlayerList()) {
-//            statsList.add(new PlayerCell(p.getStatus(), p.getName(), String.valueOf(p.getScore())));
-//        }
-      statsList.add(new PlayerCell(0, "sara rady","20"));
-      statsList.add(new PlayerCell(1, "ramy","10"));
-      statsList.add(new PlayerCell(-1, "youssra","5"));
+        statsList.add(new PlayerCell(2, "User Name", "Score"));
+        for (Player p : CurrentSession.getPlayersList()) {
+            statsList.add(new PlayerCell(p.getStatus(), p.getName(), String.valueOf(p.getScore())));
+        }
+
+
 
 return statsList;
    }
