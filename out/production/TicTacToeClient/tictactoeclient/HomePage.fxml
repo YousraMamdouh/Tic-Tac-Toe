@@ -18,7 +18,7 @@
       </ImageView>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1135.0">
          <children>
-            <Button layoutX="575.0" layoutY="533.0" mnemonicParsing="false" onAction="#openLoginPage" prefHeight="50.0" prefWidth="160.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Login" textFill="WHITE">
+            <Button fx:id="loginButton" layoutX="575.0" layoutY="533.0" mnemonicParsing="false" onAction="#openLoginPage" prefHeight="50.0" prefWidth="160.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
                </font>

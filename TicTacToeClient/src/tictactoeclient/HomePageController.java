@@ -154,8 +154,8 @@ public class HomePageController implements Initializable/* , MessageSetterListen
             if(game.getMsg().equals("Logged-in successfully"))
             {
                 PopupStage = (Stage) cancelButton.getScene().getWindow();
-                Button b= (Button) stage.getScene().lookup("#loginButton");
-                b.setDisable(true);
+//                Button b= (Button) stage.getScene().lookup("#loginButton");
+//                b.setDisable(true);
 //                stage.getScene().lookup("signupButton").setDisable(true);
 //                signupButton.setDisable(true);
                 PopupStage.close();
@@ -202,7 +202,7 @@ public class HomePageController implements Initializable/* , MessageSetterListen
                 if(game.getMsg().equals("Signed up successfully"))
                 {
                     PopupStage = (Stage) cancelButton.getScene().getWindow();
-                    stage.getScene().lookup("loginButton").setDisable(true);
+                    //stage.getScene().lookup("loginButton").setDisable(true);
                     PopupStage.close();
                    // signupButton.setDisable(true);
                 }
