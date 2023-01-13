@@ -10,7 +10,7 @@ public class DatabaseConnection {
 
     private static void startConnection() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "41352");
         } catch (SQLException e) {
             System.out.println("Database Connection Failed!");
         }

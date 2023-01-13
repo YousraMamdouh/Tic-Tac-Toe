@@ -19,7 +19,10 @@ public class TicTacToeClient extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
+        CurrentSession session = CurrentSession.getInstance();
+        if(CurrentSession.getGame() == null){
+            CurrentSession.setGame(new Game());
+        }
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.fxml")));
         Scene homePage = new Scene(root);
         stage.setScene(homePage);

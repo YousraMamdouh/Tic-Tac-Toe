@@ -54,6 +54,7 @@ public class HomePageController implements Initializable/* , MessageSetterListen
     private static Button multip;
     String receivedSignupMsgFromServer;
     String receivedLoginMsgFromServer;
+    private Game game;
 
 
    static private Stage stage;
@@ -141,38 +142,43 @@ public class HomePageController implements Initializable/* , MessageSetterListen
             Player player = new Player(emailTextField.getText(), passField.getText());
             warningLabel.setText("logging in");
             Document document = LoggingIn_XML.validate(player);
-            Game game=new Game();
+            if(CurrentSession.getGame() == null){
+                game = new Game();
+                CurrentSession.setGame(game);
+            } else {
+                game = CurrentSession.getGame();
+            }
             game.connect("localhost");
             game.sendMsg(document);
 
-            while(game.getMsg()==null)
-            {
-                System.out.println(game.getMsg());
-                receivedLoginMsgFromServer =game.getMsg();
-            }
-
-            warningLabel.setText(receivedLoginMsgFromServer);
-            if(game.getMsg().equals("Logged-in successfully"))
-            {
-                PopupStage = (Stage) cancelButton.getScene().getWindow();
-//                Button b= (Button) stage.getScene().lookup("#loginButton");
-//                b.setDisable(true);
-//                stage.getScene().lookup("signupButton").setDisable(true);
-//                signupButton.setDisable(true);
-                PopupStage.close();
-
-
-            }
-            else
-            {
-                emailTextField.setDisable(true);
-                passField.setDisable(true);
-
-            }
-
-            passField.clear();
-            emailTextField.clear();
-            loginPageButton.setDisable(true);
+//            while(game.getMsg()==null)
+//            {
+//                System.out.println(game.getMsg());
+//                receivedLoginMsgFromServer =game.getMsg();
+//            }
+//
+//            warningLabel.setText(receivedLoginMsgFromServer);
+//            if(game.getMsg().equals("Logged-in successfully"))
+//            {
+//                PopupStage = (Stage) cancelButton.getScene().getWindow();
+////                Button b= (Button) stage.getScene().lookup("#loginButton");
+////                b.setDisable(true);
+////                stage.getScene().lookup("signupButton").setDisable(true);
+////                signupButton.setDisable(true);
+//                PopupStage.close();
+//
+//
+//            }
+//            else
+//            {
+//                emailTextField.setDisable(true);
+//                passField.setDisable(true);
+//
+//            }
+//
+//            passField.clear();
+//            emailTextField.clear();
+//            loginPageButton.setDisable(true);
 
 
 
@@ -189,42 +195,48 @@ public class HomePageController implements Initializable/* , MessageSetterListen
 
                 Player player = new Player(usernameTextField.getText(), emailTextField.getText(), passField.getText());
                 Document document = signingup_XML.validate(player);
-                Game game=new Game();
+                if(CurrentSession.getGame() == null){
+                    game = new Game();
+                    CurrentSession.setGame(game);
+                } else {
+                    game = CurrentSession.getGame();
+                }
                 game.connect("localhost");
                 game.sendMsg(document);
 
-                while(game.getMsg()==null)
-                {
-                    System.out.println(game.getMsg()+"home page");
-                    receivedSignupMsgFromServer =game.getMsg();
-                }
-
-                warningLabel.setText(receivedSignupMsgFromServer);
-                if(game.getMsg().equals("Signed up successfully"))
-                {
-                    PopupStage = (Stage) cancelButton.getScene().getWindow();
-                    //stage.getScene().lookup("loginButton").setDisable(true);
-                    PopupStage.close();
-                   // signupButton.setDisable(true);
-                }
-                else {
-                    emailTextField.setDisable(true);
-                    usernameTextField.setDisable(true);
-                    passField.setDisable(true);
-                    confirmPassField.setDisable(true);
-                }
-
-
-
-                usernameTextField.clear();
-                passField.clear();
-                emailTextField.clear();
-                confirmPassField.clear();
-                signupPageButton.setDisable(true);
-
-
-//                stage = (Stage) onlineMultiplayerButton.getScene().getWindow();
-//                signupButton.setDisable(true);
+//
+//                while(game.getMsg()==null)
+//                {
+//                    System.out.println(game.getMsg()+"home page");
+//                    receivedSignupMsgFromServer =game.getMsg();
+//                }
+//
+//                warningLabel.setText(receivedSignupMsgFromServer);
+//                if(game.getMsg().equals("Signed up successfully"))
+//                {
+//                    PopupStage = (Stage) cancelButton.getScene().getWindow();
+//                    //stage.getScene().lookup("loginButton").setDisable(true);
+//                    PopupStage.close();
+//                   // signupButton.setDisable(true);
+//                }
+//                else {
+//                    emailTextField.setDisable(true);
+//                    usernameTextField.setDisable(true);
+//                    passField.setDisable(true);
+//                    confirmPassField.setDisable(true);
+//                }
+//
+//
+//
+//                usernameTextField.clear();
+//                passField.clear();
+//                emailTextField.clear();
+//                confirmPassField.clear();
+//                signupPageButton.setDisable(true);
+//
+//
+////                stage = (Stage) onlineMultiplayerButton.getScene().getWindow();
+////                signupButton.setDisable(true);
 
             }
             else

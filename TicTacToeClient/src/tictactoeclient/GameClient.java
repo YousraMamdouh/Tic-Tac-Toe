@@ -14,28 +14,38 @@ import java.util.logging.Logger;
 
 class Game extends Thread {
 
-    private  ObjectInputStream objectInputStream;
-    private  ObjectOutputStream objectOutputStream;
-    private  Socket socket;
+    private ObjectInputStream objectInputStream;
+    private ObjectOutputStream objectOutputStream;
+    private Socket socket;
     private String msg;
-    private  final int count = 0;
+    private final int count = 0;
+    private boolean isStarted;
 
-    public  void setMsg(String message){
-        msg=message;
+    public Game() {
+        isStarted = false;
     }
-    public  String getMsg()
-    {
-        return  msg;
+
+    public void setMsg(String message) {
+        msg = message;
     }
+
+    public String getMsg() {
+        return msg;
+    }
+
     void connect(String ipAddress) {
-        try {
-            socket = new Socket(ipAddress, 5005);
-            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            objectInputStream = new ObjectInputStream(socket.getInputStream());
-        } catch (IOException e) {
-            ErrorHandling.showDialog(Alert.AlertType.ERROR, "Error", "Failed to connect to server", true);
+        if (!isStarted) {
+
+            try {
+                socket = new Socket(ipAddress, 5005);
+                objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                objectInputStream = new ObjectInputStream(socket.getInputStream());
+            } catch (IOException e) {
+                ErrorHandling.showDialog(Alert.AlertType.ERROR, "Error", "Failed to connect to server", true);
+            }
+            startListeining();
+            isStarted = true;
         }
-        startListeining();
     }
 
     public void sendMsg(Document doc/*, MessageSetterListener listener*/) throws IOException, TransformerException {
@@ -53,30 +63,22 @@ class Game extends Thread {
 
                     Document doc = (Document) objectInputStream.readObject();
 
-                    if(doc.getDocumentElement().getTagName().equals("Success-Sign-Up"))
-                    {
+                    if (doc.getDocumentElement().getTagName().equals("Success-Sign-Up")) {
                         setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
 
                         System.out.println(getMsg());
 
 
-                    } else if (doc.getDocumentElement().getTagName().equals("Failed-Sign-Up"))
-
-                    {
+                    } else if (doc.getDocumentElement().getTagName().equals("Failed-Sign-Up")) {
                         setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
                         System.out.println(getMsg());
-                    }
-                    else if (doc.getDocumentElement().getTagName().equals("Success-Login"))
-                    {
+                    } else if (doc.getDocumentElement().getTagName().equals("Success-Login")) {
+                        setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
+                        System.out.println(getMsg());
+                    } else if (doc.getDocumentElement().getTagName().equals("Failed-Login")) {
                         setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
                         System.out.println(getMsg());
                     }
-                    else if (doc.getDocumentElement().getTagName().equals("Failed-Login"))
-                    {
-                        setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
-                        System.out.println(getMsg());
-                    }
-
 
 
                     //  if(doc !=null)
@@ -88,8 +90,6 @@ class Game extends Thread {
 
         }).start();
     }
-
-
 
 
 }

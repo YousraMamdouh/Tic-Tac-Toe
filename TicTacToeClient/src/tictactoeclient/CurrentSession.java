@@ -2,15 +2,15 @@ package tictactoeclient;
 
 import javafx.stage.Stage;
 
-import java.net.Socket;
-
 public class CurrentSession {
     private static CurrentSession currentSession;
-    private static Player player;
-    private static int[] recordedGame;
-    private static Stage currentStage;
-    private static Socket socket;
+    private Player player;
+    private int[] recordedGame;
+    private Stage currentStage;
+    private Game game;
 
+    private CurrentSession() {
+    }
 
     static {
         try {
@@ -28,42 +28,36 @@ public class CurrentSession {
     }
 
     public static Player getPlayer() {
-        return player;
+        return currentSession.player;
     }
 
     public static void setPlayer(Player player) {
-        CurrentSession.player = player;
+        currentSession.player = player;
     }
 
     public static int[] getRecordedGame() {
-        return recordedGame;
+        return currentSession.recordedGame;
     }
 
     public static void setRecordedGame(int[] recordedGame) {
-        CurrentSession.recordedGame = recordedGame;
+        currentSession.recordedGame = recordedGame;
     }
 
     public static Stage getCurrentStage() {
-        return currentStage;
+        return currentSession.currentStage;
     }
 
     public static void setCurrentStage(Stage currentStage) {
-        CurrentSession.currentStage = currentStage;
+        currentSession.currentStage = currentStage;
     }
 
-    public static CurrentSession getCurrentSession() {
-        return currentSession;
+    public static Game getGame() {
+        return currentSession.game;
     }
 
-    public static void setCurrentSession(CurrentSession currentSession) {
-        CurrentSession.currentSession = currentSession;
+    public static void setGame(Game game) {
+        currentSession.game = game;
     }
 
-    public static Socket getSocket() {
-        return socket;
-    }
 
-    public static void setSocket(Socket socket) {
-        CurrentSession.socket = socket;
-    }
 }
