@@ -32,7 +32,7 @@ public class TicTacToeServer extends Application {
     public static void main(String[] args) {
         /*Testing database operations insert and select statements using DTOs*/
         try {
-            DatabaseConnection.registerPlayer(new Player("TestSubject17", "Email", "990"));
+            DatabaseConnection.registerPlayer(new Player("TestSubject17", "root", "root"));
 //            DatabaseConnection.registerPlayer(new Player("TestSubject2", "TestSubject2@Domain.com", "TestSubject2'sPassword"));
         } catch (SQLException e) {
             System.out.println("User Name Already In Database");
