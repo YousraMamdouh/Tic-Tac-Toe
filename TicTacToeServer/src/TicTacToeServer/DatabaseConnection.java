@@ -19,8 +19,8 @@ public class DatabaseConnection {
     static String playerAuth(Player player) throws SQLException {
         startConnection();
         String result = "Failed";
-        PreparedStatement checkUser = connection.prepareStatement("select * from tictactoe.player where email = ? and password = ?");
-        checkUser.setString(1, player.getEmail());
+        PreparedStatement checkUser = connection.prepareStatement("select * from tictactoe.player where user_name = ? and password = ?");
+        checkUser.setString(1, player.getName());
         checkUser.setString(2, player.getPassword());
         resultSet = checkUser.executeQuery();
         if (resultSet.next()) {

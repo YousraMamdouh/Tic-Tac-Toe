@@ -52,10 +52,12 @@ public class HomePageController implements Initializable/* , MessageSetterListen
     @FXML
     Button onlineMultiplayerButton;
     private static Button multip;
-    String n;
+    String receivedSignupMsgFromServer;
+    String receivedLoginMsgFromServer;
 
 
-    private Stage stage;
+   static private Stage stage;
+   static private Stage PopupStage;
     private Scene scene;
     private Parent root;
 
@@ -65,37 +67,38 @@ public class HomePageController implements Initializable/* , MessageSetterListen
 //    warningLabel.setText(Game.getMsg());
 //}
     @FXML
-    public void openLoginPage() throws IOException {
-
-        stage = new Stage();
+    public void openLoginPage(ActionEvent event) throws IOException {
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        PopupStage = new Stage();
         root = FXMLLoader.load(getClass().getResource("Login_Popup.fxml"));
         scene = new Scene(root, 900, 600);
-        stage.setTitle("Login Page");
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        PopupStage.setTitle("Login Page");
+        PopupStage.setScene(scene);
+        PopupStage.initStyle(StageStyle.UNDECORATED);
+        PopupStage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
-        stage.showAndWait();
+        PopupStage.showAndWait();
 
     }
 
     public void openSignupPage(ActionEvent event) throws IOException {
-        stage = new Stage();
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        PopupStage = new Stage();
         root = FXMLLoader.load(getClass().getResource("Signup_Popup.fxml"));
         scene = new Scene(root, 900, 600);
-        stage.setTitle("sign up Page");
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        PopupStage.setTitle("sign up Page");
+        PopupStage.setScene(scene);
+        PopupStage.initStyle(StageStyle.UNDECORATED);
+        PopupStage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
-        stage.showAndWait();
+        PopupStage.showAndWait();
     }
 
 
     @FXML
     public void cancelAction(ActionEvent event) throws IOException {
-        stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+        PopupStage = (Stage) cancelButton.getScene().getWindow();
+        PopupStage.close();
     }
 
     @FXML
@@ -104,7 +107,6 @@ public class HomePageController implements Initializable/* , MessageSetterListen
         root = FXMLLoader.load(getClass().getResource("Difficulty_Window.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
     }
@@ -115,7 +117,6 @@ public class HomePageController implements Initializable/* , MessageSetterListen
         root = FXMLLoader.load(getClass().getResource("Multiplayer_Board.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
 
@@ -128,7 +129,6 @@ public class HomePageController implements Initializable/* , MessageSetterListen
         root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setScene(scene);
         stage.setScene(scene);
         stage.show();
 
@@ -144,16 +144,36 @@ public class HomePageController implements Initializable/* , MessageSetterListen
             Game game=new Game();
             game.connect("localhost");
             game.sendMsg(document);
-            System.out.println(game.getMsg()+"home page");
-
             while(game.getMsg()==null)
             {
-                n=game.getMsg();
+                System.out.println(game.getMsg());
+                receivedLoginMsgFromServer =game.getMsg();
             }
 
-            warningLabel.setText(n);
-            stage = (Stage) cancelButton.getScene().getWindow();
-            stage.close();
+            warningLabel.setText(receivedLoginMsgFromServer);
+            if(game.getMsg().equals("Logged-in successfully"))
+            {
+                PopupStage = (Stage) cancelButton.getScene().getWindow();
+                Button b= (Button) stage.getScene().lookup("#loginButton");
+                b.setDisable(true);
+//                stage.getScene().lookup("signupButton").setDisable(true);
+//                signupButton.setDisable(true);
+                PopupStage.close();
+
+
+            }
+            else
+            {
+                emailTextField.setDisable(true);
+                passField.setDisable(true);
+
+            }
+
+            passField.clear();
+            emailTextField.clear();
+            loginPageButton.setDisable(true);
+
+
 
         } else {
             warningLabel.setText("email or password is missing ");
@@ -168,30 +188,51 @@ public class HomePageController implements Initializable/* , MessageSetterListen
 
                 Player player = new Player(usernameTextField.getText(), emailTextField.getText(), passField.getText());
                 Document document = signingup_XML.validate(player);
-                Game game2=new Game();
-                game2.connect("localhost");
-                game2.sendMsg(document); //,this);
+                Game game=new Game();
+                game.connect("localhost");
+                game.sendMsg(document);
 
-                while(game2.getMsg()==null)
+                while(game.getMsg()==null)
                 {
-                    System.out.println(game2.getMsg()+"home page");
-                    n=game2.getMsg();
+                    System.out.println(game.getMsg()+"home page");
+                    receivedSignupMsgFromServer =game.getMsg();
                 }
-                warningLabel.setText(n);
-                if(game2.getMsg().equals("Signed up successfully"));{
-                stage = (Stage) cancelButton.getScene().getWindow();
-                    stage.close();}
+
+                warningLabel.setText(receivedSignupMsgFromServer);
+                if(game.getMsg().equals("Signed up successfully"))
+                {
+                    PopupStage = (Stage) cancelButton.getScene().getWindow();
+                    stage.getScene().lookup("loginButton").setDisable(true);
+                    PopupStage.close();
+                   // signupButton.setDisable(true);
+                }
+                else {
+                    emailTextField.setDisable(true);
+                    usernameTextField.setDisable(true);
+                    passField.setDisable(true);
+                    confirmPassField.setDisable(true);
+                }
+
+
 
                 usernameTextField.clear();
                 passField.clear();
                 emailTextField.clear();
                 confirmPassField.clear();
+                signupPageButton.setDisable(true);
 
 
-            } else {
+//                stage = (Stage) onlineMultiplayerButton.getScene().getWindow();
+//                signupButton.setDisable(true);
+
+            }
+            else
+            {
                 warningLabel.setText("Passwords are not matching");
             }
-        } else {
+        }
+        else
+        {
             warningLabel.setText("Please Enter your full data!");
         }
 

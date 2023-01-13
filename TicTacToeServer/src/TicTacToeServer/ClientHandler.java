@@ -47,8 +47,25 @@ public class ClientHandler extends Thread {
                 if(doc.getDocumentElement().getTagName().equals("login")) {
                     String email = doc.getElementsByTagName("email").item(0).getTextContent();
                     String password = doc.getElementsByTagName("password").item(0).getTextContent();
-                    System.out.println("The player's email is: " + email);
+                    System.out.println("The player's Username is: " + email);
                     System.out.println("The player's password is: " + password);
+                    Player p=new Player(email,password);
+                    try {
+                       String resultLogin= DatabaseConnection.playerAuth(p);
+                        System.out.println(resultLogin);
+
+                        if(resultLogin.equals("Success"))
+                        {
+                            this.objectOutputStream.writeObject(ReplyToLogin.returnSuccessLogin());
+                            System.out.println("Logged in successfully");
+                        }
+                        else {
+                            this.objectOutputStream.writeObject(ReplyToLogin.returnFailedLogin());
+                            System.out.println("you don't have account , please sign up first");
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
 
                     //this.objectOutputStream.writeObject(doc);
                 }

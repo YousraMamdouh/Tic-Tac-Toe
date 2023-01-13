@@ -52,30 +52,34 @@ class Game extends Thread {
                 try {
 
                     Document doc = (Document) objectInputStream.readObject();
+
                     if(doc.getDocumentElement().getTagName().equals("Success-Sign-Up"))
                     {
                         setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
 
                         System.out.println(getMsg());
-                        // Platform.runLater(() -> HomePageController.updateWarningLabel());
 
 
                     } else if (doc.getDocumentElement().getTagName().equals("Failed-Sign-Up"))
 
                     {
                         setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
-
                         System.out.println(getMsg());
-                        //   Platform.runLater(() -> HomePageController.updateWarningLabel());
-
-
+                    }
+                    else if (doc.getDocumentElement().getTagName().equals("Success-Login"))
+                    {
+                        setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
+                        System.out.println(getMsg());
+                    }
+                    else if (doc.getDocumentElement().getTagName().equals("Failed-Login"))
+                    {
+                        setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
+                        System.out.println(getMsg());
                     }
 
 
+
                     //  if(doc !=null)
-                    System.out.println("Sara");
-
-
                 } catch (IOException | TransformerFactoryConfigurationError | ClassNotFoundException ex) {
                     Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
                 }

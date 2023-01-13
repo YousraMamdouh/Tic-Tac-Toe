@@ -28,7 +28,7 @@ public class LoggingIn_XML {
         //Name element
         Element email=employee.getOwnerDocument().createElement("email");
         employee.appendChild(email);
-        email.setTextContent(p.getEmail());
+        email.setTextContent(p.getName());
         //email element
         Element pass=employee.getOwnerDocument().createElement("password");
         employee.appendChild(pass);
