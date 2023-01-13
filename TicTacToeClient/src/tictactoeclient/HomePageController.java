@@ -172,19 +172,18 @@ public class HomePageController implements Initializable/* , MessageSetterListen
                 game2.connect("localhost");
                 game2.sendMsg(document); //,this);
 
-//                while(game2.getMsg()==null)
-//                {
-//                    System.out.println(game2.getMsg()+"home page");
-//                    n=game2.getMsg();
-//                }
-//
-//                warningLabel.setText(n);
-                stage = (Stage) cancelButton.getScene().getWindow();
-              //  stage.close();
-              //  usernameTextField.clear();
-                passField.clear();
-                emailTextField.clear();
-                confirmPassField.clear();
+                while(game2.getMsg()==null)
+                {
+                    System.out.println(game2.getMsg()+"home page");
+                    n=game2.getMsg();
+                }
+                warningLabel.setText(n);
+               stage = (Stage) cancelButton.getScene().getWindow();
+               stage.close();
+               usernameTextField.clear();
+               passField.clear();
+               emailTextField.clear();
+               confirmPassField.clear();
 
 
             } else {
