@@ -80,10 +80,23 @@ class Game extends Thread {
                         System.out.println(getMsg());
                     }
 
+                    else if (doc.getDocumentElement().getNodeName().equals("root")){
+                        String msg = ModifyXMLFile.getMsg(doc);
+                        String me = ModifyXMLFile.getTo(doc);
+                        String other = ModifyXMLFile.getFrom(doc);
+                        System.out.println(msg + me + other);
+                        msg="ACCEPT";
+                        ModifyXMLFile.updateElementValue(doc,me,other,msg);
+                        System.out.println(msg + me + other);
+                        sendMsg(doc);
+                    }
+
 
                     //  if(doc !=null)
                 } catch (IOException | TransformerFactoryConfigurationError | ClassNotFoundException ex) {
                     Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (TransformerException e) {
+                    Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, e);
                 }
             }
 

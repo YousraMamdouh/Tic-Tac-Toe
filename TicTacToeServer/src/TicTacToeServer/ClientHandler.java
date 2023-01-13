@@ -89,11 +89,16 @@ public class ClientHandler extends Thread {
                     }
                 }
 
-                // String msg = ModifyXMLFile.getMsg(doc);
-                //String from = ModifyXMLFile.getFrom(doc);
+                else if (doc.getDocumentElement().getNodeName().equals("root")){
+                    String msg = ModifyXMLFile.getMsg(doc);
+                    String from = ModifyXMLFile.getFrom(doc);
+                    String to = ModifyXMLFile.getTo(doc);
+                    System.out.println("hi request:  " + msg + from + to);
+                    if (msg.equals("request"))
+                        sendRequest(doc);
 
+                }
 
-                //   sendMessageToOtherPlayer(doc);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException | TransformerFactoryConfigurationError  ex) {
