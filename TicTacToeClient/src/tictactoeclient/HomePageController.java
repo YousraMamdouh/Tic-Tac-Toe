@@ -144,6 +144,7 @@ public class HomePageController implements Initializable/* , MessageSetterListen
             Game game=new Game();
             game.connect("localhost");
             game.sendMsg(document);
+
             while(game.getMsg()==null)
             {
                 System.out.println(game.getMsg());
