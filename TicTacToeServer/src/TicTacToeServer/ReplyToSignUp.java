@@ -30,7 +30,7 @@ public class ReplyToSignUp {
         Element player = root.getOwnerDocument().createElement("Message");
         root.appendChild(player);
         //first name element
-        player.setTextContent(" Signed up successfully ");
+        player.setTextContent("Signed up successfully");
         return successSignup;
     }
     public static Document returnFailedSignup()

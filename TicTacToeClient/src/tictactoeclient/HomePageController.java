@@ -178,8 +178,10 @@ public class HomePageController implements Initializable/* , MessageSetterListen
                     n=game2.getMsg();
                 }
                 warningLabel.setText(n);
+                if(game2.getMsg().equals("Signed up successfully"));{
                 stage = (Stage) cancelButton.getScene().getWindow();
-                stage.close();
+                    stage.close();}
+
                 usernameTextField.clear();
                 passField.clear();
                 emailTextField.clear();
