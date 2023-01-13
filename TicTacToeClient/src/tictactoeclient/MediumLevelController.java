@@ -42,9 +42,10 @@ public class MediumLevelController implements Initializable {
     @FXML
 
     public  MediaView media;
-    private MediaPlayer mediaPlayer=new MediaPlayer(new Media(this.getClass().getResource(MEDIA_URL).toExternalForm()));
+
 
     private static final String MEDIA_URL="Loser.mp4";
+    private MediaPlayer mediaPlayer=new MediaPlayer(new Media(this.getClass().getResource(MEDIA_URL).toExternalForm()));
     @FXML
     Label winnerLabel;
 
