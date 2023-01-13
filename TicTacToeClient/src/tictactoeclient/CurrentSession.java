@@ -59,5 +59,12 @@ public class CurrentSession {
     public static void setGame(Game game) {
         currentSession.game=game;
     }
+    public static void setIsLoggedIn(boolean state){
+        currentSession.isLoggedIn = state;
+    }
+
+    public static boolean getIsLoggedIn(){
+        return currentSession.isLoggedIn;
+    }
 
 }
