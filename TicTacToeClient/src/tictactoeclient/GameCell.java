@@ -16,12 +16,12 @@ public class GameCell {
     public GameCell(String playerOne, String playerTwo, String Winner,String timeStamp) {
         this.playerOne = new Label(playerOne);
         this.playerTwo = new Label(playerTwo);
-        this.playerOne.setMinWidth(150);
-        this.playerTwo.setMinWidth(150);
+        this.playerOne.setMinWidth(120);
+        this.playerTwo.setMinWidth(120);
         this.winner = new Label(Winner);
-        this.winner.setMinWidth(150);
+        this.winner.setMinWidth(120);
         this.timeStamp = new Label(timeStamp);
-        this.timeStamp.setMinWidth(150);
+        this.timeStamp.setMinWidth(120);
     }
 
     public Label getPlayerOne() {
