@@ -135,8 +135,9 @@ public class HomePageController implements Initializable {
             Player player = new Player(emailTextField.getText(), passField.getText());
             warningLabel.setText("logging in");
             Document document = LoggingIn_XML.validate(player);
-            Game.connect("localhost");
-            Game.sendMsg(document);
+            Game game = new Game();
+            game.connect("localhost");
+            game.sendMsg(document);
 
         } else {
             warningLabel.setText("email or password is missing ");
@@ -152,8 +153,9 @@ public class HomePageController implements Initializable {
                 Player player = new Player(usernameTextField.getText(), emailTextField.getText(), passField.getText());
                 warningLabel.setText("singing up");
                 Document document = signingup_XML.validate(player);
-                Game.connect("localhost");
-                Game.sendMsg(document);
+                Game game = new Game();
+                game.connect("localhost");
+                game.sendMsg(document);
 
                 usernameTextField.clear();
                 passField.clear();

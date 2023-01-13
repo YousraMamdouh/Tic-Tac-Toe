@@ -23,7 +23,7 @@ public  class ModifyXMLFile {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(doc);
-        String filePath="players.xml";
+        String filePath="playersRequest.xml";
         StreamResult result = new StreamResult(new File(filePath));
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         transformer.transform(source, result);

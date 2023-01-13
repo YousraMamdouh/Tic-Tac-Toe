@@ -14,12 +14,12 @@ import java.util.logging.Logger;
 
 class Game extends Thread {
 
-    private static ObjectInputStream objectInputStream;
-    private static ObjectOutputStream objectOutputStream;
-    private static Socket socket;
-    private static final int count = 0;
+    private  ObjectInputStream objectInputStream;
+    private  ObjectOutputStream objectOutputStream;
+    private  Socket socket;
 
-    static void connect(String ipAddress) {
+
+    public void connect(String ipAddress) {
         try {
             socket = new Socket(ipAddress, 5005);
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -27,16 +27,16 @@ class Game extends Thread {
         } catch (IOException e) {
             ErrorHandling.showDialog(Alert.AlertType.ERROR, "Error", "Failed to connect to server", true);
         }
-        Game.startListeining();
+        this.startListeining();
     }
 
-    public static void sendMsg(Document doc) throws IOException, TransformerException {
+    public  void sendMsg(Document doc) throws IOException, TransformerException {
 
 
         objectOutputStream.writeObject(doc);
     }
 
-    public static void startListeining() {
+    public  void startListeining() {
 
         new Thread(() -> {
             while (true) {
