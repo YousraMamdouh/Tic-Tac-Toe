@@ -11,7 +11,7 @@ public class CurrentSession {
     private int[] recordedGame;
     private Stage currentStage;
     private Game game;
-
+    private List<GameHistory> gameHistoryList;
     private List<Player> playerList;
 
     private CurrentSession() {
@@ -71,6 +71,13 @@ public class CurrentSession {
 
     public static void setPlayersList(List<Player> list) {
         currentSession.playerList = list;
+    }
+    public static List<GameHistory> getGameHistoryList() {
+        return currentSession.gameHistoryList;
+    }
+
+    public static void setGameHistoryList(List<GameHistory> list) {
+        currentSession.gameHistoryList = list;
     }
 
 }

@@ -64,6 +64,8 @@ public class ClientHandler extends Thread {
 
                         if(resultLogin.equals("Success"))
                         {
+                            Document gameHistoryList = GameDoc.gameListToDoc(DatabaseConnection.getGameHistoryList());
+                            this.objectOutputStream.writeObject(gameHistoryList);
                             Document listDoc = PlayerDoc.playerListToDoc(DatabaseConnection.getPlayerList());
                             this.objectOutputStream.writeObject(listDoc);
                             System.out.println("Logged in successfully");

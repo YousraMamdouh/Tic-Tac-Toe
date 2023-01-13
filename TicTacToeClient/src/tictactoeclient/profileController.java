@@ -47,12 +47,12 @@ public class profileController implements Initializable {
     private Scene scene;
     private Parent root;
     @FXML
-    private ListView<PlayerCell> listViewHistory;
+    private ListView<GameCell> listViewHistory;
 
     @FXML
     private ListView<PlayerCell> listViewPlayers;
     private final ObservableList<PlayerCell> dataPlayers= FXCollections.observableArrayList();
-    private final ObservableList<PlayerCell> dataHistory= FXCollections.observableArrayList();
+    private final ObservableList<GameCell> dataHistory= FXCollections.observableArrayList();
     public void switchToProfile(ActionEvent event ) throws IOException{
       
         stage  = (Stage)cancelButton.getScene().getWindow();
@@ -108,19 +108,19 @@ public class profileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-      //  dataPlayers.addAll(PlayerCell.getReadyList());
+        dataPlayers.addAll(PlayerCell.getReadyList());
         if ( listViewPlayers!=null) {
-        //    listViewPlayers.setItems(dataPlayers);
+            listViewPlayers.setItems(dataPlayers);
             listViewPlayers.setCellFactory(listView -> new CustomCell());
-          // listViewPlayers.getSelectionModel().selectedItemProperty().addListener(new CustomCellListener());
+           listViewPlayers.getSelectionModel().selectedItemProperty().addListener(new CustomCellListener());
 
         }
 
-       // dataHistory.addAll(PlayerCell.getReadyList());
+        dataHistory.addAll(GameCell.getReadyList());
         if ( listViewHistory!=null) {
-          //  listViewHistory.setItems(dataHistory);
-            listViewHistory.setCellFactory(listView -> new CustomCell());
-           // listViewHistory.getSelectionModel().selectedItemProperty().addListener(new CustomCellListener());
+            listViewHistory.setItems(dataHistory);
+            listViewHistory.setCellFactory(listView -> new CustomGameCell());
+//            listViewHistory.getSelectionModel().selectedItemProperty().addListener(new CustomCellListener());
         }
     }
 }

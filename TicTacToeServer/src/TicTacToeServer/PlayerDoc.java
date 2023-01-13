@@ -8,6 +8,16 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +25,8 @@ public class PlayerDoc {
 
     public static Document playerToDoc(Player player) throws ParserConfigurationException {
         Document doc = createDoc();
-        PlayerDoc.createPlayerElement(doc, player);
+        Element root = PlayerDoc.createPlayerElement(doc, player);
+        doc.appendChild(root);
         return doc;
     }
 
@@ -34,13 +45,13 @@ public class PlayerDoc {
         for (Player player : playerList) {
             root.appendChild(PlayerDoc.createPlayerElement(doc, player));
         }
+        doc.appendChild(root);
         return doc;
     }
 
     public static List<Player> docToPlayerList(Document players) {
         List<Player> playerList = new ArrayList<>();
-
-        NodeList list = players.getElementsByTagName("players");
+        NodeList list = players.getElementsByTagName("player");
         for (int i = 0; i < list.getLength(); i++) {
             Node node = list.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {

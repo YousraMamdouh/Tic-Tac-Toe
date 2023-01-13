@@ -1,10 +1,9 @@
-package TicTacToeServer;
+package tictactoeclient;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import tictactoeclient.GameHistory;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,7 +14,8 @@ import java.util.List;
 public class GameDoc {
     public static Document gameToDoc(GameHistory game) throws ParserConfigurationException {
         Document doc = createDoc();
-        createGameElement(doc, game);
+        Element root =  createGameElement(doc, game);
+        doc.appendChild(root);
         return doc;
     }
 
@@ -35,9 +35,9 @@ public class GameDoc {
         for (GameHistory game : gameList) {
             root.appendChild(createGameElement(doc, game));
         }
+        doc.appendChild(root);
         return doc;
     }
-
 
     public static List<GameHistory> docToGameList(Document game) {
         List<GameHistory> gameList = new ArrayList<>();

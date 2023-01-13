@@ -14,7 +14,8 @@ import java.util.List;
 public class GameDoc {
     public static Document gameToDoc(GameHistory game) throws ParserConfigurationException {
         Document doc = createDoc();
-        createGameElement(doc, game);
+        Element root =  createGameElement(doc, game);
+        doc.appendChild(root);
         return doc;
     }
 
@@ -34,6 +35,7 @@ public class GameDoc {
         for (GameHistory game : gameList) {
             root.appendChild(createGameElement(doc, game));
         }
+        doc.appendChild(root);
         return doc;
     }
 

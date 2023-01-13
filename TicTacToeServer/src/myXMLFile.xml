@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<players>
+<player>
+<name>ramy</name>
+<id>5</id>
+<status>1</status>
+<score>1</score>
+<email>ramy</email>
+</player>
+<player>
+<name>Ramy3r</name>
+<id>2</id>
+<status>1</status>
+<score>1</score>
+<email>Ramy3r@hotmail.com</email>
+</player>
+<player>
+<name>TestSubject17</name>
+<id>1</id>
+<status>1</status>
+<score>1</score>
+<email>root</email>
+</player>
+</players>

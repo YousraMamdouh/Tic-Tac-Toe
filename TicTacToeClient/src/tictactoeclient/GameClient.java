@@ -81,6 +81,10 @@ class Game extends Thread {
 
                         List<Player> playerList = PlayerDoc.docToPlayerList(doc);
                         CurrentSession.setPlayersList(playerList);
+                    }else if(doc.getDocumentElement().getTagName().equals("Recorded_Games")){
+
+                        List<GameHistory> gameHistoryList = GameDoc.docToGameList(doc);
+                        CurrentSession.setGameHistoryList(gameHistoryList);
                     }
 
                     else if (doc.getDocumentElement().getNodeName().equals("root")){

@@ -41,8 +41,6 @@ public class PlayerCell {
             statsList.add(new PlayerCell(p.getStatus(), p.getName(), String.valueOf(p.getScore())));
         }
 
-
-
 return statsList;
    }
 }

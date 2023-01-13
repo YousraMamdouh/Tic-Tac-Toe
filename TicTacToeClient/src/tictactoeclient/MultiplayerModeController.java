@@ -63,6 +63,7 @@ public class MultiplayerModeController implements Initializable {
     private final List<ImageView> imageViews;
     private static Stage stage;
     private Stage popUpStage;
+    private int [] recordedGame;
 
     public MultiplayerModeController() {
         imageViews = new ArrayList<>();
