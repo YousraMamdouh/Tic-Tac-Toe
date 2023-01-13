@@ -358,9 +358,9 @@ public class MediumLevelController implements Initializable {
         Parent root = loader.load();
         controller = loader.getController();
         controller.winnerLabel.setText(winner);
-
         controller.mediaPlayer.setAutoPlay(true);
         controller.media.setMediaPlayer(mediaPlayer);
+        System.out.println("every thing is okay");
         createPopup(root);
 
     }

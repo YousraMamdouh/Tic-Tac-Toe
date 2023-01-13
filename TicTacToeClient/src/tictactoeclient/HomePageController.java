@@ -32,6 +32,7 @@ import java.util.ResourceBundle;
  */
 
 public class HomePageController implements Initializable {
+
     @FXML
     Button loginButton;
     @FXML
