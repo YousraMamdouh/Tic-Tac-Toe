@@ -42,11 +42,10 @@ class Game extends Thread {
             while (true) {
                 try {
 
+
                     Document doc = (Document) objectInputStream.readObject();
-
-
-                    //  if(doc !=null)
-                    System.out.println("Sara");
+                    String username = doc.getElementsByTagName("username").item(0).getTextContent();
+                    System.out.println(username);
 
 
                 } catch (IOException | TransformerFactoryConfigurationError | ClassNotFoundException ex) {

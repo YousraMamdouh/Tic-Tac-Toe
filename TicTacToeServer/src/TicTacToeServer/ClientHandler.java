@@ -54,6 +54,7 @@ public class ClientHandler extends Thread {
                    System.out.println("The player's email is: " + email);
                    System.out.println("The player's password is: " + password);
                    sockets.put(email,this);
+                   sendRequest(doc);
 
                }
                else if (doc.getDocumentElement().getTagName().equals("sign-up")) {
@@ -64,6 +65,7 @@ public class ClientHandler extends Thread {
                    System.out.println("The player's username is: " + username);
                    System.out.println("The player's email is: " + email);
                    System.out.println("The player's password is: " + password);
+                   sendRequest(doc);
                   Player p = new Player(username,email,password);
                    try {
                        DatabaseConnection.registerPlayer(p);
@@ -95,7 +97,7 @@ public class ClientHandler extends Thread {
     }
 
     void sendRequest(Document doc) {
-       for(int i=0 ; i<sockets.size() ; i++) {
+       for(int i=0 ; i<clientsVector.size() ; i++) {
             try {
                 //if (i==1)
                 clientsVector.get(i).objectOutputStream.writeObject(doc);

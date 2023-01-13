@@ -19,6 +19,7 @@ public class CustomCellListener implements ChangeListener<PlayerCell> {
 
     private String userName;
     Game game = new Game();
+
     @Override
     public void changed(ObservableValue<? extends PlayerCell> observable, PlayerCell oldValue, PlayerCell newValue) {
 
@@ -27,7 +28,6 @@ public class CustomCellListener implements ChangeListener<PlayerCell> {
             userName = newValue.getPlayerName().getText();
             System.out.println("Clicked On : " +  userName );
             try {
-                game.connect("localhost");
                 File xmlFile = new File("playersRequest.xml");
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder;

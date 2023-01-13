@@ -136,7 +136,7 @@ public class HomePageController implements Initializable {
             warningLabel.setText("logging in");
             Document document = LoggingIn_XML.validate(player);
             Game game = new Game();
-            game.connect("localhost");
+           game.connect("localhost");
             game.sendMsg(document);
 
         } else {
