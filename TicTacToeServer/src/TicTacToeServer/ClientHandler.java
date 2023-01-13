@@ -17,6 +17,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,12 +29,16 @@ public class ClientHandler extends Thread {
     Socket clientSocket;
     static Vector<ClientHandler> clientsVector = new Vector<>();
 
+    static HashMap<String,ClientHandler> sockets= new HashMap<String,ClientHandler>();
+    ClientHandler c;
+
     public ClientHandler(Socket socket) {
         clientSocket=socket;
         try {
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             objectInputStream = new ObjectInputStream(socket.getInputStream());
-            ClientHandler.clientsVector.add(this);
+            c=this;
+            ClientHandler.clientsVector.add(c);
             start();
         } catch (IOException ex) {
             Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,6 +109,14 @@ public class ClientHandler extends Thread {
             } catch (ClassNotFoundException | TransformerFactoryConfigurationError  ex) {
                 Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+    }
+    void sendRequest(Document doc) {
+        String to = ModifyXMLFile.getTo(doc);
+        try {
+            sockets.get(to).objectOutputStream.writeObject(doc);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
