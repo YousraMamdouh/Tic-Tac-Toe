@@ -55,6 +55,8 @@ public class ClientHandler extends Thread {
                     System.out.println("The player's Username is: " + email);
                     System.out.println("The player's password is: " + password);
                     Player p=new Player(email,password);
+                    sockets.put(email,c);
+
                     try {
                        String resultLogin= DatabaseConnection.playerAuth(p);
                         System.out.println(resultLogin);
@@ -83,6 +85,8 @@ public class ClientHandler extends Thread {
                     System.out.println("The player's email is: " + email);
                     System.out.println("The player's password is: " + password);
                     Player p = new Player(username,email,password);
+                    sockets.put(username,c);
+
                     try {
                         DatabaseConnection.registerPlayer(p);
                         this.objectOutputStream.writeObject(ReplyToSignUp.returnSuccessSignup());
@@ -101,6 +105,7 @@ public class ClientHandler extends Thread {
                     System.out.println("hi request:  " + msg + from + to);
                     if (msg.equals("request"))
                         sendRequest(doc);
+
 
                 }
 

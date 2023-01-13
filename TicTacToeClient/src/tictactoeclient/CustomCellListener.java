@@ -18,7 +18,7 @@ public class CustomCellListener implements ChangeListener<PlayerCell> {
     }
 
     private String userName;
-    Game game = new Game();
+
 
     @Override
     public void changed(ObservableValue<? extends PlayerCell> observable, PlayerCell oldValue, PlayerCell newValue) {
@@ -33,11 +33,10 @@ public class CustomCellListener implements ChangeListener<PlayerCell> {
                 DocumentBuilder dBuilder;
                 dBuilder = dbFactory.newDocumentBuilder();
                 Document doc = dBuilder.parse(xmlFile);
-                //from me
-                //to userNAme
-                //ModifyXMLFile.updateElementValue(doc,"sara","alaa","request");
+                String from=CurrentSession.getPlayer().getName();
+                ModifyXMLFile.updateElementValue(doc,from,userName,"request");
                 if (doc != null) {
-                    game.sendMsg(doc);
+                    CurrentSession.getGame().sendMsg(doc);
                 }
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();

@@ -140,6 +140,7 @@ public class HomePageController implements Initializable/* , MessageSetterListen
     public void loggingIn(ActionEvent event) throws IOException, ParserConfigurationException, TransformerException {
         if (emailTextField.getText().isEmpty() == false && passField.getText().isEmpty() == false) {
             Player player = new Player(emailTextField.getText(), passField.getText());
+            CurrentSession.setPlayer(player);
             warningLabel.setText("logging in");
             Document document = LoggingIn_XML.validate(player);
             if(CurrentSession.getGame() == null){
@@ -194,6 +195,7 @@ public class HomePageController implements Initializable/* , MessageSetterListen
             if (passField.getText().equals(confirmPassField.getText())) {
 
                 Player player = new Player(usernameTextField.getText(), emailTextField.getText(), passField.getText());
+                CurrentSession.setPlayer(player);
                 Document document = signingup_XML.validate(player);
                 if(CurrentSession.getGame() == null){
                     game = new Game();
