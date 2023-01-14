@@ -22,8 +22,13 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,11 +36,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class MultiplayerModeController implements Initializable {
+public class OnlineBoardController implements Initializable {
     private final MultiplayerGame currentGame;
     private boolean isX;
     @FXML
-    Label winnerLabel;
+    private Label winnerLabel;
     @FXML
     private Label player1Label;
     @FXML
@@ -70,7 +75,7 @@ public class MultiplayerModeController implements Initializable {
     private int i;
 
 
-    public MultiplayerModeController() {
+    public OnlineBoardController() {
         imageViews = new ArrayList<>();
         currentGame = new MultiplayerGame();
         isX = true;
@@ -89,7 +94,7 @@ public class MultiplayerModeController implements Initializable {
     @FXML
     private void playRecord() {
         resetBoard();
-        int [] record = CurrentSession.getRecordedGame();
+        int[] record = CurrentSession.getRecordedGame();
         new Thread(() -> {
             try {
                 while (i < 9 && record[i] >= 0) {
@@ -105,10 +110,11 @@ public class MultiplayerModeController implements Initializable {
             }
         }).start();
     }
+
     @FXML
     private void exitPopup() throws IOException {
         stage = (Stage) player2Label.getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MP_exit.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OB_exit.fxml")));
         createPopup(root);
     }
 
@@ -124,11 +130,17 @@ public class MultiplayerModeController implements Initializable {
 
     private void resultPopup(String winner) throws IOException {
         stage = (Stage) player2Label.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MP_result.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("OB_result.fxml"));
         Parent root = loader.load();
         MultiplayerModeController controller = loader.getController();
         controller.winnerLabel.setText(winner);
-        CurrentSession.setRecordedGame(currentGame.getRecord());
+        try {
+            //returns a Game Document should call a function to send to server
+
+            CurrentSession.getGame().sendMsg(GameDoc.gameToDoc(currentGame.getGame()));
+        } catch (ParserConfigurationException | TransformerException e) {
+            e.printStackTrace();
+        }
         createPopup(root);
     }
 
@@ -150,8 +162,21 @@ public class MultiplayerModeController implements Initializable {
 
     @FXML
     private void setMove(ActionEvent ae) {
-        int cell = Integer.parseInt(((Button) ae.getSource()).getText());
-        turnSwitch(cell);
+        if (isX) {
+            int cell = Integer.parseInt(((Button) ae.getSource()).getText());
+            turnSwitch(cell);
+            try {
+                CurrentSession.getGame().sendMsg(composeMsg(CurrentSession.getPlayer().getName(), CurrentSession.getCurrentOpponent().getName(), String.valueOf(cell), "move"));
+            } catch (TransformerException | IOException e) {
+                e.printStackTrace();
+            }
+            isX = false;
+        } else {
+            int p2cell = CurrentSession.getOpponentMove();
+            turnSwitch(p2cell);
+            isX = true;
+        }
+
     }
 
 
@@ -189,11 +214,11 @@ public class MultiplayerModeController implements Initializable {
     private void turnSwitch(int cell) {
         if (currentGame.setPlay(cell)) {
             if (isX) {
+                isX = false;
                 imageViews.get(cell).setImage(new Image("res/X.png"));
             } else {
                 imageViews.get(cell).setImage(new Image("res/O.png"));
             }
-            isX = !isX;
             playerOne_Turn.setVisible(isX);
             playerTwo_Turn.setVisible(!isX);
             statusChecker();
@@ -220,4 +245,40 @@ public class MultiplayerModeController implements Initializable {
         setNamesOnBoard();
         containImgViews();
     }
+
+    private static Document createDoc() {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = null;
+        try {
+            builder = factory.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+        return builder.newDocument();
+    }
+
+    private Document composeMsg(String from, String to, String msg, String header) {
+        Document doc = createDoc();
+        Element root = doc.createElement(header);
+        Element child = (Element) (doc.createElement("from")).appendChild(doc.createTextNode(from));
+        root.appendChild(child);
+        child = (Element) (doc.createElement("to")).appendChild(doc.createTextNode(to));
+        root.appendChild(child);
+        child = (Element) (doc.createElement("msg")).appendChild(doc.createTextNode(msg));
+        root.appendChild(child);
+        doc.appendChild(root);
+        return doc;
+    }
+    private String[] decomposeMsg(Document doc){
+        String[] message = new String[4];
+        Element e = doc.getDocumentElement();
+        message[0] = e.getElementsByTagName("from").item(0).getTextContent();
+        message[1]= e.getElementsByTagName("to").item(0).getTextContent();
+        message[2] = e.getElementsByTagName("msg").item(0).getTextContent();
+        message[3] = e.getTagName();
+        System.out.println("DOC = " + message[3] + " " + message[0] + " " + message[1] + " " + message[2]);
+        return message;
+    }
+
+
 }

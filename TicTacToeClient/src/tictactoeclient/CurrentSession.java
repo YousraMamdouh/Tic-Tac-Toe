@@ -2,17 +2,18 @@ package tictactoeclient;
 
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CurrentSession {
     private static CurrentSession currentSession;
     private Player player;
+    private Player currentOpponent;
     private int[] recordedGame;
     private Stage currentStage;
     private Game game;
     private List<GameHistory> gameHistoryList;
     private List<Player> playerList;
+    private int inComingMove;
 
     private CurrentSession() {
     }
@@ -38,6 +39,14 @@ public class CurrentSession {
 
     public static void setPlayer(Player player) {
         currentSession.player = player;
+    }
+
+    public static Player getCurrentOpponent() {
+        return currentSession.currentOpponent;
+    }
+
+    public static void setCurrentOpponent(Player player) {
+        currentSession.currentOpponent = player;
     }
 
     public static int[] getRecordedGame() {
@@ -72,6 +81,7 @@ public class CurrentSession {
     public static void setPlayersList(List<Player> list) {
         currentSession.playerList = list;
     }
+
     public static List<GameHistory> getGameHistoryList() {
         return currentSession.gameHistoryList;
     }
@@ -79,5 +89,18 @@ public class CurrentSession {
     public static void setGameHistoryList(List<GameHistory> list) {
         currentSession.gameHistoryList = list;
     }
+    public static boolean isAvailable(){
+        return currentSession.player.getStatus()==1;
+    }
+
+
+    public static int getOpponentMove() {
+        return currentSession.inComingMove;
+    }
+
+    public static void setOpponentMove(int cell) {
+        currentSession.inComingMove = cell;
+    }
+
 
 }

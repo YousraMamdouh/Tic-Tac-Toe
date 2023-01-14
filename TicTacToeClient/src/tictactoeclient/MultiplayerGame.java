@@ -1,6 +1,8 @@
 package tictactoeclient;
 
+
 import java.util.Objects;
+
 
 public class MultiplayerGame {
     private final String playerOne;
@@ -8,16 +10,24 @@ public class MultiplayerGame {
     private final String[] board;
     private int round;
     private boolean isP1Turn;
+    private boolean isRecordOn;
+    private final int[] cells;
+    private  String winner;
+
 
     public MultiplayerGame() {
         playerOne = "Player A";
         playerTwo = "Player B";
+
         board = new String[]{"n", "n", "n",
-                             "n", "n", "n",
-                             "n", "n", "n"};
+                "n", "n", "n",
+                "n", "n", "n"};
         round = 0;
         isP1Turn = true;
+        cells = new int[]{-1,-2,-3,-4,-5,-6,-7,-8,-9};
+        isRecordOn = false;
     }
+
 
 
     private boolean playerOneMove(int cell) {
@@ -25,6 +35,7 @@ public class MultiplayerGame {
         if (Objects.equals(board[cell], "n")) {
             board[cell] = "x";
             ret = true;
+            cells[round]=cell;
             round++;
             System.out.println("Player One played 'X' in cell " + cell + " round " + round);
         }
@@ -36,6 +47,7 @@ public class MultiplayerGame {
         if (Objects.equals(board[cell], "n")) {
             board[cell] = "o";
             ret = true;
+            cells[round]=cell;
             round++;
             System.out.println("Player Two played 'O' in cell " + cell + " Round " + round);
         }
@@ -92,22 +104,46 @@ public class MultiplayerGame {
                     break;
             }
             if (line.equals("xxx")) {
-                line = playerOne;
+                winner = line = playerOne;
                 //System.out.println("Player 1 Wins!");
                 break;
             } else if (line.equals("ooo")) {
-                line = playerTwo;
+                winner = line = playerTwo;
                 //System.out.println("Player 2 wins!");
                 break;
             } else if (round == 9 && a==7) {
+                winner = "Tie";
                 line = "No One";
                 break;
             } else {
+                winner = "game still on";
                 line = "n";
             }
         }
-
         return line;
+    }
+    public boolean recordSwitch(){
+        isRecordOn = !isRecordOn;
+        return isRecordOn;
+    }
+    public int[] getRecord(){
+        return cells;
+    }
+    public void resetBoard(){
+        round = 0;
+        for(int i = 0 ; i < 9 ; i++){
+            board[i] = "n";
+        }
+    }
+
+    public GameHistory getGame(){
+        int[] recording;
+        if(isRecordOn) {
+            recording = cells;
+        } else{
+            recording = new int[]{-1,-2,-3,-4,-5,-6,-7,-8,-9};
+        }
+        return new GameHistory(playerOne,playerTwo,recording,winner);
     }
 
 }
