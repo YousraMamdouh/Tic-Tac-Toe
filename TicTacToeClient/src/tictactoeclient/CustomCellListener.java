@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
+import sun.util.resources.cldr.ur.CurrencyNames_ur;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -38,6 +39,7 @@ public class CustomCellListener implements ChangeListener<PlayerCell> {
                 if (doc != null) {
                     CurrentSession.getGame().sendMsg(doc);
                     profileController.myInstance.switchToGame();
+                    CurrentSession.setPlayerOne();
                   // profileController.myInstance.requestSent();
                 }
             } catch (ParserConfigurationException e) {

@@ -14,8 +14,10 @@ public class CurrentSession {
     private List<GameHistory> gameHistoryList;
     private List<Player> playerList;
     private int inComingMove;
+    private boolean isPlayerOne;
 
     private CurrentSession() {
+        isPlayerOne=  false;
     }
 
     static {
@@ -102,5 +104,12 @@ public class CurrentSession {
         currentSession.inComingMove = cell;
     }
 
+    public static boolean getIsPlayerOne() {
+        return currentSession.isPlayerOne;
+    }
+
+    public static void setPlayerOne() {
+        currentSession.isPlayerOne = true;
+    }
 
 }

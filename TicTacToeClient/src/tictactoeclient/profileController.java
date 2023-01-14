@@ -138,7 +138,7 @@ public class profileController implements Initializable {
         stage.showAndWait();
     }
     public void switchToHome(ActionEvent event ) throws IOException{
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -147,7 +147,7 @@ public class profileController implements Initializable {
 @FXML
     public String isAcceptButton(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Multiplayer_Board.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OnlineBoard.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         popUpStage = (Stage) acceptButton.getScene().getWindow();
@@ -160,7 +160,7 @@ public class profileController implements Initializable {
 
     public void switchToGame() throws IOException {
         stage =CurrentSession.getCurrentStage();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Multiplayer_Board.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("OnlineBoard.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

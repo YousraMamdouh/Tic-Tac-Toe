@@ -78,7 +78,7 @@ public class OnlineBoardController implements Initializable {
     public OnlineBoardController() {
         imageViews = new ArrayList<>();
         currentGame = new MultiplayerGame();
-        isX = true;
+        isX = CurrentSession.getIsPlayerOne();
     }
 
 
@@ -167,10 +167,14 @@ public class OnlineBoardController implements Initializable {
             turnSwitch(cell);
             try {
                 CurrentSession.getGame().sendMsg(composeMsg(CurrentSession.getPlayer().getName(), CurrentSession.getCurrentOpponent().getName(), String.valueOf(cell), "move"));
+                isX = false;
+                CurrentSession.getGame().startListeining();
+                int celle = Integer.parseInt(CurrentSession.getGame().getMsg());
+                turnSwitch(celle);
+                isX=true;
             } catch (TransformerException | IOException e) {
                 e.printStackTrace();
             }
-            isX = false;
         } else {
             int p2cell = CurrentSession.getOpponentMove();
             turnSwitch(p2cell);
@@ -269,11 +273,12 @@ public class OnlineBoardController implements Initializable {
         doc.appendChild(root);
         return doc;
     }
-    private String[] decomposeMsg(Document doc){
+
+    private String[] decomposeMsg(Document doc) {
         String[] message = new String[4];
         Element e = doc.getDocumentElement();
         message[0] = e.getElementsByTagName("from").item(0).getTextContent();
-        message[1]= e.getElementsByTagName("to").item(0).getTextContent();
+        message[1] = e.getElementsByTagName("to").item(0).getTextContent();
         message[2] = e.getElementsByTagName("msg").item(0).getTextContent();
         message[3] = e.getTagName();
         System.out.println("DOC = " + message[3] + " " + message[0] + " " + message[1] + " " + message[2]);

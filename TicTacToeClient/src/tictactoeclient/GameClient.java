@@ -26,7 +26,7 @@ class Game extends Thread {
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
     private Socket socket;
-    private String msg;
+    private static String msg;
     private final int count = 0;
     private boolean isStarted;
 
@@ -115,15 +115,16 @@ class Game extends Thread {
 
 
                     }
-                    else{
-                        Platform.runLater(()->{
-                            try {
-                                // profileController.myInstance2.requestRecived();
-                                profileController.myInstance.switchToGame();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        });
+                    else if(doc.getDocumentElement().getNodeName().equals("move")){
+                        setMsg(doc.getElementsByTagName("msg").item(0).getTextContent());
+//                        Platform.runLater(()->{
+//                            try {
+//                                // profileController.myInstance2.requestRecived();
+//                                profileController.myInstance.switchToGame();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                        });
 
                     }
                 } catch (IOException | TransformerFactoryConfigurationError | ClassNotFoundException ex) {
