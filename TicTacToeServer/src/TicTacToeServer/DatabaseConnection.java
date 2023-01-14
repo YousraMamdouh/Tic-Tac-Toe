@@ -92,6 +92,26 @@ public class DatabaseConnection {
         return player;
     }
 
+    static void updateScore(int score, String user_name) throws SQLException {
+        startConnection();
+        PreparedStatement updateScore = connection.prepareStatement("UPDATE tictactoe.player SET score = ? WHERE user_name = ?");
+        updateScore.setInt(1,score);
+        updateScore.setString(2,user_name);
+        updateScore.executeUpdate();
+        updateResultSet("select * from tictactoe.player");
+        endConnection();
+    }
+
+    static void setStatus(int status, String user_name) throws SQLException {
+        startConnection();
+        PreparedStatement setStatus = connection.prepareStatement("UPDATE tictactoe.player SET status = ? WHERE user_name = ?");
+        setStatus.setInt(1,status);
+        setStatus.setString(2,user_name);
+        setStatus.executeUpdate();
+        updateResultSet("select * from tictactoe.player");
+        endConnection();
+    }
+
     public static List<Player> getPlayerList() {
         startConnection();
         List<Player> playerList = new ArrayList<>();
