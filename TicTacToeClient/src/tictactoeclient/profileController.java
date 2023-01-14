@@ -28,22 +28,17 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 
 /**
  *
  * @author saraeltlt
  */
+
+
 public class profileController implements Initializable {
     private Stage stage;
-
-
+    private Stage popUpStage;
     private Scene scene;
     private Parent root;
     @FXML
@@ -51,43 +46,6 @@ public class profileController implements Initializable {
 
     @FXML
     private ListView<PlayerCell> listViewPlayers;
-    private final ObservableList<PlayerCell> dataPlayers= FXCollections.observableArrayList();
-    private final ObservableList<GameCell> dataHistory= FXCollections.observableArrayList();
-    public void switchToProfile(ActionEvent event ) throws IOException{
-      
-        stage  = (Stage)cancelButton.getScene().getWindow();
-        stage.close();
-    
-    }
-     public void switchToRequest(ActionEvent event ) throws IOException{
-         
-      
-        Parent root = FXMLLoader.load(getClass().getResource("/tictactoeclient/Request_Popup.fxml"));
-        stage = new Stage();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner( requestButton.getScene().getWindow());
-        
-        //styling
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initStyle(StageStyle.TRANSPARENT);
-        scene.setFill(Color.TRANSPARENT);
-     
-        stage.showAndWait();
-
-
-        
-    }
-
-    public void switchToHome(ActionEvent event ) throws IOException{
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    
     private Label label;
     @FXML
     private Label userNameLabel;
@@ -99,15 +57,50 @@ public class profileController implements Initializable {
     private Button logoutButton;
     @FXML
     private Button requestButton;
-     @FXML
-     private Button cancelButton;
-     
-     private AnchorPane anchorPane;
+    @FXML
+    private Button cancelButton;
+    private AnchorPane anchorPane;
+    @FXML
+    private Button rejectButton;
+    @FXML
+    private Button acceptButton;
+    private final ObservableList<PlayerCell> dataPlayers= FXCollections.observableArrayList();
+    private final ObservableList<GameCell> dataHistory= FXCollections.observableArrayList();
+    public static profileController myInstance;
+    public static profileController myInstance2;
+    public profileController (){
+        myInstance=this;
+        myInstance2=this;
 
+    }
 
+    public void requestSent() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/tictactoeclient/Request_Popup.fxml"));
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner( requestButton.getScene().getWindow());
+        //styling
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.showAndWait();
+    }
 
+    public void requestRecived() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/tictactoeclient/ReceivedRequest_popup.fxml"));
+        stage = new Stage();
+        stage.setScene(new Scene(root));
+        //styling
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.showAndWait();
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         dataPlayers.addAll(PlayerCell.getReadyList());
         if ( listViewPlayers!=null) {
             listViewPlayers.setItems(dataPlayers);
@@ -123,4 +116,54 @@ public class profileController implements Initializable {
 //            listViewHistory.getSelectionModel().selectedItemProperty().addListener(new CustomCellListener());
         }
     }
+
+    public void switchToProfile(ActionEvent event ) throws IOException{
+
+        stage  = (Stage)cancelButton.getScene().getWindow();
+        stage.close();
+
+    }
+    public void switchToRequest(ActionEvent event ) throws IOException{
+
+        Parent root = FXMLLoader.load(getClass().getResource("/tictactoeclient/Request_Popup.fxml"));
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner( requestButton.getScene().getWindow());
+        //styling
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
+        stage.showAndWait();
+    }
+    public void switchToHome(ActionEvent event ) throws IOException{
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+@FXML
+    public String isAcceptButton(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Multiplayer_Board.fxml")));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        popUpStage = (Stage) acceptButton.getScene().getWindow();
+        stage.show();
+        popUpStage.close();
+
+        return "accept";
+
+    }
+
+    public void switchToGame() throws IOException {
+        stage =CurrentSession.getCurrentStage();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Multiplayer_Board.fxml")));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

@@ -129,6 +129,7 @@ public class HomePageController implements Initializable/* , MessageSetterListen
     public void openProfileWindow(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Profile_window.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        CurrentSession.setCurrentStage(stage);
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

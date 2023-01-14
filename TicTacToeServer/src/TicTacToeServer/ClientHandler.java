@@ -105,15 +105,13 @@ public class ClientHandler extends Thread {
                 }
 
                 else if (doc.getDocumentElement().getNodeName().equals("root")){
-                    String msg = ModifyXMLFile.getMsg(doc);
-                    String from = ModifyXMLFile.getFrom(doc);
-                    String to = ModifyXMLFile.getTo(doc);
-                    System.out.println("hi request:  " + msg + from + to);
-                    if (msg.equals("request"))
                         sendRequest(doc);
-
-
+                    }
+                else {
+                    sendRequest(doc);
                 }
+
+
 
             } catch (IOException e) {
                 System.out.println("Client disconnected!");

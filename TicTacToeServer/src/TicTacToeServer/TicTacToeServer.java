@@ -20,7 +20,6 @@ public class TicTacToeServer extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main_Window.fxml")));
         Scene scene = new Scene(root);
-        //  GameServer.connect(5005);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("TicTacToe Server");

@@ -1,16 +1,23 @@
 package tictactoeclient;
 
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import org.w3c.dom.Document;
 
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import org.w3c.dom.Document;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
+import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -64,7 +71,6 @@ class Game extends Thread {
                 try {
 
                     Document doc = (Document) objectInputStream.readObject();
-
                     if (doc.getDocumentElement().getTagName().equals("Success-Sign-Up")) {
                         setMsg(doc.getElementsByTagName("Message").item(0).getTextContent());
                         System.out.println(getMsg());
@@ -91,15 +97,35 @@ class Game extends Thread {
                         String msg = ModifyXMLFile.getMsg(doc);
                         String me = ModifyXMLFile.getTo(doc);
                         String other = ModifyXMLFile.getFrom(doc);
-                        System.out.println(msg + me + other);
-                        msg="ACCEPT";
-                        ModifyXMLFile.updateElementValue(doc,me,other,msg);
-                        System.out.println(msg + me + other);
-                        sendMsg(doc);
+
+                        if (msg =="request"){
+                            msg="accept";
+                            ModifyXMLFile.updateElementValue(doc,me,other,msg);
+                            sendMsg(doc);
+                        }
+
+                        Platform.runLater(()->{
+                            try {
+                               // profileController.myInstance2.requestRecived();
+                                profileController.myInstance2.switchToGame();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
+
                     }
+                    else{
+                        Platform.runLater(()->{
+                            try {
+                                // profileController.myInstance2.requestRecived();
+                                profileController.myInstance.switchToGame();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
 
-
-                    //  if(doc !=null)
+                    }
                 } catch (IOException | TransformerFactoryConfigurationError | ClassNotFoundException ex) {
                     Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (TransformerException e) {

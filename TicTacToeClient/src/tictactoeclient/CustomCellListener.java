@@ -37,6 +37,8 @@ public class CustomCellListener implements ChangeListener<PlayerCell> {
                 ModifyXMLFile.updateElementValue(doc,from,userName,"request");
                 if (doc != null) {
                     CurrentSession.getGame().sendMsg(doc);
+                    profileController.myInstance.switchToGame();
+                  // profileController.myInstance.requestSent();
                 }
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();
