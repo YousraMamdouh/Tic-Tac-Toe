@@ -15,12 +15,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Objects;
 
 /**
@@ -29,7 +34,7 @@ import java.util.Objects;
 public class EasyAIController {
     EasyAIHandler gameHandler = new EasyAIHandler();
 
-    public EasyAIController() {
+    public EasyAIController()  {
     }
 
     private static Stage stage;
@@ -64,33 +69,27 @@ public class EasyAIController {
     private ImageView img_7;
     @FXML
     private ImageView img_8;
+    @FXML
+    private MediaView videoPlayer;
+
 
 
     @FXML
     private void setBackArrowMethod(ActionEvent e) throws IOException {
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Exit_Popup.fxml")));
-        popUpStage = new Stage();
-        Scene exit = new Scene(root);
-        exit.setFill(Color.TRANSPARENT);
-        popUpStage.setScene(exit);
-        popUpStage.initModality(Modality.APPLICATION_MODAL);
-        popUpStage.initStyle(StageStyle.TRANSPARENT);
-        popUpStage.showAndWait();
-
+        createPopup(root);
     }
+
 
     @FXML
     private void setYesButton() throws IOException {
-
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.FXML")));
         scene = new Scene(root);
         stage.setScene(scene);
         popUpStage = (Stage) yesButton.getScene().getWindow();
         stage.show();
         popUpStage.close();
-
-
     }
 
     @FXML
@@ -103,138 +102,57 @@ public class EasyAIController {
 
     @FXML
     private void cell_zero(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(0).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 0);
-                drawPcMove(gameHandler.setPCMove());
-
-            }
-
-        }
-
+        play(0, ev);
         showWinner();
-
     }
 
     @FXML
     private void cell_1(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(1).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 1);
-                drawPcMove(gameHandler.setPCMove());
-
-            }
-        }
-
-            showWinner();
+        play(1, ev);
+        showWinner();
     }
 
     @FXML
     private void cell_2(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(2).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 2);
-                drawPcMove(gameHandler.setPCMove());
-
-            }
-
-        }
+        play(2, ev);
         showWinner();
-
     }
 
     @FXML
     private void cell_3(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(3).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 3);
-                drawPcMove(gameHandler.setPCMove());
-
-            }
-        }
+        play(3, ev);
         showWinner();
-
     }
-
 
     @FXML
     private void cell_4(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(4).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 4);
-                drawPcMove(gameHandler.setPCMove());
-
-            }
-
-        }
+        play(4, ev);
         showWinner();
-
     }
 
     @FXML
     private void cell_5(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(5).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 5);
-                drawPcMove(gameHandler.setPCMove());
-            }
-
-        }
+        play(5, ev);
         showWinner();
-
-
     }
 
     @FXML
     private void cell_6(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(6).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 6);
-                drawPcMove(gameHandler.setPCMove());
-            }
-
-        }
+        play(6, ev);
         showWinner();
-
-
     }
 
     @FXML
     private void cell_7(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(7).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 7);
-                drawPcMove(gameHandler.setPCMove());
-            }
-
-        }
+        play(7, ev);
         showWinner();
-
-
     }
 
 
     @FXML
     private void cell_8(ActionEvent ev) throws IOException {
-        if (gameHandler.isEndOfGame()) {
-            if (gameHandler.getBoard(8).equals("N")) {
-                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
-                gameHandler.setBoard(gameHandler.getTurn(), 8);
-                drawPcMove(gameHandler.setPCMove());
-            }
-
-        }
+        play(8, ev);
         showWinner();
-
-
     }
 
 
@@ -243,14 +161,29 @@ public class EasyAIController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EasyResultWindow.fxml"));
         Parent root = loader.load();
         EasyAIController controller = loader.getController();
-        controller.result_label.setText(winner);
-        popUpStage = new Stage();
-        Scene result = new Scene(root);
-        result.setFill(Color.TRANSPARENT);
-        popUpStage.setScene(result);
-        popUpStage.initModality(Modality.APPLICATION_MODAL);
-        popUpStage.initStyle(StageStyle.TRANSPARENT);
-        popUpStage.showAndWait();
+        controller.result_label.setText(winnerName(winner));
+        createPopup(root);
+        MediaPlayer mp = showVideo(winner);
+        controller.videoPlayer.setMediaPlayer(mp);
+        mp.play();
+    }
+
+
+    private String winnerName(String winnerName)  {
+        String whoWon = "N";
+
+        switch (winnerName) {
+            case "X":
+                whoWon = "You Win :D";
+                break;
+            case "O":
+                whoWon = "You lost :(";
+                break;
+            case "D":
+                whoWon = "It's a Tie!";
+                break;
+        }
+        return whoWon;
     }
 
     @FXML
@@ -261,7 +194,6 @@ public class EasyAIController {
         popUpStage = (Stage) ok_result.getScene().getWindow();
         stage.show();
         popUpStage.close();
-
     }
 
 
@@ -307,6 +239,7 @@ public class EasyAIController {
 
     }
 
+
     public void drawPcMove(int loc) {
         if (loc == -1) {
             System.out.println("GAME OVER!");
@@ -351,8 +284,44 @@ public class EasyAIController {
 
     }
 
+    private void createPopup(Parent root) {
+        popUpStage = new Stage();
+        Scene exit = new Scene(root);
+        exit.setFill(Color.TRANSPARENT);
+        popUpStage.setScene(exit);
+        popUpStage.initModality(Modality.APPLICATION_MODAL);
+        popUpStage.initStyle(StageStyle.TRANSPARENT);
+        popUpStage.show();
+    }
 
     private void showWinner() throws IOException {
-        if (!gameHandler.winnerName().equals("N")) showresultPopUp(gameHandler.winnerName());
+        if (!gameHandler.whoWon().equals("N")) showresultPopUp(gameHandler.whoWon());
+    }
+
+    private MediaPlayer showVideo(String whoWon) throws MalformedURLException {
+        File mediaFile =null;
+        switch (whoWon){
+            case "X": mediaFile  = new File("D:\\Practice\\Inteliji\\Tic-Tac-Toe\\TicTacToeClient\\src\\res\\yt1s_com_حمدالله_علي_السلامة_و_قدر_و_لطف_فتحي_عبدالوهاب.mp4");
+                break;
+            case "O" : mediaFile =new File("D:\\Practice\\Inteliji\\Tic-Tac-Toe\\TicTacToeClient\\src\\res\\Loser.mp4");
+                break;
+            case "D": mediaFile = new File("D:\\Practice\\Inteliji\\Tic-Tac-Toe\\TicTacToeClient\\src\\res\\Tie.mp4");
+        }
+        assert mediaFile != null;
+        Media media = new Media(mediaFile.toURI().toURL().toString());
+
+        return new MediaPlayer(media);
+    }
+
+    private void play(int loc, ActionEvent ev) {
+        if (gameHandler.isEndOfGame()) {
+            if (gameHandler.getBoard(loc).equals("N")) {
+                drawImage(((Button) ev.getSource()).getText(), gameHandler.getTurn());
+                gameHandler.setBoard(gameHandler.getTurn(), loc);
+                drawPcMove(gameHandler.setPCMove());
+
+            }
+
+        }
     }
 }

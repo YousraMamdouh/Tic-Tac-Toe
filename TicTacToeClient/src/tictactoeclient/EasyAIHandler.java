@@ -30,7 +30,6 @@ public class EasyAIHandler {
     }
 
 
-
     public void setBoard(String turn, int loc) {
 
         if (board[loc].equals("N")) {
@@ -40,37 +39,37 @@ public class EasyAIHandler {
 
     }
 
-    public int setPCMove(){
+    public int setPCMove() {
         int cpuMove = -1;
-        if (!isEndOfGame)
-        {   Random rand = new Random();
+        if (!isEndOfGame) {
+            Random rand = new Random();
             int loc;
 
             do {
                 loc = rand.nextInt(9);
                 System.out.println("the random number = " + loc);
-            }while (isPlayable(board) &&!board[loc].equals("N"));
+            } while (isPlayable(board) && !board[loc].equals("N"));
 
             cpuMove = loc;
         }
         return cpuMove;
     }
 
-    public String winnerName() {
+    public String whoWon() {
         String winnerName = checkWinner();
         switch (winnerName) {
             case "X":
-                winnerName = "You Win! :D";
+                winnerName = "X";
 
                 break;
 
             case "O":
-                winnerName = "You Lose :(";
+                winnerName = "O";
 
                 break;
 
             case "D":
-                winnerName = "DRAW!";
+                winnerName = "D";
 
                 break;
         }
@@ -122,7 +121,7 @@ public class EasyAIHandler {
                 isEndOfGame = true;
                 break;
 
-            } else if (rounds == 9 && a ==7){
+            } else if (rounds == 9 && a == 7) {
                 line = "D";
                 //System.out.println("no Winner " + line);
                 isEndOfGame = true;
@@ -136,7 +135,8 @@ public class EasyAIHandler {
 
         return line;
     }
-    public boolean isPlayable(String[] arr){
+
+    public boolean isPlayable(String[] arr) {
         boolean playable = true;
         for (String s : arr) {
             if (s.equals("N")) {
