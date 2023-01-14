@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.w3c.dom.Document;
+import tictactoeclient.Snake.SnakeGame;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -56,7 +57,13 @@ public class HomePageController implements Initializable/* , MessageSetterListen
     String receivedLoginMsgFromServer;
     private Game game;
 
-
+    @FXML
+    Button snakeBtn;
+    public void startSnakeGame() {
+        Stage stage1 = new Stage();
+        SnakeGame game = new SnakeGame();
+        game.start(stage1);
+    }
    static private Stage stage;
    static private Stage PopupStage;
     private Scene scene;

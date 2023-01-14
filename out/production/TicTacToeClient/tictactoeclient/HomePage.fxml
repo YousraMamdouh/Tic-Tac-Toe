@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.HomePageController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoeclient.HomePageController">
    <children>
       <ImageView fitHeight="729.0" fitWidth="1151.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
          <image>
@@ -18,7 +18,7 @@
       </ImageView>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1135.0">
          <children>
-            <Button fx:id="loginButton" layoutX="575.0" layoutY="533.0" mnemonicParsing="false" onAction="#openLoginPage" prefHeight="50.0" prefWidth="160.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Login" textFill="WHITE">
+            <Button fx:id="loginButton" layoutX="575.0" layoutY="610.0" mnemonicParsing="false" onAction="#openLoginPage" prefHeight="50.0" prefWidth="160.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
                </font>
@@ -26,7 +26,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="signupButton" layoutX="401.0" layoutY="533.0" mnemonicParsing="false" onAction="#openSignupPage" prefHeight="50.0" prefWidth="160.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Sign up" textFill="WHITE">
+            <Button fx:id="signupButton" layoutX="401.0" layoutY="610.0" mnemonicParsing="false" onAction="#openSignupPage" prefHeight="50.0" prefWidth="160.0" styleClass="myButtonPink" stylesheets="@../res/ClientStyles.css" text="Sign up" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
                </font>
@@ -50,7 +50,19 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="onlineMultiplayerButton" layoutX="401.0" layoutY="462.0" mnemonicParsing="false" onAction="#openProfileWindow" prefHeight="50.0" prefWidth="334.0" stylesheets="@../res/ClientStyles.css" text="Online Multiplayer " textFill="WHITE">
+            <Button fx:id="onlineMultiplayerButton" layoutX="401.0" layoutY="539.0" mnemonicParsing="false" onAction="#openProfileWindow" prefHeight="50.0" prefWidth="334.0" stylesheets="@../res/ClientStyles.css" text="Online Multiplayer " textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="buttonMultiplier" />
+                  <String fx:value="myButtonPurple" />
+               </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="snakeBtn" layoutX="401.0" layoutY="466.0" mnemonicParsing="false" onAction="#startSnakeGame" prefHeight="50.0" prefWidth="334.0" stylesheets="@../res/ClientStyles.css" text="Snake" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
                </font>
